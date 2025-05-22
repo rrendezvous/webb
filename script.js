@@ -411,9 +411,6 @@ function handleFormInput(e) {
 /**
  * Setup lazy loading for images with mobile-friendly fallbacks
  */
-/**
- * Setup lazy loading for images with mobile-friendly fallbacks
- */
 function setupLazyLoading() {
   const lazyImages = document.querySelectorAll('img[loading="lazy"]');
   
@@ -422,7 +419,6 @@ function setupLazyLoading() {
     lazyImages.forEach(img => {
       if (img.dataset.src) img.src = img.dataset.src;
       img.removeAttribute('loading');
-      img.style.opacity = 1; // Make sure images are visible
     });
     return;
   }
@@ -431,6 +427,9 @@ function setupLazyLoading() {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const img = entry.target;
+        
+        // Set loading state
+        img.style.transition = 'opacity 0.3s ease-in-out';
         
         // Handle image loading
         const handleImageLoad = () => {
@@ -454,9 +453,13 @@ function setupLazyLoading() {
         }
         img.removeAttribute('loading');
         
-        // IMMEDIATE fallback - show image right away
-        img.style.opacity = 1;
-        img.classList.add('loaded');
+        // Fallback timeout for mobile devices
+        setTimeout(() => {
+          if (!img.classList.contains('loaded') && !img.classList.contains('error')) {
+            img.style.opacity = 1;
+            img.classList.add('loaded');
+          }
+        }, 2000);
         
         // Check if image is already loaded (cached)
         if (img.complete && img.naturalHeight !== 0) {
@@ -467,7 +470,7 @@ function setupLazyLoading() {
       }
     });
   }, { 
-    rootMargin: '50px 0px 50px 0px',
+    rootMargin: '50px 0px 50px 0px', // Reduced margin for mobile
     threshold: 0.1
   });
 
@@ -479,7 +482,8 @@ function setupLazyLoading() {
       return;
     }
     
-    img.style.opacity = 1;
+    // Set initial state
+    img.style.opacity = 0;
     lazyImageObserver.observe(img);
   });
 }
