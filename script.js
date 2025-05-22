@@ -406,16 +406,19 @@ function handleFormInput(e) {
 }
 
 /**
- * Setup lazy loading for images with mobile-friendly fallbacks and persistent loading
+ * Setup lazy loading for images with improved mobile support
  */
 function setupLazyLoading() {
-  const lazyImages = document.querySelectorAll('img[loading="lazy"], img[data-src]');
+  const lazyImages = document.querySelectorAll('img[loading="lazy"]');
   
-  if (!('IntersectionObserver' in window) || lazyImages.length === 0) {
-    // Fallback for browsers without IntersectionObserver
+  if (lazyImages.length === 0) return;
+  
+  // For browsers without IntersectionObserver, load all images immediately
+  if (!('IntersectionObserver' in window)) {
     lazyImages.forEach(img => {
       if (img.dataset.src) img.src = img.dataset.src;
       img.removeAttribute('loading');
+      img.style.opacity = 1;
     });
     return;
   }
@@ -425,87 +428,85 @@ function setupLazyLoading() {
       if (entry.isIntersecting) {
         const img = entry.target;
         
-        // Skip if already loaded
-        if (img.classList.contains('loaded') || img.classList.contains('loading')) {
+        // Set initial loading state
+        img.style.transition = 'opacity 0.3s ease-in-out';
+        img.style.opacity = 0;
+        
+        const loadImage = () => {
+          return new Promise((resolve) => {
+            const newImg = new Image();
+            
+            newImg.onload = () => {
+              // Image loaded successfully
+              if (img.dataset.src) {
+                img.src = img.dataset.src;
+              }
+              img.removeAttribute('loading');
+              img.style.opacity = 1;
+              img.classList.add('loaded');
+              resolve(true);
+            };
+            
+            newImg.onerror = () => {
+              // Image failed to load, still show it
+              if (img.dataset.src) {
+                img.src = img.dataset.src;
+              }
+              img.removeAttribute('loading');
+              img.style.opacity = 1;
+              img.classList.add('error');
+              console.warn('Image failed to load:', img.dataset.src || img.src);
+              resolve(false);
+            };
+            
+            // Start loading
+            newImg.src = img.dataset.src || img.src;
+          });
+        };
+        
+        // Check if image is already cached/loaded
+        if (img.complete && img.naturalHeight !== 0) {
+          img.style.opacity = 1;
+          img.classList.add('loaded');
+          observer.unobserve(img);
           return;
         }
         
-        // Set loading state
-        img.classList.add('loading');
-        img.style.transition = 'opacity 0.3s ease-in-out';
+        // Load the image
+        loadImage().finally(() => {
+          observer.unobserve(img);
+        });
         
-        // Handle image loading
-        const handleImageLoad = () => {
-          img.style.opacity = 1;
-          img.classList.add('loaded');
-          img.classList.remove('loading');
-          // Don't unobserve - keep watching for future intersections
-        };
-        
-        const handleImageError = () => {
-          img.style.opacity = 1; // Show even if error
-          img.classList.add('error');
-          img.classList.remove('loading');
-          console.warn('Image failed to load:', img.src || img.dataset.src);
-          // Don't unobserve - keep watching for future intersections
-        };
-        
-        // Add event listeners BEFORE changing src
-        img.addEventListener('load', handleImageLoad, { once: true });
-        img.addEventListener('error', handleImageError, { once: true });
-        
-        // Set src and remove loading attribute
-        if (img.dataset.src && !img.src) {
-          img.src = img.dataset.src;
-        }
-        img.removeAttribute('loading');
-        
-        // Fallback timeout for mobile devices
+        // Mobile fallback timeout
         setTimeout(() => {
           if (!img.classList.contains('loaded') && !img.classList.contains('error')) {
+            if (img.dataset.src) {
+              img.src = img.dataset.src;
+            }
+            img.removeAttribute('loading');
             img.style.opacity = 1;
             img.classList.add('loaded');
-            img.classList.remove('loading');
           }
-        }, 3000); // Increased timeout for slower connections
-        
-        // Check if image is already loaded (cached)
-        if (img.complete && img.naturalHeight !== 0) {
-          handleImageLoad();
-        }
-        
-        // Don't unobserve - keep the observer active for re-intersections
-      } else {
-        // When image goes out of view, ensure it stays loaded
-        const img = entry.target;
-        if (img.classList.contains('loaded')) {
-          img.style.opacity = 1; // Ensure it stays visible
-        }
+        }, 1500);
       }
     });
   }, { 
     rootMargin: '100px 0px 100px 0px', // Increased margin for better mobile performance
-    threshold: 0.01 // Lower threshold for earlier loading
+    threshold: 0.01 // Lower threshold for better detection
   });
 
   lazyImages.forEach(img => {
-    // Don't lazy load if image is already complete and has src
-    if (img.complete && img.naturalHeight !== 0 && img.src && !img.dataset.src) {
+    // For images already in viewport or cached, show immediately
+    if (img.complete && img.naturalHeight !== 0) {
       img.style.opacity = 1;
       img.classList.add('loaded');
       return;
     }
     
-    // Set initial state only if not already loaded
-    if (!img.classList.contains('loaded')) {
-      img.style.opacity = 0;
-    }
-    
+    // Set initial state for lazy loading
+    img.style.opacity = 0;
     lazyImageObserver.observe(img);
   });
-  
-  // Store observer globally for potential cleanup
-  window.lazyImageObserver = lazyImageObserver;
 }
 
 /**
