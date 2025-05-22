@@ -408,6 +408,9 @@ function handleFormInput(e) {
 /**
  * Setup lazy loading for images
  */
+/**
+ * Setup lazy loading for images with mobile-friendly fallbacks
+ */
 function setupLazyLoading() {
   const lazyImages = document.querySelectorAll('img[loading="lazy"]');
   
@@ -425,27 +428,63 @@ function setupLazyLoading() {
       if (entry.isIntersecting) {
         const img = entry.target;
         
-        // Add fade-in effect
-        img.style.opacity = 0;
-        img.style.transition = 'opacity 0.5s ease-in-out';
+        // Set loading state
+        img.style.transition = 'opacity 0.3s ease-in-out';
         
-        if (img.dataset.src) img.src = img.dataset.src;
+        // Handle image loading
+        const handleImageLoad = () => {
+          img.style.opacity = 1;
+          img.classList.add('loaded');
+        };
+        
+        const handleImageError = () => {
+          img.style.opacity = 1; // Show even if error
+          img.classList.add('error');
+          console.warn('Image failed to load:', img.src || img.dataset.src);
+        };
+        
+        // Add event listeners BEFORE changing src
+        img.addEventListener('load', handleImageLoad, { once: true });
+        img.addEventListener('error', handleImageError, { once: true });
+        
+        // Set src and remove loading attribute
+        if (img.dataset.src) {
+          img.src = img.dataset.src;
+        }
         img.removeAttribute('loading');
-        img.onload = () => img.style.opacity = 1;
+        
+        // Fallback timeout for mobile devices
+        setTimeout(() => {
+          if (!img.classList.contains('loaded') && !img.classList.contains('error')) {
+            img.style.opacity = 1;
+            img.classList.add('loaded');
+          }
+        }, 2000);
+        
+        // Check if image is already loaded (cached)
+        if (img.complete && img.naturalHeight !== 0) {
+          handleImageLoad();
+        }
         
         observer.unobserve(img);
       }
     });
   }, { 
-    rootMargin: '0px 0px 200px 0px' 
+    rootMargin: '50px 0px 50px 0px', // Reduced margin for mobile
+    threshold: 0.1
   });
 
   lazyImages.forEach(img => {
-    if (!img.complete || !img.src) {
-      lazyImageObserver.observe(img);
-    } else {
+    // Don't lazy load if image is already complete
+    if (img.complete && img.naturalHeight !== 0) {
       img.style.opacity = 1;
+      img.classList.add('loaded');
+      return;
     }
+    
+    // Set initial state
+    img.style.opacity = 0;
+    lazyImageObserver.observe(img);
   });
 }
 

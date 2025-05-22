@@ -438,3 +438,53 @@
       gap: 1rem;
     }
   }
+
+  /* Add these CSS rules to prevent image issues */
+
+/* Ensure images have minimum dimensions */
+.gallery-item img,
+.logo img,
+.feature-card img {
+  min-height: 40px; /* Prevents collapse */
+  background-color: var(--bg-card); /* Placeholder background */
+}
+
+/* Gallery images specific fixes */
+.gallery-item img {
+  min-height: 250px; /* Match your height: 250px */
+  background: linear-gradient(135deg, var(--bg-card), rgba(255, 200, 87, 0.1));
+}
+
+/* Loading state styles */
+img[loading="lazy"] {
+  opacity: 1 !important; /* Override JS opacity for mobile */
+}
+
+/* Mobile-specific fixes */
+@media (max-width: 768px) {
+  /* Force images to be visible on mobile */
+  img {
+    opacity: 1 !important;
+    transition: none !important;
+  }
+  
+  /* Reduce animation complexity on mobile */
+  .gallery-item {
+    transition: transform 0.2s ease;
+  }
+  
+  .gallery-item:hover {
+    transform: translateY(-4px); /* Reduced transform */
+  }
+}
+
+/* Error state for broken images */
+img.error {
+  background: var(--bg-card);
+  border: 2px dashed var(--border-color);
+}
+
+/* Loaded state */
+img.loaded {
+  opacity: 1 !important;
+}
