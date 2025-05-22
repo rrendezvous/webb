@@ -1024,8 +1024,7 @@ textarea:focus-visible {
 }
 
 /* --- Projects Section --- */
-#webdesign > .container > p,
-#pentesting > .container > p {
+#webdesign > .container > p {
   margin-bottom: 30px;
   color: var(--text-muted);
   font-size: 1.1rem;
@@ -1096,8 +1095,7 @@ textarea:focus-visible {
 }
 
 /* --- Services Section --- */
-#service > .container > p,
-#service2 > .container > p {
+#service > .container > p {
   margin-bottom: 30px;
   color: var(--text-muted);
   font-size: 1.1rem;
@@ -1318,6 +1316,7 @@ textarea:focus-visible {
   color: var(--text-muted);
   font-size: 1.1rem;
   transition: all 0.3s ease;
+  text-decoration: none;
 }
 
 .social-icon:hover {
