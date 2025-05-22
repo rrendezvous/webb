@@ -679,15 +679,30 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-// Add this to your existing JavaScript
-document.addEventListener('DOMContentLoaded', function() {
+function runTypewriterAnimation() {
   const typewriter = document.querySelector('.typewriter');
-  if (typewriter) {
-    // Remove cursor after typing animation completes
-    setTimeout(() => {
-      typewriter.classList.add('typing-complete');
-    }, 4000); // 3.5s typing + 0.5s buffer
-  }
+  if (!typewriter) return;
+
+  // Reset animation
+  typewriter.classList.remove('typing-complete');
+  typewriter.style.animation = 'none';
+  typewriter.offsetHeight; // Trigger reflow
+  typewriter.style.animation = 'typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite';
+
+  // Stop cursor after animation completes
+  setTimeout(() => {
+    typewriter.classList.add('typing-complete');
+  }, 4000); // 3.5s typing + buffer
+}
+
+// Run on page load
+document.addEventListener('DOMContentLoaded', runTypewriterAnimation);
+
+// Run again whenever "Home" is clicked
+document.querySelectorAll('a[href="#home"]').forEach(link => {
+  link.addEventListener('click', () => {
+    setTimeout(runTypewriterAnimation, 10); // slight delay allows view to update
+  });
 });
 
 // Add scroll animation

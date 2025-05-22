@@ -683,27 +683,19 @@ textarea:focus-visible {
 }
 
 @keyframes typing {
-  from { 
-    width: 0;
-  }
-  to { 
-    width: 100%;
-  }
+  from { width: 0; }
+  to { width: 100%; }
 }
 
 @keyframes blink-caret {
-  from, to { 
-    border-color: transparent;
-  }
-  50% { 
-    border-color: var(--primary);
-  }
+  from, to { border-color: transparent; }
+  50% { border-color: var(--primary); }
 }
 
-/* Stop the cursor blinking after animation completes */
 .typewriter.typing-complete {
   border-right: none;
 }
+
 
 /* Updated Hero Image Animation - Remove bounce */
 .hero-image {
