@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rendezvous</title>
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div id="overlay" class="overlay" onclick="closeSidebar()" title="Close menu" aria-hidden="true"></div>
+
+<aside id="sidebar" class="sidebar" role="navigation" aria-label="Mobile Navigation" aria-hidden="true"> 
+  <button class="sidebar-close" onclick="closeSidebar()" aria-label="Close Menu" title="Close Menu">
+    <i class="fa-solid fa-xmark"></i>
+  </button>
+  <div>
+    <div class="profile">
+      <img src="images/ren.jpg" alt="Rendezvous stylized R logo">
+      <h2>Rendezvous</h2>
+      <p>Creative Web Designer/p>
+    </div>
+
+    <nav class="mobile-nav">
+      <a id="home-mobile" href="#home" onclick="showSection('home'); closeSidebar();"><i class="fa-solid fa-house-chimney"></i> Home</a>
+      <a id="about-mobile" href="#about" onclick="showSection('about'); closeSidebar();"><i class="fa-solid fa-address-card"></i> About</a>
+      <a id="hobbies-mobile" href="#hobbies" onclick="showSection('hobbies'); closeSidebar();"><i class="fa-solid fa-gamepad"></i> Hobbies</a>
+
+      <button class="dropdown-btn" id="works-dropdown-mobile" aria-controls="works-container-mobile" aria-expanded="false">
+        <i class="fa-solid fa-briefcase"></i> Projects & Services <span class="chevron" aria-hidden="true">▼</span>
+      </button>
+      <div class="dropdown-container" id="works-container-mobile" role="region" aria-labelledby="works-dropdown-mobile">
+        <a id="webdesign-mobile" href="#webdesign" onclick="showSection('webdesign'); closeSidebar();">Web Design</a>
+        <a id="service1-mobile" href="#service1" onclick="showSection('service1'); closeSidebar();">UI/UX Design Services</a>
+      </div>
+
+      <a id="contact-mobile" href="#contact" onclick="showSection('contact'); closeSidebar();"><i class="fa-solid fa-envelope"></i> Contact</a>
+    </nav>
+  </div>
+
+  <div class="bottom-icons">
+    <a href="https://www.facebook.com/joeremychristie.ong" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://www.instagram.com/rrendzvou" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://x.com/ymereoj" target="_blank" rel="noopener noreferrer" aria-label="Twitter" title="Twitter"><i class="fab fa-twitter"></i></a>
+    <a href="https://ph.linkedin.com/in/joeremyong2003" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+  </div>
+</aside>
+
+<header class="desktop-header" id="header" role="banner">
+  <a href="#home" class="logo-container" onclick="showSection('home'); return false;" title="Go to Home" tabindex="0">
+    <img src="images/ren.jpg" alt="Rendezvous stylized R logo">
+    <h2>Rendezvous</h2>
+  </a>
+
+  <nav class="desktop-nav" role="navigation" aria-label="Main Navigation">
+    <a id="home-link" href="#home" onclick="showSection('home'); return false;">Home</a>
+    <a id="about-link" href="#about" onclick="showSection('about'); return false;">About</a>
+    <a id="hobbies-link" href="#hobbies" onclick="showSection('hobbies'); return false;">Hobbies</a>
+  
+    <div class="desktop-dropdown" id="projects-services-dropdown">
+      <button class="dropdown-trigger" onclick="toggleDesktopDropdown('projects-services-dropdown')" aria-controls="projects-services-content" aria-expanded="false">
+        Projects & Services <span class="chevron" aria-hidden="true">▼</span>
+      </button>
+      <div class="desktop-dropdown-content" id="projects-services-content" role="region" aria-labelledby="projects-services-dropdown">
+        <a id="webdesign-link" href="#webdesign" onclick="showSection('webdesign'); return false;">Web Design</a>
+        <a id="uiux-link" href="#service1" onclick="showSection('service1'); return false;">UI/UX Design Services</a>
+      </div>
+    </div>
+  
+    <a id="contact-link" href="#contact" onclick="showSection('contact'); return false;">Contact</a>
+  </nav>  
+
+  <div class="social-icons">
+    <a href="https://www.facebook.com/joeremychristie.ong" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://www.instagram.com/rrendzvou" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://x.com/ymereoj" target="_blank" rel="noopener noreferrer" aria-label="Twitter" title="Twitter"><i class="fab fa-twitter"></i></a>
+    <a href="https://ph.linkedin.com/in/joeremyong2003" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+  </div>
+
+  <button class="toggle-btn" onclick="openSidebar()" aria-label="Open Menu" title="Open Menu" aria-controls="sidebar" aria-expanded="false">
+    <i class="fa-solid fa-bars"></i>
+  </button>
+</header>
+
+<main class="main" id="main-content" role="main">
+
+  <section id="home" class="section active container" role="region" aria-labelledby="home-heading">
+    <div class="hero">
+      <div class="hero-content">
+        <h1 id="home-heading" class="typewriter">Hi, I'm <span>Rendezvous</span></h1>
+        <p>A passionate web designer based in Cagayan de Oro, dedicated to creating beautiful and user-centric digital experiences.</p>
+        <div class="hero-btns">
+          <a href="#webdesign" onclick="showSection('webdesign'); return false;" class="btn"><i class="fa-solid fa-palette"></i> View Works</a>
+          <a href="#contact" onclick="showSection('contact'); return false;" class="btn btn-outline"><i class="fa-solid fa-paper-plane"></i> Get In Touch</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="images/ren.jpg" alt="Rendezvous stylized R logo">
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="section container" role="region" aria-labelledby="about-heading">
+    <h1 id="about-heading">About Me</h1>
+    <div class="about-container">
+      <div class="about-image">
+        <img src="images/ren-about.jpg" alt="Placeholder image representing Rendezvous working on a project" loading="lazy">
+      </div>
+      <div class="about-content">
+        <h3>Rendezvous | Joeremy Christie Ong</h3>
+        <p>Hello! I am Rendezvous, a creative technologist from Cagayan de Oro, Philippines.</p>
+        <p>I'm a passionate web designer, aspiring to be officially a UI/UX Designer. My journey began with a fascination for how websites looked and worked, which quickly evolved into a deeper passion for crafting elegant user interfaces.</p>
+        <p>I thrive on transforming complex ideas into intuitive, engaging, and visually appealing web solutions. I believe that the best digital products seamlessly integrate aesthetics and functionality to create memorable user experiences.</p>
+        <p>When I'm not immersed in code or design tools, you might find me relaxing in Valorant, exploring the latest tech trends, or learning about cybersecurity.</p>
+        <p>Let's collaborate and build something amazing together!</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="hobbies" class="section container" role="region" aria-labelledby="hobbies-heading">
+    <h1 id="hobbies-heading">Beyond the Screen</h1>
+    <p>Work-life balance is key! Here's a glimpse into what fuels my creativity and keeps me energized outside of projects.</p>
+
+    <div class="hobbies-container">
+      <div class="hobby-card">
+        <div class="hobby-img">
+          <img src="https://placehold.co/400x300/181820/ffc857?text=Valorant&font=poppins" alt="Placeholder image representing Valorant gameplay scene" loading="lazy">
+        </div>
+        <div class="hobby-content">
+          <h3><i class="fa-solid fa-headset"></i> Competitive Gaming</h3>
+          <p>I'm an avid Valorant player (peak Ascendant!), enjoying the strategic depth and teamwork. It sharpens my problem-solving and communication skills. Maining Sentinel roles!</p>
+        </div>
+      </div>
+
+      <div class="hobby-card">
+        <div class="hobby-img">
+          <img src="https://placehold.co/400x300/181820/eee?text=CTFs+%26+Research&font=poppins" alt="Placeholder image representing cybersecurity code or terminal" loading="lazy">
+        </div>
+        <div class="hobby-content">
+          <h3><i class="fa-solid fa-terminal"></i> Cybersecurity Exploration</h3>
+          <p>I'm passionate about cybersecurity! I regularly participate in Capture The Flag (CTF) competitions, explore bug bounty hunting (responsibly!), and research emerging threats and defense techniques.</p>
+        </div>
+      </div>
+
+      <div class="hobby-card">
+        <div class="hobby-img">
+          <img src="https://placehold.co/400x300/181820/aaa?text=Security+Projects&font=poppins" alt="Placeholder image representing cybersecurity projects" loading="lazy">
+        </div>
+        <div class="hobby-content">
+          <h3><i class="fa-solid fa-shield-halved"></i> Security Side Projects</h3>
+          <p>I enjoy developing tools like a Python-based network scanner and robust authentication modules in my spare time. It's a fun way to apply what I learn about security principles!</p>
+        </div>
+      </div>
+
+      <div class="hobby-card">
+        <div class="hobby-img">
+          <img src="https://placehold.co/400x300/181820/aaa?text=Local+Exploration&font=poppins" alt="Placeholder image representing a scenic view of Northern Mindanao" loading="lazy">
+        </div>
+        <div class="hobby-content">
+          <h3><i class="fa-solid fa-mountain-sun"></i> Exploring Mindanao</h3>
+          <p>Discovering the natural beauty and hidden gems of Northern Mindanao helps me recharge and find inspiration in the world around me.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="webdesign" class="section container" role="region" aria-labelledby="webdesign-heading">
+    <h1 id="webdesign-heading">Web Design Showcase</h1>
+    <p>Crafting user-friendly and visually appealing digital experiences. Here are some examples:</p>
+
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-img">
+          <img src="images/arctic.png" alt="Screenshot of Arctic Shakes" loading="lazy">
+        </div>
+        <div class="project-content">
+          <h3>Arctic Shakes</h3>
+          <p>A promotional e-commerce website for a cold beverages brand focused on refreshing milkshakes. It combines vibrant visual content, product descriptions, and contact features to create an engaging user experience.</p>
+          <div class="project-tags">
+            <span class="project-tag">HTML</span>
+            <span class="project-tag">PHP</span>
+            <span class="project-tag">CSS</span>
+            <span class="project-tag">JavaScript</span>
+            <span class="project-tag">MySQL</span>
+            <span class="project-tag">Bootstrap / AOS / jQuery</span>
+          </div>
+          <div class="project-links">
+            <a href="webdesign1.html"><i class="fas fa-external-link-alt"></i> View Details</a>
+            <a href="https://github.com/rrendezvous/HEHE-i-didnt-upload-stuff-sa-github-sir" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-img">
+          <img src="images/wiz.png" alt="Screenshot of Wizards" loading="lazy">
+        </div>
+        <div class="project-content">
+          <h3>Wizards</h3>
+          <p>A dedicated website for the senior high school students of Capitol University, providing a platform where students can access important information related to academics, extracurricular activities, and campus events.</p>
+          <div class="project-tags">
+            <span class="project-tag">HTML</span>
+            <span class="project-tag">PHP</span>
+            <span class="project-tag">CSS</span>
+            <span class="project-tag">JavaScript</span>
+            <span class="project-tag">Bootstrap / AOS / jQuery</span>
+          </div>
+          <div class="project-links">
+            <a href="webdesign2.html"><i class="fas fa-external-link-alt"></i> View Details</a>
+            <a href="https://github.com/rrendezvous/HEHE-i-didnt-upload-stuff-sa-github-sir" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-img">
+          <img src="images/fig.png" alt="Screenshot of Project Gamma dashboard UI" loading="lazy">
+        </div>
+        <div class="project-content">
+          <h3>Laundry Shop Management System</h3>
+          <p>A streamlined system designed for laundry businesses, featuring order tracking, customer notifications, user accounts, and automated payment management. The prototype showcases intuitive interfaces for both staff and customers to manage and monitor laundry orders efficiently.</p>
+          <div class="project-tags">
+            <span class="project-tag">Figma</span>
+            <span class="project-tag">UI/UX Design</span>
+            <span class="project-tag">Prototype</span>
+          </div>
+          <div class="project-links">
+            <a href="webdesign3.html"><i class="fas fa-external-link-alt"></i> View Details</a>
+            <a href="https://github.com/rrendezvous/HEHE-i-didnt-upload-stuff-sa-github-sir" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="service1" class="section container" role="region" aria-labelledby="service1-heading">
+    <h1 id="service1-heading">UI/UX Design Services</h1>
+    <p>Transforming ideas into intuitive and engaging digital products.</p>
+
+    <div class="services-container">
+      <div class="service-card">
+        <div class="service-icon">
+          <i class="fas fa-palette"></i>
+        </div>
+        <h3>Interface Design (UI)</h3>
+        <p>Creating visually stunning, brand-consistent interfaces that captivate users and are a joy to interact with.</p>
+        <div class="service-price">Starts at $15/hr</div>
+        <a href="#contact" onclick="showSection('contact'); return false;" class="btn"><i class="fa-solid fa-comments"></i> Discuss Project</a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <i class="fas fa-route"></i>
+        </div>
+        <h3>Experience Design (UX)</h3>
+        <p>Designing seamless user journeys through research, wireframing, and prototyping to enhance usability and satisfaction.</p>
+        <div class="service-price">Starts at $15/hr</div>
+        <a href="#contact" onclick="showSection('contact'); return false;" class="btn"><i class="fa-solid fa-comments"></i> Discuss Project</a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <i class="fas fa-mobile-screen-button"></i>
+        </div>
+        <h3>Responsive & Accessible</h3>
+        <p>Ensuring your product looks and works flawlessly on all devices and is accessible to users of all abilities (WCAG).</p>
+        <div class="service-price">Starts at $15/hr</div>
+        <a href="#contact" onclick="showSection('contact'); return false;" class="btn"><i class="fa-solid fa-comments"></i> Discuss Project</a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <i class="fas fa-code"></i>
+        </div>
+        <h3>Frontend Development</h3>
+        <p>Bringing designs to life with clean, efficient code that creates fast-loading, interactive web experiences.</p>
+        <div class="service-price">Starts at $18/hr</div>
+        <a href="#contact" onclick="showSection('contact'); return false;" class="btn"><i class="fa-solid fa-comments"></i> Discuss Project</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section" role="region" aria-labelledby="contact-heading">
+    <div class="container">
+      <div class="section-header">
+        <h2 id="contact-heading">Let's Connect</h2>
+        <div class="header-underline"></div>
+        <p class="section-intro">Interested in collaborating, have a question, or just want to chat about tech? I'm just a message away!</p>
+      </div>
+  
+      <div class="contact-container">
+        <div class="contact-info">
+          <div class="info-card">
+            <p class="info-intro">I'm currently available for freelance projects and always open to discussing new ideas. Reach out using the form or contact me directly through these channels:</p>
+  
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="contact-text">
+                <h4>Email</h4>
+                <p><a href="mailto:joeremychrst@gmail.com" title="Send an email">joeremychrst@gmail.com</a></p>
+              </div>
+            </div>
+  
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-phone-alt"></i>
+              </div>
+              <div class="contact-text">
+                <h4>Phone</h4>
+                <p><a href="tel:+639177704782" title="Call me">+63 917 770 4782</a></p>
+              </div>
+            </div>
+  
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="contact-text">
+                <h4>Location</h4>
+                <p>Cagayan de Oro, Philippines</p>
+              </div>
+            </div>
+            
+            <div class="social-links">
+              <a href="https://github.com/rrendezvous" class="social-icon" aria-label="GitHub"><i class="fab fa-github"></i></a>
+              <a href="https://dribbble.com/shiroirokuro" class="social-icon" aria-label="Dribbble"><i class="fab fa-dribbble"></i></a>
+              <a href="https://www.behance.net/zerothezero" class="social-icon" aria-label="Behance"><i class="fab fa-behance"></i></a>
+              <a href="https://tryhackme.com/p/seisshun" class="social-icon" aria-label="TryHackMe"><i class="fas fa-user-secret"></i></a>
+            </div>
+          </div>
+        </div>
+  
+        <div class="contact-form">
+          <div class="form-container">
+            <h3 class="form-title">Send me a message</h3>
+            
+            <form action="#" method="POST" id="contactForm" novalidate>
+              <div class="input-row">
+                <div class="input-group">
+                  <label for="name">Your Name</label>
+                  <div class="input-wrapper">
+                    <i class="fas fa-user input-icon"></i>
+                    <input type="text" id="name" name="name" placeholder="Juan Dela Cruz" required minlength="2">
+                  </div>
+                </div>
+  
+                <div class="input-group">
+                  <label for="email">Your Email</label>
+                  <div class="input-wrapper">
+                    <i class="fas fa-at input-icon"></i>
+                    <input type="email" id="email" name="email" placeholder="juan.d.cruz@email.com" required>
+                  </div>
+                </div>
+              </div>
+  
+              <div class="input-group">
+                <label for="subject">Subject</label>
+                <div class="input-wrapper">
+                  <i class="fas fa-heading input-icon"></i>
+                  <input type="text" id="subject" name="subject" placeholder="Project Inquiry" required>
+                </div>
+              </div>
+  
+              <div class="input-group">
+                <label for="message">Your Message</label>
+                <div class="input-wrapper">
+                  <i class="fas fa-comment-alt input-icon textarea-icon"></i>
+                  <textarea id="message" name="message" placeholder="Tell me about your project or question..." required minlength="10" rows="5"></textarea>
+                </div>
+              </div>
+  
+              <div class="form-footer">
+                <button type="submit" class="submit-btn">
+                  <span>Send Message</span>
+                  <i class="fas fa-paper-plane"></i>
+                </button>
+                <div id="form-status" aria-live="polite"></div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-content">
+    <div class="copyright">
+      &copy; 2025 Rendezvous. All Rights Reserved.
+    </div>
+  </div>
+</footer>
+
+<button id="back-to-top" title="Back to Top" aria-label="Scroll back to top">
+  <i class="fa-solid fa-arrow-up"></i>
+</button>
+
+<script src="script.js"></script>
+</body>
+</html>
