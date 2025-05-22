@@ -1096,7 +1096,7 @@ textarea:focus-visible {
 }
 
 /* --- Services Section --- */
-#service1 > .container > p,
+#service > .container > p,
 #service2 > .container > p {
   margin-bottom: 30px;
   color: var(--text-muted);
