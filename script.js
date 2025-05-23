@@ -151,8 +151,8 @@ function toggleMobileDropdown(buttonElement) {
 }
 
 /**
- * Updates active navigation states in both desktop and mobile menus
- * @param {string} activeId - ID of active section
+ * Updates active navigation states in desktop and mobile menus
+ * @param {string} activeId
  */
 function updateNavActiveState(activeId) {
   // Reset all active states
@@ -328,7 +328,7 @@ function handleFormSubmit(e) {
     submitButton.textContent = 'Sending...';
   }
 
-  // Simulate message processing time (0.8 - 2 seconds)
+  // Simulate message processing time
   const processingTime = Math.random() * 1200 + 800;
   
   setTimeout(() => {
@@ -357,7 +357,7 @@ function handleFormSubmit(e) {
       submitButton.textContent = 'Send Message';
     }
 
-    // Log simulated message (for demonstration purposes)
+    // Log simulated message
     console.log('📧 Simulated Message Sent:', {
       timestamp: new Date().toISOString(),
       name: name,
@@ -367,7 +367,7 @@ function handleFormSubmit(e) {
       status: 'delivered'
     });
 
-    // Clear success message after 8 seconds
+    // Clear success message
     setTimeout(() => {
       if (formStatus.className === 'success') {
         formStatus.textContent = '';

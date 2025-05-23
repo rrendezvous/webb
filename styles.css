@@ -18,7 +18,7 @@
   --shadow-lg: 0 15px 35px rgba(0, 0, 0, 0.4);
 }
 
-/* --- Base & Reset --- */
+/* --- Base --- */
 * {
   margin: 0;
   padding: 0;
@@ -41,7 +41,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* --- Accessibility: Focus Styles --- */
+/* --- Focus Styles --- */
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
@@ -696,8 +696,7 @@ textarea:focus-visible {
   border-right: none;
 }
 
-
-/* Updated Hero Image Animation - Remove bounce */
+/* Hero Image Effects */
 .hero-image {
   flex: 1;
   display: flex;
@@ -717,7 +716,6 @@ textarea:focus-visible {
   }
 }
 
-/* Smoother hero image hover without bounce */
 .hero-image img {
   width: 350px;
   height: 350px;
@@ -733,7 +731,6 @@ textarea:focus-visible {
   box-shadow: 0 0 0 6px var(--primary), var(--shadow-lg);
 }
 
-/* Enhanced Hero Content Animation */
 .hero-content {
   flex: 1.2;
   animation: slideInLeft 1s ease 0.2s both;
@@ -750,7 +747,7 @@ textarea:focus-visible {
   }
 }
 
-/* Responsive adjustments for typewriter */
+/* Typewriter stuff */
 @media screen and (max-width: 768px) {
   .typewriter {
     animation: 
@@ -1081,7 +1078,7 @@ textarea:focus-visible {
   color: var(--primary);
 }
 
-/* --- Enhanced Services Section --- */
+/* --- Services Section --- */
 #service > .container > p {
   margin-bottom: 40px;
   color: var(--text-muted);
@@ -1089,7 +1086,7 @@ textarea:focus-visible {
   max-width: 800px;
 }
 
-/* Enhanced Services Container */
+/* Services Container */
 .services-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
@@ -1097,7 +1094,7 @@ textarea:focus-visible {
   margin-top: 50px;
 }
 
-/* Enhanced Service Cards */
+/* Service Cards */
 .service-card {
   background: linear-gradient(135deg, var(--card-bg) 0%, rgba(24, 24, 32, 0.8) 100%);
   border-radius: 20px;
@@ -1282,7 +1279,7 @@ textarea:focus-visible {
   letter-spacing: 0.5px;
 }
 
-/* Enhanced Service Button */
+/* Service Button */
 .service-card .btn {
   display: inline-flex;
   align-items: center;
@@ -1662,10 +1659,19 @@ textarea:focus-visible {
   transform: translateX(5px);
 }
 
+/* Form button Container */
+.form-submit-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
 #form-status {
-  margin-left: 15px;
   font-size: 0.9rem;
   transition: all 0.3s ease;
+  flex: 1;
+  min-width: 200px;
 }
 
 #form-status.success {
@@ -1678,6 +1684,55 @@ textarea:focus-visible {
 
 #form-status.sending {
   color: var(--text-muted);
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .form-submit-container {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  
+  .submit-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 16px 30px;
+    font-size: 1.1rem;
+  }
+  
+  #form-status {
+    text-align: center;
+    min-width: unset;
+    width: 100%;
+    padding: 8px 0;
+    line-height: 1.4;
+  }
+  
+  #form-status.success {
+    background: rgba(74, 222, 128, 0.1);
+    border-radius: 8px;
+    padding: 12px;
+    border: 1px solid rgba(74, 222, 128, 0.2);
+  }
+  
+  #form-status.error {
+    background: rgba(248, 113, 113, 0.1);
+    border-radius: 8px;
+    padding: 12px;
+    border: 1px solid rgba(248, 113, 113, 0.2);
+  }
+}
+
+@media (max-width: 480px) {
+  .submit-btn {
+    padding: 18px 30px;
+    font-size: 1rem;
+  }
+  
+  #form-status {
+    font-size: 0.85rem;
+  }
 }
 
 /* Footer */
@@ -1735,7 +1790,7 @@ footer {
   transform: scale(1.1);
 }
 
-/* Media Queries */
+/* Some Media Queries */
 @media screen and (max-width: 992px) {
   .container {
     padding-left: 15px;
@@ -1976,7 +2031,7 @@ footer {
   }
 }
 
-/* Simple fade-out transition for View Details links */
+/* Transition for View Details links */
 .view-details-transition {
   opacity: 0;
   transition: opacity 0.3s ease;

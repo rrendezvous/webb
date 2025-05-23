@@ -212,7 +212,7 @@ body {
   background: linear-gradient(135deg, var(--bg-card), rgba(255, 200, 87, 0.05));
 }
 
-/* New Creative Features Section */
+/* Features Section */
 .features-hero {
   text-align: center;
   margin-bottom: 4rem;
@@ -345,7 +345,7 @@ body {
 
 .stat-item {
   padding: 1.5rem;
-  min-width: 0; /* Allow text to wrap */
+  min-width: 0;
 }
 
 .stat-number {
@@ -354,7 +354,7 @@ body {
   color: var(--primary-color);
   margin-bottom: 0.5rem;
   display: block;
-  white-space: nowrap; /* Keep numbers on one line */
+  white-space: nowrap;
 }
 
 .stat-label {
@@ -362,46 +362,46 @@ body {
   font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 1px;
-  word-wrap: break-word; /* Allow long words to break */
-  hyphens: auto; /* Add hyphenation for better word breaking */
+  word-wrap: break-word;
+  hyphens: auto; 
 }
 
-/* Enhanced Mobile Responsive Design */
+/* Mobile Responsive */
 @media (max-width: 768px) {
   .project-stats {
-    padding: 2rem 1.5rem; /* Reduce padding on mobile */
+    padding: 2rem 1.5rem; 
     margin: 3rem 0;
-    border-radius: 16px; /* Slightly smaller border radius */
+    border-radius: 16px;
   }
   
   .stats-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 columns on mobile */
-    gap: 1.5rem; /* Smaller gap */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
   }
   
   .stat-item {
-    padding: 1rem 0.5rem; /* Reduce padding */
+    padding: 1rem 0.5rem;
   }
   
   .stat-number {
-    font-size: 2rem; /* Smaller font size for mobile */
+    font-size: 2rem;
   }
   
   .stat-label {
-    font-size: 0.8rem; /* Smaller label text */
-    letter-spacing: 0.5px; /* Reduce letter spacing */
-    line-height: 1.3; /* Better line height for readability */
+    font-size: 0.8rem; 
+    letter-spacing: 0.5px; 
+    line-height: 1.3; 
   }
 }
 
 @media (max-width: 480px) {
   .project-stats {
-    padding: 1.5rem 1rem; /* Even smaller padding for very small screens */
+    padding: 1.5rem 1rem; 
     margin: 2rem 0;
   }
   
   .stats-grid {
-    grid-template-columns: 1fr 1fr; /* Ensure exactly 2 columns */
+    grid-template-columns: 1fr 1fr; 
     gap: 1rem;
   }
   
@@ -410,7 +410,7 @@ body {
   }
   
   .stat-number {
-    font-size: 1.8rem; /* Further reduce for very small screens */
+    font-size: 1.8rem; 
   }
   
   .stat-label {
@@ -419,10 +419,10 @@ body {
   }
 }
 
-/* For very small screens, stack vertically if needed */
+/* Stack vertically for very small screens */
 @media (max-width: 320px) {
   .stats-grid {
-    grid-template-columns: 1fr; /* Single column for very small screens */
+    grid-template-columns: 1fr;
     gap: 1rem;
   }
   
@@ -436,7 +436,7 @@ body {
   }
 }
 
-/* Technology Stack with Visual Enhancement */
+/* Technology Stack */
 .tech-showcase {
   background: var(--bg-card);
   border-radius: 24px;
