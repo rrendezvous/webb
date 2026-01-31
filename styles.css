@@ -2388,12 +2388,13 @@ body:not(.transitioning) {
 }
 
 /* 3. The "Light Beam" Border: A Moving Highlight */
+/* Standardized Light Beam with Vendor Prefix Compatibility */
 .about-image.dominant::after {
   content: '';
   position: absolute;
   inset: 0;
   border-radius: 30px;
-  padding: 2px; /* Border thickness */
+  padding: 2px; 
   background: conic-gradient(
     from var(--angle),
     transparent 70%,
@@ -2401,12 +2402,18 @@ body:not(.transitioning) {
     var(--primary-light) 95%,
     var(--primary) 100%
   );
+
+  /* --- Standard Property --- */
+  mask: 
+     linear-gradient(#fff 0 0) content-box, 
+     linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+
+  /* --- Vendor Prefixes for Safari/Older Browsers --- */
   -webkit-mask: 
      linear-gradient(#fff 0 0) content-box, 
      linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
-          mask-composite: exclude;
-  animation: beam-spin 4s linear infinite;
 }
 
 /* 4. The Photo: High-Definition Finish */
