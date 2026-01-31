@@ -2394,7 +2394,7 @@ body:not(.transitioning) {
   position: absolute;
   inset: 0;
   border-radius: 30px;
-  padding: 2px; 
+  padding: 2px; /* This controls the beam thickness */
   background: conic-gradient(
     from var(--angle),
     transparent 70%,
@@ -2403,17 +2403,20 @@ body:not(.transitioning) {
     var(--primary) 100%
   );
 
-  /* --- Standard Property --- */
+  /* Standard Masking - Punches the hole in the middle */
   mask: 
      linear-gradient(#fff 0 0) content-box, 
      linear-gradient(#fff 0 0);
   mask-composite: exclude;
 
-  /* --- Vendor Prefixes for Safari/Older Browsers --- */
+  /* Webkit Compatibility - Crucial for Chrome/Safari */
   -webkit-mask: 
      linear-gradient(#fff 0 0) content-box, 
      linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
+
+  animation: beam-spin 4s linear infinite;
+  pointer-events: none;
 }
 
 /* 4. The Photo: High-Definition Finish */
