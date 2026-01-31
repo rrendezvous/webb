@@ -865,43 +865,45 @@ textarea:focus-visible {
 
 /* --- REFINED ABOUT SECTION (NO DOUBLE SCROLL) --- */
 /* --- SUBTLE PREMIUM ABOUT SECTION --- */
+/* 1. The Container: Shift balance to the left (1.6fr) to widen the image area */
 #about .about-container {
   display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 50px;
+  grid-template-columns: 1.6fr 1fr; /* */
+  gap: 40px; 
   align-items: start;
 }
 
-#about .about-visual-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
-}
-
-.about-image {
-  border-radius: 20px;
-  overflow: hidden;
-  border: 1px solid var(--border-color);
-  background: var(--card-bg);
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.4s ease;
-}
-
+/* 2. The Dominant Image: Forces the cinematic landscape ratio */
 .about-image.dominant {
-  grid-column: span 2;
-  height: 380px;
+  position: relative;
+  z-index: 1;
+  padding: 12px;
+  background: transparent;
+  border-radius: 40px;
+  
+  width: 100%;
+  max-width: 720px; /* Expands horizontally */
+  height: 450px;    /* Lower height creates the 'Wide' effect */
+  
+  margin: 0;
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.about-image.accent-one, 
-.about-image.accent-two {
-  height: 160px;
-}
-
-.about-image img {
+/* 3. The Actual Photo: Centers your face in the new wide crop */
+.about-image.dominant img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 30%; /* */
+  border-radius: 35px;
   display: block;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+}
+
+/* 4. Cleanup: Remove these entirely as you only have one big image now */
+.about-image.accent-one, 
+.about-image.accent-two {
+  display: none;
 }
 
 /* Subtle Skill Tags (Figma, Laravel, etc.) */
@@ -2356,45 +2358,54 @@ body:not(.transitioning) {
   to { background-position: 200% center; }
 }
 
-/* 1. The Container: Removing the Box Constraints */
+/* 1. Expand the Left Column to accommodate the wider frame */
+.about-top-wrapper {
+  display: grid;
+  /* Shifted more weight to the left to let the wider image breathe */
+  grid-template-columns: 1.5fr 1fr; 
+  gap: 60px;
+  margin-bottom: 60px;
+  align-items: center;
+}
+
+/* 2. The Cinema-Wide Profile Frame */
 .about-image.dominant {
   position: relative;
   z-index: 1;
-  padding: 8px; /* Creates breathing room for the glow */
+  padding: 12px; 
   background: transparent;
   border: none;
-  border-radius: 30px;
+  border-radius: 40px;
+  
+  /* Widen the Frame: Changing Aspect Ratio from Portrait to Wide */
+  width: 100%;
+  max-width: 650px; /* Significantly widened to break the 'phone' look */
+  height: 480px;    /* Slightly lower height for a wider, cinematic ratio */
+  
+  margin: 0;
   transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-/* 2. The "Atmospheric" Glow: Behind the Photo */
-.about-image.dominant::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 110%; /* Larger than the image to break the box */
-  height: 110%;
-  background: radial-gradient(
-    circle, 
-    rgba(255, 200, 87, 0.25) 0%, 
-    rgba(255, 200, 87, 0.05) 40%, 
-    transparent 70%
-  );
-  transform: translate(-50%, -50%);
-  z-index: -1;
-  filter: blur(20px);
-  animation: atmospheric-pulse 6s ease-in-out infinite;
+/* 3. High-Definition Image Scaling */
+.about-image.dominant img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* This will crop the top/bottom slightly to fill the width */
+  object-position: center 20%; /* Adjusts the crop so your face stays centered */
+  border-radius: 35px;
+  display: block;
+  box-shadow: 
+    0 20px 50px rgba(0, 0, 0, 0.7),
+    0 0 20px rgba(255, 200, 87, 0.1);
 }
 
-/* 3. The "Light Beam" Border: A Moving Highlight */
-/* Standardized Light Beam with Vendor Prefix Compatibility */
+/* 4. Update the Laser Beam for the Wide Radius */
 .about-image.dominant::after {
   content: '';
   position: absolute;
   inset: 0;
-  border-radius: 30px;
-  padding: 2px; /* This controls the beam thickness */
+  border-radius: 40px;
+  padding: 3px; 
   background: conic-gradient(
     from var(--angle),
     transparent 70%,
@@ -2402,32 +2413,26 @@ body:not(.transitioning) {
     var(--primary-light) 95%,
     var(--primary) 100%
   );
-
-  /* Standard Masking - Punches the hole in the middle */
-  mask: 
-     linear-gradient(#fff 0 0) content-box, 
-     linear-gradient(#fff 0 0);
+  
+  /* Standard Masking */
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask-composite: exclude;
-
-  /* Webkit Compatibility - Crucial for Chrome/Safari */
-  -webkit-mask: 
-     linear-gradient(#fff 0 0) content-box, 
-     linear-gradient(#fff 0 0);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
-
+  
   animation: beam-spin 4s linear infinite;
-  pointer-events: none;
 }
 
-/* 4. The Photo: High-Definition Finish */
-.about-image.dominant img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 28px;
-  display: block;
-  filter: contrast(1.05) saturate(1.1); /* Sharpens the visual quality */
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6); /* Deep shadow to separate from glow */
+/* Mobile Responsiveness: Stacks on small screens */
+@media screen and (max-width: 992px) {
+  .about-top-wrapper {
+    grid-template-columns: 1fr;
+  }
+  
+  .about-image.dominant {
+    max-width: 100%;
+    height: 350px; /* More natural width-to-height for mobile */
+  }
 }
 
 /* --- Premium Animations --- */
