@@ -2555,3 +2555,46 @@ body:not(.transitioning) {
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
+
+/* Container for all tags */
+/* Optimized Compact Skills Layout */
+.skills-showcase {
+  display: flex;
+  flex-wrap: wrap; /* Allows tags to sit side-by-side */
+  gap: 10px;
+  margin-top: 25px;
+  max-width: 550px; /* Limits the spread to stay aligned with your text */
+}
+
+/* Optional: Subtle grouping for Desktop */
+.skill-group {
+  display: contents; /* Keeps them wrapping naturally while staying ordered */
+}
+
+.skill-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 6px 14px; /* Tighter padding for the 'compact' look */
+  border-radius: 10px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap; /* Prevents text from breaking inside a tag */
+}
+
+/* Premium Hover Logic */
+.skill-tag:hover {
+  background: rgba(255, 200, 87, 0.15);
+  border-color: var(--primary);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 200, 87, 0.2);
+}
+
+.skill-tag i {
+  color: var(--primary);
+  font-size: 0.9rem;
+}
