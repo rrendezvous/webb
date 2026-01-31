@@ -197,57 +197,46 @@ function updateNavActiveState(activeId) {
  * @param {string} id - Section ID to show
  * @param {boolean} [isPopState=false] - If call is from history navigation
  */
-function showSection(id, isPopState = false) {
-  let targetId = id;
-  let newSection = getElement(targetId);
-
-  // Fallback to home if section doesn't exist
-  if (!newSection) {
-    console.warn(`Section with ID "${targetId}" not found. Defaulting to "home".`);
-    targetId = 'home';
-    newSection = getElement(targetId);
-    if (!newSection) {
-      console.error("Default 'home' section not found. Cannot switch sections.");
-      return;
-    }
-  }
-
-  // Skip if already showing this section
-  if (targetId === state.currentSection && newSection.classList.contains('active')) {
-    if (!isPopState) {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    return;
-  }
-
-  // Hide current section and show new one
-  const currentActiveSection = document.querySelector('.section.active');
-  if (currentActiveSection) currentActiveSection.classList.remove('active');
+/**
+ * Smoothly scrolls to the specified section
+ * @param {string} id - Section ID to scroll to
+ */
+/**
+ * Smoothly scrolls to the specified section for a single-page experience
+ * @param {string} id - Section ID to scroll to
+ */
+/**
+ * Smoothly scrolls to the specified section for a single-page experience
+ * @param {string} id - Section ID to scroll to
+ */
+function showSection(id) {
+  const targetSection = getElement(id);
   
-  newSection.classList.add('active');
-  state.currentSection = targetId;
-  updateNavActiveState(targetId);
+  if (targetSection) {
+    // 1. Calculate spacing for your fixed header dynamically
+    const headerHeight = elements.header ? elements.header.offsetHeight : 80;
+    const elementPosition = targetSection.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
 
-  // Close menus
-  closeAllDesktopDropdowns();
+    // 2. Execute smooth scroll
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: "smooth"
+    });
+
+    // 3. Update URL hash without jumping the page
+    window.history.pushState({ section: id }, '', `#${id}`);
+    
+    // 4. Update the Nav highlights
+    updateNavActiveState(id);
+    state.currentSection = id;
+  }
+
+  // 5. Close menus automatically
   if (elements.sidebar?.classList.contains('open')) {
     closeSidebar();
   }
-
-  // Update URL and history
-  if (!isPopState) {
-    const newHash = `#${targetId}`;
-    if (window.location.hash !== newHash) {
-      try {
-        const method = window.history.length <= 2 ? 'replaceState' : 'pushState';
-        window.history[method]({ section: targetId }, '', newHash);
-      } catch (e) {
-        console.warn("History API not supported or restricted.");
-        window.location.hash = newHash;
-      }
-    }
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
+  closeAllDesktopDropdowns();
 }
 
 // --- UI Effects & Handlers ---
@@ -255,19 +244,25 @@ function showSection(id, isPopState = false) {
 /**
  * Handles scroll effects (header, back-to-top button)
  */
+/**
+ * Handles scroll effects (header, back-to-top button, and ScrollSpy)
+ */
 function handleScroll() {
   const { header, backToTopButton } = elements;
   const currentScrollY = window.scrollY;
   
-  // Header effect
+  // 1. Header effect
   if (header) {
     header.classList.toggle('scrolled', currentScrollY > 50);
   }
   
-  // Back to top button visibility
+  // 2. Back to top button visibility
   if (backToTopButton) {
     backToTopButton.classList.toggle('visible', currentScrollY > 300);
   }
+
+  // 3. TRIGGER SCROLLSPY (This was missing!)
+  handleScrollSpy();
 }
 
 /**
@@ -513,19 +508,30 @@ function setupLazyLoading() {
 /**
  * Setup animations using Intersection Observer
  */
+/**
+ * Setup animations using Intersection Observer for a premium reveal effect
+ */
 function setupScrollAnimations() {
-  const animTargets = document.querySelectorAll('.project-card, .service-card, .interest-item, .about-image');
+  const animTargets = document.querySelectorAll('.reveal, .project-card, .service-card, .bento-card');
   
-  if (!('IntersectionObserver' in window)) return;
+  if (!('IntersectionObserver' in window)) {
+    // Fallback for older browsers: show everything
+    animTargets.forEach(el => el.style.opacity = "1");
+    return;
+  }
   
   const scrollObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('in-view');
-        scrollObserver.unobserve(entry.target);
+        // Optional: stop observing once it has appeared
+        // observer.unobserve(entry.target); 
       }
     });
-  }, { threshold: 0.15 });
+  }, { 
+    threshold: 0.15,
+    rootMargin: "0px 0px -50px 0px" // Triggers slightly before the element hits the view
+  });
 
   animTargets.forEach(el => scrollObserver.observe(el));
 }
@@ -699,3 +705,37 @@ document.querySelectorAll('a[href="#home"]').forEach(link => {
     setTimeout(runTypewriterAnimation, 10); // slight delay allows view to update
   });
 });
+
+/**
+ * Automatically updates navigation links based on scroll position
+ */
+function handleScrollSpy() {
+  const sections = document.querySelectorAll('.section');
+  const navLinks = document.querySelectorAll('.desktop-nav a, .mobile-nav a');
+  
+  // Calculate the current scroll position + header offset
+  const headerHeight = elements.header ? elements.header.offsetHeight : 80;
+  const scrollPosition = window.scrollY + headerHeight + 100; // Added extra buffer for better detection
+
+  let currentSectionId = 'home';
+
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.offsetHeight;
+    
+    // Check if the scroll position is within the boundaries of this section
+    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+      currentSectionId = section.getAttribute('id');
+    }
+  });
+
+  // Special check: If at the very bottom of the page, force 'contact'
+  if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 10) {
+    currentSectionId = 'contact';
+  }
+
+  if (state.currentSection !== currentSectionId) {
+    state.currentSection = currentSectionId;
+    updateNavActiveState(currentSectionId);
+  }
+}

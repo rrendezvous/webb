@@ -23,19 +23,12 @@
     </div>
 
     <nav class="mobile-nav">
-      <a id="home-mobile" href="#home" onclick="showSection('home'); closeSidebar();"><i class="fa-solid fa-house-chimney"></i> Home</a>
-      <a id="about-mobile" href="#about" onclick="showSection('about'); closeSidebar();"><i class="fa-solid fa-address-card"></i> About</a>
-
-      <button class="dropdown-btn" id="works-dropdown-mobile" aria-controls="works-container-mobile" aria-expanded="false">
-        <i class="fa-solid fa-briefcase"></i> Projects & Services <span class="chevron" aria-hidden="true">▼</span>
-      </button>
-      <div class="dropdown-container" id="works-container-mobile" role="region" aria-labelledby="works-dropdown-mobile">
-        <a id="webdesign-mobile" href="#webdesign" onclick="showSection('webdesign'); closeSidebar();">Web Design</a>
-        <a id="service-mobile" href="#service" onclick="showSection('service'); closeSidebar();">UI/UX Design Services</a>
-      </div>
-
-      <a id="contact-mobile" href="#contact" onclick="showSection('contact'); closeSidebar();"><i class="fa-solid fa-envelope"></i> Contact</a>
-    </nav>
+  <a id="home-mobile" href="#home" onclick="showSection('home');"><i class="fa-solid fa-house-chimney"></i> Home</a>
+  <a id="about-mobile" href="#about" onclick="showSection('about');"><i class="fa-solid fa-address-card"></i> About</a>
+  <a id="webdesign-mobile" href="#webdesign" onclick="showSection('webdesign');"><i class="fa-solid fa-briefcase"></i> Projects</a>
+  <a id="service-mobile" href="#service" onclick="showSection('service');"><i class="fa-solid fa-gears"></i> Services</a>
+  <a id="contact-mobile" href="#contact" onclick="showSection('contact');"><i class="fa-solid fa-envelope"></i> Contact</a>
+</nav>
   </div>
 
   <div class="bottom-icons">
@@ -53,21 +46,12 @@
   </a>
 
   <nav class="desktop-nav" role="navigation" aria-label="Main Navigation">
-    <a id="home-link" href="#home" onclick="showSection('home'); return false;">Home</a>
-    <a id="about-link" href="#about" onclick="showSection('about'); return false;">About</a>
-  
-    <div class="desktop-dropdown" id="projects-services-dropdown">
-      <button class="dropdown-trigger" onclick="toggleDesktopDropdown('projects-services-dropdown')" aria-controls="projects-services-content" aria-expanded="false">
-        Projects & Services <span class="chevron" aria-hidden="true">▼</span>
-      </button>
-      <div class="desktop-dropdown-content" id="projects-services-content" role="region" aria-labelledby="projects-services-dropdown">
-        <a id="webdesign-link" href="#webdesign" onclick="showSection('webdesign'); return false;">Web Design</a>
-        <a id="uiux-link" href="#service" onclick="showSection('service'); return false;">UI/UX Design Services</a>
-      </div>
-    </div>
-  
-    <a id="contact-link" href="#contact" onclick="showSection('contact'); return false;">Contact</a>
-  </nav>  
+  <a id="home-link" href="#home" onclick="showSection('home'); return false;">Home</a>
+  <a id="about-link" href="#about" onclick="showSection('about'); return false;">About</a>
+  <a id="webdesign-link" href="#webdesign" onclick="showSection('webdesign'); return false;">Projects</a>
+  <a id="service-link" href="#service" onclick="showSection('service'); return false;">Services</a>
+  <a id="contact-link" href="#contact" onclick="showSection('contact'); return false;">Contact</a>
+</nav>
 
   <div class="social-icons">
     <a href="https://www.facebook.com/joeremychristie.ong" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook"><i class="fab fa-facebook-f"></i></a>
@@ -83,7 +67,7 @@
 
 <main class="main" id="main-content" role="main">
 
-  <section id="home" class="section active container" role="region" aria-labelledby="home-heading">
+  <section id="home" class="section container" role="region" aria-labelledby="home-heading">
     <div class="hero">
       <div class="hero-content">
         <h1 id="home-heading" class="typewriter">Hi, I'm <span>Rendezvous</span></h1>
@@ -100,21 +84,23 @@
   </section>
 
  <section id="about" class="section container" role="region" aria-labelledby="about-heading">
-  <h1 id="about-heading">About Me</h1>
+  <div class="reveal">
+    <h1 id="about-heading">About Me</h1>
+  </div>
   
-  <div class="about-container">
+  <div class="about-container reveal">
     <div class="about-top-wrapper">
-      <div class="about-visual-grid">
-        <div class="about-image dominant">
+      <div class="about-visual-grid reveal">
+        <div class="about-image dominant reveal">
           <img src="images/ren-about.jpg" alt="Rendezvous Profile" loading="lazy">
         </div>
       </div>
-      <div class="about-content">
+      <div class="about-content reveal reveal-delay-1">
         <div class="narrative-text">
           <h3>Rendezvous</h3>
           <p>I am a creative technologist based in Cagayan de Oro, Philippines, specializing in the intersection of digital aesthetics and system logic. My approach to UI/UX is rooted in transforming complex requirements into intuitive, high-fidelity web solutions.</p>
-          <div class="skills-showcase">
-  <div class="skill-group">
+          <div class="skills-showcase reveal reveal-delay-2">
+  <div class="skill-group reveal">
     <span class="skill-tag"><i class="fab fa-figma"></i> UI/UX Design</span>
     <span class="skill-tag"><i class="fas fa-cubes"></i> Design Systems</span>
     <span class="skill-tag"><i class="fas fa-microscope"></i> User Research</span>
@@ -146,7 +132,7 @@
     <div class="bento-card achievement-highlight">
       <div class="card-inner">
         <h4 class="highlight-yellow"><i class="fas fa-award"></i> Competitive Journey</h4>
-        <p>Notably secured 1st place at the <strong class="glow-text">U-IGNITE Summit 2025</strong> as the <strong class="glow-text">Main System Analyst & UI/UX Designer</strong>.</p>
+        <p>Notably secured Champion at the <strong class="glow-text">U-IGNITE Summit 2025</strong> as the <strong class="glow-text">System Analyst & UI/UX Designer</strong>.</p>
         <div class="mini-gallery">
           <div class="gallery-frame"><img src="images/peso.jpg" alt="Award Verification"></div>
           <div class="gallery-frame"><img src="images/group.jpg" alt="Team Photo"></div>
@@ -181,15 +167,16 @@
 </section>
   
   <section id="webdesign" class="section container" role="region" aria-labelledby="webdesign-heading">
+    <div class="reveal">
     <h1 id="webdesign-heading">Web Design Showcase</h1>
     <p>Crafting user-friendly and visually appealing digital experiences. Here are some examples:</p>
-
-    <div class="projects-grid">
+  </div>
+    <div class="projects-grid reveal">
       <div class="project-card">
         <div class="project-img">
           <img src="images/arctic.png" alt="Screenshot of Arctic Shakes" loading="lazy">
         </div>
-        <div class="project-content">
+        <div class="project-content reveal reveal-delay-1">
           <h3>Arctic Shakes</h3>
           <p>A promotional e-commerce website for a cold beverages brand focused on refreshing milkshakes. It combines vibrant visual content, product descriptions, and contact features to create an engaging user experience.</p>
           <div class="project-tags">
@@ -210,7 +197,7 @@
         <div class="project-img">
           <img src="images/wiz.png" alt="Screenshot of Wizards" loading="lazy">
         </div>
-        <div class="project-content">
+        <div class="project-content reveal reveal-delay-2">
           <h3>Wizards</h3>
           <p>A dedicated website for the senior high school students of Capitol University, providing a platform where students can access important information related to academics, extracurricular activities, and campus events.</p>
           <div class="project-tags">
@@ -230,7 +217,7 @@
         <div class="project-img">
           <img src="images/figma.png" alt="Screenshot of Laundry Management System" loading="lazy">
         </div>
-        <div class="project-content">
+        <div class="project-content reveal reveal-delay-3">
           <h3>Laundry Shop Management System</h3>
           <p>A streamlined system designed for laundry businesses, featuring order tracking, customer notifications, user accounts, and automated payment management. The prototype showcases intuitive interfaces for both staff and customers to manage and monitor laundry orders efficiently.</p>
           <div class="project-tags">
@@ -247,11 +234,13 @@
   </section>
 
   <section id="service" class="section container" role="region" aria-labelledby="service-heading">
+    <div class="reveal">
     <h1 id="service-heading">UI/UX Design Services</h1>
     <p>Crafting exceptional digital experiences through thoughtful design and innovative solutions that connect brands with their audiences.</p>
+    </div>
 
     <div class="services-container">
-        <div class="service-card">
+        <div class="service-card reveal reveal-delay-1">
             <div class="service-header">
                 <div class="service-icon">
                     <i class="fas fa-paint-brush"></i>
@@ -290,7 +279,7 @@
             </a>
         </div>
 
-        <div class="service-card">
+        <div class="service-card reveal reveal-delay-2">
             <div class="service-header">
                 <div class="service-icon">
                     <i class="fas fa-code"></i>
@@ -332,17 +321,17 @@
 </section>
 
   <section id="contact" class="section" role="region" aria-labelledby="contact-heading">
-    <div class="container">
-      <div class="section-header">
+    <div class="container reveal">
+      <div class="section-header reveal reveal-delay-1">
         <h2 id="contact-heading">Let's Connect</h2>
         <div class="header-underline"></div>
         <p class="section-intro">Curious about design, tech, or building better digital experiences? <br> Let’s connect and create something people love to use.</p>
       </div>
   
-      <div class="contact-container">
+      <div class="contact-container reveal reveal-delay-2">
         <div class="contact-info">
           <div class="info-card">
-            <p class="info-intro">I'm currently available for freelance projects and always open to discussing new ideas. Reach out using the form or contact me directly through these channels:</p>
+            <p class="info-intro reveal">I'm currently available for freelance projects and always open to discussing new ideas. Reach out using the form or contact me directly through these channels:</p>
   
             <div class="contact-item">
               <div class="contact-icon">
@@ -383,7 +372,7 @@
           </div>
         </div>
   
-        <div class="contact-form">
+        <div class="contact-form reveal reveal-delay-2">
           <div class="form-container">
             <h3 class="form-title">Send me a message</h3>
             
