@@ -251,17 +251,15 @@ function handleScroll() {
   const { header, backToTopButton } = elements;
   const currentScrollY = window.scrollY;
   
-  // 1. Header effect
   if (header) {
     header.classList.toggle('scrolled', currentScrollY > 50);
   }
   
-  // 2. Back to top button visibility
   if (backToTopButton) {
     backToTopButton.classList.toggle('visible', currentScrollY > 300);
   }
 
-  // 3. TRIGGER SCROLLSPY (This was missing!)
+  // This MUST be here for the Nav highlights to work
   handleScrollSpy();
 }
 
@@ -269,108 +267,34 @@ function handleScroll() {
  * Simulates message sending and provides immediate feedback
  * @param {Event} e - Submit event
  */
-function handleFormSubmit(e) {
+async function handleFormSubmit(e) {
   e.preventDefault();
-
   const form = e.target;
   const formStatus = getElement('form-status');
   const submitButton = form.querySelector('.submit-btn');
   
-  // Get form data for simulation
-  const formData = new FormData(form);
-  const name = formData.get('name')?.trim() || '';
-  const email = formData.get('email')?.trim() || '';
-  const subject = formData.get('subject')?.trim() || '';
-  const message = formData.get('message')?.trim() || '';
-  
-  // Validation
-  let isValid = true;
-  const errors = [];
-  const requiredInputs = form.querySelectorAll('[required]');
-
-  requiredInputs.forEach(input => {
-    input.style.borderColor = '';
-    let inputValid = true;
-    const value = input.value.trim();
-    const fieldName = input.getAttribute('name') || input.getAttribute('id') || 'field';
-
-    if (!value) {
-      inputValid = false;
-      errors.push(`${fieldName.charAt(0).toUpperCase() + fieldName.slice(1)} is required`);
-    } else if (input.type === 'email' && !/^\S+@\S+\.\S+$/.test(value)) {
-      inputValid = false;
-      errors.push('Please enter a valid email address');
-    }
-
-    if (!inputValid) {
-      isValid = false;
-      input.style.borderColor = '#ef4444';
-    }
-  });
-
-  if (!isValid) {
-    formStatus.textContent = errors[0] || 'Please fill out all required fields correctly.';
-    formStatus.className = 'error';
-    form.querySelector('[required]:invalid, [style*="border-color: rgb(239, 68, 68)"]')?.focus();
-    return;
-  }
-
-  // Show sending state
+  // Show "Sending" state
   formStatus.textContent = 'Sending message...';
   formStatus.className = 'sending';
-  if (submitButton) {
-    submitButton.disabled = true;
-    submitButton.textContent = 'Sending...';
-  }
+  submitButton.disabled = true;
 
-  // Simulate message processing time
-  const processingTime = Math.random() * 1200 + 800;
-  
-  setTimeout(() => {
-    // Simulate successful message send
-    const successMessages = [
-      `Thank you, ${name}! Your message has been sent successfully. I'll get back to you soon.`,
-      `Message sent successfully! Thanks for reaching out, ${name}. I'll respond within 24 hours.`,
-      `Your message has been delivered successfully, ${name}! I appreciate you getting in touch.`,
-      `Thanks for your message, ${name}! I've received it and will reply shortly.`
-    ];
-    
-    const randomMessage = successMessages[Math.floor(Math.random() * successMessages.length)];
-    
-    formStatus.textContent = randomMessage;
+  // Send the data to Formspree
+  const response = await fetch(form.action, {
+    method: 'POST',
+    body: new FormData(form),
+    headers: { 'Accept': 'application/json' }
+  });
+
+  if (response.ok) {
+    formStatus.textContent = "Thanks! Your message has been sent to my email.";
     formStatus.className = 'success';
-    
-    // Reset form
     form.reset();
-    requiredInputs.forEach(input => {
-      input.style.borderColor = '';
-    });
-    
-    // Reset submit button
-    if (submitButton) {
-      submitButton.disabled = false;
-      submitButton.textContent = 'Send Message';
-    }
-
-    // Log simulated message
-    console.log('📧 Simulated Message Sent:', {
-      timestamp: new Date().toISOString(),
-      name: name,
-      email: email,
-      subject: subject,
-      message: message,
-      status: 'delivered'
-    });
-
-    // Clear success message
-    setTimeout(() => {
-      if (formStatus.className === 'success') {
-        formStatus.textContent = '';
-        formStatus.className = '';
-      }
-    }, 8000);
-    
-  }, processingTime);
+  } else {
+    formStatus.textContent = "Oops! There was a problem sending your message.";
+    formStatus.className = 'error';
+  }
+  
+  submitButton.disabled = false;
 }
 
 /**
@@ -684,16 +608,17 @@ function runTypewriterAnimation() {
   const typewriter = document.querySelector('.typewriter');
   if (!typewriter) return;
 
-  // Reset animation
-  typewriter.classList.remove('typing-complete');
+  // 1. Clear previous state
   typewriter.style.animation = 'none';
-  typewriter.offsetHeight; // Trigger reflow
-  typewriter.style.animation = 'typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite';
+  typewriter.offsetHeight; // Force reflow
+  
+  // 2. Re-apply animation with the 'forwards' logic
+  typewriter.style.animation = 'typing 3.5s steps(40, end) forwards, blink-caret 0.75s step-end infinite';
 
-  // Stop cursor after animation completes
+  // 3. Optional: Remove the cursor after it's done so it looks clean
   setTimeout(() => {
-    typewriter.classList.add('typing-complete');
-  }, 4000); // 3.5s typing + buffer
+    typewriter.style.borderRight = 'none';
+  }, 3500); 
 }
 
 // Run on page load

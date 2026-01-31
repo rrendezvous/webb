@@ -68,24 +68,27 @@
 <main class="main" id="main-content" role="main">
 
   <section id="home" class="section container" role="region" aria-labelledby="home-heading">
-    <div class="hero">
-      <div class="hero-content">
-        <h1 id="home-heading" class="typewriter">Hi, I'm <span>Rendezvous</span></h1>
-        <p>A passionate web designer based in Cagayan de Oro, dedicated to creating beautiful and user-centric digital experiences.</p>
-        <div class="hero-btns">
-          <a href="#webdesign" onclick="showSection('webdesign'); return false;" class="btn"><i class="fa-solid fa-palette"></i> View Works</a>
-          <a href="#contact" onclick="showSection('contact'); return false;" class="btn btn-outline"><i class="fa-solid fa-paper-plane"></i> Get In Touch</a>
-        </div>
-      </div>
-      <div class="hero-image">
-        <img src="images/rendi3.jpg" alt="Rendezvous stylized R logo">
-      </div>
+  <div class="hero">
+    <div class="hero-content">
+  <div class="typewriter-container">
+    <h1 id="home-heading" class="typewriter">Hi, I'm <span>Rendezvous</span></h1>
+    <div class="home-underline"></div>
+  </div>
+  <p>A passionate web designer based in Cagayan de Oro, dedicated to creating beautiful and user-centric digital experiences.</p>
+  <div class="hero-btns">
+    <a href="#webdesign" onclick="showSection('webdesign'); return false;" class="btn"><i class="fa-solid fa-palette"></i> View Works</a>
+    <a href="#contact" onclick="showSection('contact'); return false;" class="btn btn-outline"><i class="fa-solid fa-paper-plane"></i> Contact Me</a>
+  </div>
+</div>
+    
+    <div class="hero-image">
+      <img src="images/rendi3.jpg" alt="Rendezvous Profile">
     </div>
-  </section>
+  </div>
+</section>
 
  <section id="about" class="section container" role="region" aria-labelledby="about-heading">
-  <div class="reveal">
-    <h1 id="about-heading">About Me</h1>
+  <div class="reveal"><h1 id="about-heading">About Me</h1>
   </div>
   
   <div class="about-container reveal">
@@ -234,88 +237,59 @@
   </section>
 
   <section id="service" class="section container" role="region" aria-labelledby="service-heading">
-    <div class="reveal">
-    <h1 id="service-heading">UI/UX Design Services</h1>
-    <p>Crafting exceptional digital experiences through thoughtful design and innovative solutions that connect brands with their audiences.</p>
+    <div class="reveal text-center">
+        <h1 id="service-heading">Strategic Services</h1>
+        <p class="section-intro">Bridging the gap between complex system logic and high-fidelity interfaces to engineer scalable digital solutions.</p>
     </div>
 
-    <div class="services-container">
-        <div class="service-card reveal reveal-delay-1">
-            <div class="service-header">
-                <div class="service-icon">
-                    <i class="fas fa-paint-brush"></i>
-                </div>
-                <div class="service-title">
-                    <h3>Complete UI Design</h3>
-                    <div class="service-subtitle">From Vision to Visual Masterpiece.</div>
-                </div>
-            </div>
+    <div class="services-container reveal reveal-delay-1">
+        <div class="service-card reveal">
+            <div class="service-icon"><i class="fas fa-compass"></i></div>
+            <h3>Product Design Strategy</h3>
+            <p class="service-description">Beyond just "looking good." I build <strong>Design Systems</strong> and optimize <strong>User Flows</strong> based on research and technical feasibility.</p>
             
-            <p class="service-description">
-              Bring your ideas to life with thoughtful, user-centered designs rooted in both beauty and function. I help bridge your brand's message with modern design systems that feel good to use — not just look good.
-            </p>
-
-            <div class="service-features">
-                <h4>What's Included:</h4>
-                <ul class="features-list">
-                    <li>Custom wireframes to high-fidelity mockups</li>
-                    <li>Tailored UI kits and design systems</li>
-                    <li>Responsive designs for all screen sizes</li>
-                    <li>Prototyping with real user flow in mind</li>
-                    <li>Developer-friendly design handoff</li>
-                </ul>
+            <div class="tech-badges">
+                <span class="tech-badge">Figma</span>
+                <span class="tech-badge">User Research</span>
+                <span class="tech-badge">Design Systems</span>
             </div>
+
+            <ul class="features-list">
+                <li>End-to-end UX Audit & Strategy</li>
+                <li>Interactive High-Fidelity Prototypes</li>
+                <li>Information Architecture Mapping</li>
+            </ul>
 
             <div class="service-pricing">
-                <div class="pricing-info">
-                    <div class="price-label">Project Based</div>
-                    <div class="price-value">From ₱5,000.00</div>
-                </div>
-                <div class="price-badge">Popular</div>
+                <div class="price-label">Starting Investment</div>
+                <div class="price-value">Project Based</div>
             </div>
-
-            <a href="#contact" onclick="showSection('contact'); return false;" class="btn">
-                <i class="fas fa-rocket"></i> Start Your Project
-            </a>
+            <a href="#contact" onclick="showSection('contact'); return false;" class="btn">Enquire for Strategy</a>
         </div>
 
-        <div class="service-card reveal reveal-delay-2">
-            <div class="service-header">
-                <div class="service-icon">
-                    <i class="fas fa-code"></i>
-                </div>
-                <div class="service-title">
-                    <h3>Frontend Development</h3>
-                    <div class="service-subtitle">Where Design Meets Code.</div>
-                </div>
-            </div>
+        <div class="service-card reveal reveal-delay-1">
+            <div class="service-icon"><i class="fas fa-code-branch"></i></div>
+            <h3>Full-Stack Interface Dev</h3>
+            <p class="service-description">Production-ready code that bridges the gap between design and logic. Specializing in high-performance web and mobile apps.</p>
             
-            <p class="service-description">
-              I build interfaces that don’t just look great — they work great. Whether you're aiming for smooth animations, lightning-fast performance, or seamless responsiveness, I’ll turn your design into a production-ready front-end.
-            </p>
-
-            <div class="service-features">
-                <h4>What's Included:</h4>
-                <ul class="features-list">
-                    <li>Semantic HTML5, modern CSS3, and JavaScript</li>
-                    <li>Responsive and mobile-first layouts</li>
-                    <li>Performance optimization</li>
-                    <li>Mobile-first implementation</li>
-                    <li>Git-based version control</li>
-                </ul>
+            <div class="tech-badges">
+                <span class="tech-badge">Laravel</span>
+                <span class="tech-badge">React Native</span>
+                <span class="tech-badge">MySQL</span>
+                <span class="tech-badge">PHP</span>
             </div>
+
+            <ul class="features-list">
+                <li>Laravel Backend Integration</li>
+                <li>React Native Mobile Development</li>
+                <li>API & Database Architecture</li>
+            </ul>
 
             <div class="service-pricing">
-                <div class="pricing-info">
-                    <div class="price-label">Project Based</div>
-                    <div class="price-value">From ₱10,000.00</div>
-                </div>
-                <div class="price-badge">Pro</div>
+                <div class="price-label">Starting Investment</div>
+                <div class="price-value">Project Based</div>
             </div>
-
-            <a href="#contact" onclick="showSection('contact'); return false;" class="btn">
-                <i class="fas fa-code"></i> Build Together
-            </a>
+            <a href="#contact" onclick="showSection('contact'); return false;" class="btn">Enquire for Tech</a>
         </div>
     </div>
 </section>
@@ -376,7 +350,7 @@
           <div class="form-container">
             <h3 class="form-title">Send me a message</h3>
             
-            <form action="#" method="POST" id="contactForm" novalidate>
+            <form action="https://formspree.io/f/xeekwplz" method="POST" id="contactForm">
               <div class="input-row">
                 <div class="input-group">
                   <label for="name">Your Name</label>

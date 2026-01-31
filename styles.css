@@ -652,14 +652,30 @@ html {
 }
 
 /* Section Headings */
+
+/* --- Unified Section Underlines with Subtle Glow --- */
 .section h1 {
   position: relative;
-  display: inline-block;
+  display: block;
   margin-bottom: 40px;
   padding-bottom: 15px;
   font-size: 2.5rem;
   font-weight: 700;
   color: var(--text);
+  text-align: inherit;
+}
+
+/* --- Unified Section Underlines --- */
+/* --- Unified Section Underlines with Subtle Glow --- */
+.section h1 {
+  position: relative;
+  display: block;
+  margin-bottom: 40px;
+  padding-bottom: 15px;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text);
+  text-align: inherit;
 }
 
 .section h1::after {
@@ -667,11 +683,24 @@ html {
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 70px;
+  width: 0; /* Starts at 0 for the animation */
   height: 5px;
   background: linear-gradient(90deg, var(--primary), var(--primary-light));
   border-radius: 3px;
-  animation: slideInUnderline 0.8s ease forwards;
+  transition: width 0.8s ease 0.4s, box-shadow 1s ease 1s;
+  box-shadow: 0 0 0 rgba(255, 200, 87, 0); 
+}
+
+/* Centers the underline automatically for Strategic Services */
+.text-center h1::after {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* THE TRIGGER: Forces the line to appear and glow when revealed */
+.reveal.in-view h1::after {
+  width: 70px !important; 
+  box-shadow: 0 0 15px rgba(255, 200, 87, 0.6); 
 }
 
 @keyframes slideInUnderline {
@@ -684,34 +713,155 @@ html {
   margin-bottom: 30px; 
 }
 
-.hero {
+/* --- DESKTOP HERO CONTENT --- */
+
+/* --- CONSOLIDATED DESKTOP HERO SYSTEM --- */
+/* --- Desktop: Image on Left, Text on Right --- */
+#home .hero {
+  min-height: 85vh;
   display: flex;
+  flex-direction: row-reverse; /* SWAPS THE POSITION */
   align-items: center;
-  min-height: calc(90vh - 70px);
-  padding: 20px 0;
-  gap: 50px;
+  justify-content: center;
+  gap: 100px;
+  padding: 60px 20px;
+}
+
+#home .hero-content {
+  flex: 0 1 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Keeps the line locked to the left side of the text */
+  text-align: left;
+}
+
+/* Stable container for Name + Underline */
+.typewriter-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Keeps the line locked to the left side */
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+/* Compact Typography */
+/* --- Desktop & Mobile Combined Logic --- */
+.hero h1 {
+  /* This one line handles the scaling for both devices */
+  font-size: clamp(1.8rem, 7vw, 3.8rem) !important; 
+  
+  margin-bottom: 2px !important;
+  font-weight: 800;
+  line-height: 1.05; 
+  letter-spacing: -0.03em;
+  color: var(--text);
+}
+
+/* Anchored Chrome Shimmer */
+.hero h1 span {
+  color: var(--primary);
+  background: linear-gradient(120deg, var(--primary) 20%, #ffffff 50%, var(--primary) 80%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  animation: smooth-shimmer 4s linear infinite;
+}
+
+/* Stabilized Underline */
+.home-underline {
+  width: 75px;
+  height: 6px;
+  background: linear-gradient(90deg, var(--primary), var(--primary-light));
+  border-radius: 3px;
+  margin: 0 0 20px 0 !important;
+  box-shadow: 0 0 15px rgba(255, 200, 87, 0.5);
+}
+
+/* The Typewriter (Bulletproof Syntax) */
+.typewriter {
+  display: inline-block !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  border-right: 3px solid var(--primary);
+  width: fit-content;
+  animation: typing 3.5s steps(40, end) forwards, 
+             blink-caret 0.75s step-end infinite;
+}
+
+/* --- High-Fidelity Compact Paragraph --- */
+.hero-content p {
+  font-size: 1.05rem !important;     /* Slightly smaller for better contrast with the H1 */
+  color: var(--text-muted);
+  line-height: 1.5 !important;       /* Tightens the vertical space significantly */
+  max-width: 460px !important;       /* Narrower width to group it with the 'Hi' spine */
+  margin-bottom: 30px !important;
+  font-weight: 400;
+  letter-spacing: 0.01em;            /* Subtle professional spacing */
 }
 
 .hero-content {
-  flex: 1.2;
-  animation: slideInLeft 1s ease 0.2s both;
+  flex: 0 1 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Locks everything to the left side */
+  text-align: left;
 }
 
-@keyframes slideInLeft {
-  from { opacity: 0; transform: translateX(-30px); }
-  to { opacity: 1; transform: translateX(0); }
+/* Stable container to protect the typewriter from flexbox squishing */
+.typewriter-wrapper {
+  width: 100%;
+  display: block;
+  margin-bottom: 10px;
+  letter-spacing: .05em; /* Helps the steps() calculation stay smooth */
+  will-change: width;    /* Tells the browser to optimize for this move */
 }
 
-/* Typewriter Effect Styles */
+/* 3. Anchoring the Underline closer to the Text */
+.home-underline {
+  width: 75px;
+  height: 6px;
+  background: linear-gradient(90deg, var(--primary), var(--primary-light));
+  border-radius: 3px;
+  margin: 0 0 20px 0 !important; /* Consistent spacing before paragraph */
+  box-shadow: 0 0 15px rgba(255, 200, 87, 0.5);
+}
+/* --- Restored & Stabilized Typewriter --- */
 .typewriter {
-  overflow: hidden;
+  display: inline-block !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
   border-right: 3px solid var(--primary);
-  white-space: nowrap;
-  margin: 0 auto;
-  animation: 
-    typing 3.5s steps(40, end),
-    blink-caret 0.75s step-end infinite;
-  max-width: fit-content;
+  width: fit-content; /* Your default state is visible */
+  
+  /* Separating these prevents the 'semicolon expected' editor error */
+  animation-name: typing, blink-caret !important;
+  animation-duration: 3.5s, 0.75s !important;
+  animation-timing-function: steps(40, end), step-end !important;
+  animation-iteration-count: 1, infinite !important;
+  animation-fill-mode: forwards, none !important; /* 'forwards' keeps the text visible */
+}
+
+/* Ensure the cursor stops blinking when typing finishes */
+.typewriter.typing-complete {
+  border-right-color: transparent !important;
+}
+
+/* --- Shimmer & Tilt Fix --- */
+.hero h1 span {
+  color: var(--primary);
+  background: linear-gradient(120deg, var(--primary) 20%, #ffffff 50%, var(--primary) 80%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  animation: smooth-shimmer 4s linear infinite;
+}
+
+.hero h1:hover span {
+  transform: none !important; /* Kills the weird tilt/rotate */
 }
 
 @keyframes typing {
@@ -719,9 +869,166 @@ html {
   to { width: 100%; }
 }
 
-@keyframes blink-caret {
-  from, to { border-color: transparent; }
-  50% { border-color: var(--primary); }
+.hero h1 {
+  font-size: clamp(2.8rem, 6vw, 4.2rem);
+  margin-bottom: 2px !important; /* Tightens the gap between name and line */
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--text);
+}
+
+/* 3. Ensure the Image Container is part of the center-logic */
+.hero-image {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 992px) {
+  /* 1. Reset Hero Layout */
+  #home .hero {
+    flex-direction: column !important;
+    padding: 60px 20px 40px !important;
+    gap: 25px !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  /* 2. Scaled Profile Image */
+  #home .hero-image img {
+    width: 200px !important; 
+    height: 200px !important;
+    margin-bottom: 5px !important;
+    border-width: 4px !important;
+  }
+
+  /* 3. Fluid Typography */
+  .hero h1 {
+    font-size: 2.2rem !important; /* Slightly smaller for mobile comfort */
+    line-height: 1.2 !important;
+    margin-bottom: 0 !important;
+  }
+
+  /* 4. Optimized Buttons for Mobile */
+  .hero-btns {
+    display: flex !important;
+    flex-direction: column !important; 
+    gap: 12px !important;
+    width: 100% !important;
+    max-width: 280px !important; /* Prevents buttons from being too wide */
+    margin: 0 auto !important; /* Centers the whole button group */
+  }
+
+  /* 2. Optimized Mobile Button Ergonomics */
+  .btn {
+    width: 100% !important; /* Full width inside the 280px container */
+    justify-content: center !important;
+    padding: 10px !important; /* Taller target is easier to tap */
+    border-radius: 12px !important; /* Modern 'Soft' corners */
+    font-size: 1rem !important;
+    gap: 4px !important;
+  }
+
+  /* 3. Maintains the Chrome Shimmer for Mobile Taps */
+  .btn:first-child::after {
+    display: none; /* We disable the hover shimmer on mobile to save performance */
+  }
+
+  /* 5. Refined Mobile Paragraph */
+  .hero-content p {
+    font-size: 0.95rem !important;
+    line-height: 1.6 !important;
+    margin: 15px auto 25px !important;
+    max-width: 90% !important;
+  }
+}
+
+  /* 2. Image: Force to Top and Scale */
+  #home .hero-image {
+    order: -1 !important;
+    justify-content: center !important;
+    width: 220px !important; /* Use this strictly for mobile only */
+    height: 220px !important;
+    border-width: 4px !important;
+    margin-bottom: 20px;
+  }
+
+  /* --- Stable Desktop Profile --- */
+/* --- Executive Tier Desktop Profile --- */
+.hero-image img {
+  /* Reduced from 420px to 360px for a high-fidelity 'Compact' look */
+  width: clamp(280px, 25vw, 360px) !important; 
+  height: clamp(280px, 25vw, 360px) !important;
+  
+  object-fit: cover;
+  border-radius: 50%;
+  border: 5px solid var(--card-bg); /* Thinner border for the smaller diameter */
+  box-shadow: 0 0 0 4px var(--primary-light), var(--shadow-md);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.hero-image img:hover {
+  transform: scale(1.05) rotate(3deg); /* Slightly more playful hover for smaller images */
+  box-shadow: 0 0 0 6px var(--primary), var(--shadow-lg);
+}
+
+  /* 3. Text Content: Perfect Vertical Alignment */
+  #home .hero-content {
+    align-items: center !important;
+    text-align: center !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  @media screen and (max-width: 992px) {
+  /* 1. Force the container to be the exact width of the text */
+  .typewriter-container {
+    display: inline-flex !important; /* Shrinks container to fit the text */
+    flex-direction: column !important;
+    align-items: flex-start !important; /* Aligns the line to the start of 'Hi' */
+    width: auto !important; 
+    margin: 0 auto 20px !important; /* Centers the whole 'text + line' group */
+  }
+
+  /* 2. Precision placement for the line */
+  .home-underline {
+    width: 45px !important; /* Shorter to fit strictly under 'Hi' */
+    margin: 4px 0 0 0 !important; /* Removes auto-centering to lock it left */
+    align-self: flex-start !important; 
+    height: 4px !important;
+  }
+  .hero-content p {
+    font-size: 0.95rem !important;   /* Scaled down for mobile comfort */
+    line-height: 1.5 !important;
+    text-align: center !important;   /* Ensures it stays centered under the line */
+    max-width: 100% !important;      /* Lets it use the full phone width */
+    margin: 0 auto 25px !important;  /* Horizontal centering */
+  }
+}
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* Typewriter Effect Styles */
+.typewriter-wrapper {
+  width: 100%;
+  display: block;
+}
+
+.typewriter {
+  display: inline-block; /* Critical for width-based typing */
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid var(--primary);
+  margin: 0; 
+  max-width: fit-content;
+  /* Sync this time with your script.js (3.5s) */
+  animation: 
+    typing 3.5s steps(40, end),
+    blink-caret 0.75s step-end infinite;
 }
 
 .typewriter.typing-complete {
@@ -748,24 +1055,45 @@ html {
   }
 }
 
-.hero-image img {
-  width: 350px;
-  height: 350px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 6px solid var(--card-bg);
-  box-shadow: 0 0 0 4px var(--primary-light), var(--shadow-lg);
-  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
 .hero-image img:hover {
-  transform: scale(1.02);
-  box-shadow: 0 0 0 6px var(--primary), var(--shadow-lg);
+  transform: scale(1.02); /* Subtle hover interaction */
 }
 
+/* 1. Stabilize the hero content group */
 .hero-content {
-  flex: 1.2;
-  animation: slideInLeft 1s ease 0.2s both;
+  flex: 0 1 auto;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Keeps the line locked under the 'H' */
+  text-align: left;
+}
+
+/* 3. Smooth Chrome Shimmer (Fixed jitter) */
+.hero h1 span {
+  color: var(--primary);
+  background: linear-gradient(
+    120deg, 
+    var(--primary) 20%, 
+    #ffffff 50%, 
+    var(--primary) 80%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  animation: smooth-shimmer 4s linear infinite;
+}
+
+/* 4. Remove the 'weird' tilting hover effect */
+.hero h1:hover span {
+  transform: none !important; 
+}
+
+@keyframes smooth-shimmer {
+  0% { background-position: 200% center; } /* */
+  100% { background-position: -200% center; } /* */
 }
 
 @keyframes slideInLeft {
@@ -807,8 +1135,24 @@ html {
 
 .hero h1 span {
   color: var(--primary);
+  /* Use a 3-stop gradient for a cleaner "metal" look */
+  background: linear-gradient(
+    120deg, 
+    var(--primary) 20%, 
+    #ffffff 50%, 
+    var(--primary) 80%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   display: inline-block;
-  transition: transform 0.3s ease;
+  animation: smooth-shimmer 4s linear infinite;
+}
+
+@keyframes smooth-shimmer {
+  0% { background-position: 200% center; }
+  100% { background-position: -200% center; }
 }
 
 .hero h1:hover span {
@@ -821,75 +1165,74 @@ html {
   max-width: 600px;
   color: var(--text-muted);
 }
-
+/* --- High-Fidelity Button System --- */
+/* --- High-Fidelity Desktop Button System --- */
 .hero-btns {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  margin-top: 30px;
+  display: flex !important;
+  flex-direction: row !important; /* Forces side-by-side on desktop */
+  gap: 20px !important;
+  margin-top: 30px !important;
+  justify-content: flex-start !important;
 }
 
-/* --- Buttons --- */
 .btn {
+  padding: 14px 32px;
+  border-radius: 15px !important; /* Premium 'Soft-UI' radius */
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 8px;
-  background-color: var(--primary);
-  color: var(--dark);
-  padding: 12px 30px;
-  border-radius: 30px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  border: 2px solid var(--primary);
-  cursor: pointer;
+  gap: 10px;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
   position: relative;
-  overflow: hidden;
-  z-index: 1;
+  overflow: hidden; /* Critical for the shimmer effect */
+  border: 1px solid transparent;
 }
 
-.btn::before {
+/* 1. View Works: The Primary Action (Chrome Shimmer) */
+.btn:first-child {
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  color: var(--dark);
+  box-shadow: 0 4px 15px rgba(255, 200, 87, 0.3);
+}
+
+/* THE SHIMMER LOGIC */
+.btn:first-child::after {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 100%;
-  background-color: var(--dark);
-  transition: width 0.3s ease;
-  z-index: -1;
-  border-radius: 30px;
+  top: -50%;
+  left: -60%;
+  width: 20%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.4);
+  transform: rotate(30deg);
+  transition: all 0.6s ease;
 }
 
-.btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 18px rgba(255, 200, 87, 0.25);
-  color: var(--primary);
+.btn:first-child:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 12px 25px rgba(255, 200, 87, 0.5);
 }
 
-.btn:hover::before {
-  width: 100%;
+.btn:first-child:hover::after {
+  left: 120%; /* Light beam slides across button */
 }
 
+/* 2. Get In Touch: The Secondary Action (Glassmorphism) */
 .btn-outline {
-  background-color: transparent;
-  color: var(--primary);
-  border-color: var(--primary);
-}
-
-.btn-outline::before {
-  background-color: var(--primary);
+  background: rgba(255, 255, 255, 0.03) !important;
+  color: #fff !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  backdrop-filter: blur(5px);
 }
 
 .btn-outline:hover {
-  color: var(--dark);
-  border-color: var(--primary);
-  box-shadow: 0 8px 18px rgba(255, 200, 87, 0.2);
-}
-
-.btn-outline:hover::before {
-  width: 100%;
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: var(--primary) !important;
+  color: var(--primary) !important;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
 /* --- REFINED ABOUT SECTION (NO DOUBLE SCROLL) --- */
@@ -1005,8 +1348,6 @@ html {
   .about-image.accent-one, 
   .about-image.accent-two { height: 110px; }
 }
-
-
 
 /* --- STRICT LIMIT ON BEYOND THE SCREEN IMAGES --- */
 .achieve-gallery-mini {
@@ -1262,55 +1603,77 @@ html {
 }
 
 /* Service Cards */
+/* --- High-Fidelity Service Dashboard --- */
+.services-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 30px;
+  margin-top: 50px;
+}
+
 .service-card {
-  background: linear-gradient(135deg, var(--card-bg) 0%, rgba(24, 24, 32, 0.8) 100%);
-  border-radius: 20px;
-  padding: 45px 35px;
-  text-align: left;
-  border: 1px solid var(--border-color);
-  box-shadow: var(--shadow-sm);
-  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  background: rgba(24, 24, 32, 0.6);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 24px;
+  padding: 40px;
   position: relative;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  min-height: 420px;
-  opacity: 0;
-  transform: translateY(20px);
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.service-card.in-view {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.service-card:nth-child(2).in-view { 
-  transition-delay: 0.1s; 
-}
-
+/* Accent Glow for the 'System Analyst' feel */
 .service-card::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background: linear-gradient(90deg, var(--primary), var(--primary-light));
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.4s ease;
-}
-
-.service-card:hover::before {
-  transform: scaleX(1);
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 200, 87, 0.05) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
 }
 
 .service-card:hover {
-  transform: translateY(-12px);
-  box-shadow: var(--shadow-lg);
-  background: linear-gradient(135deg, var(--card-bg-hover) 0%, rgba(31, 31, 41, 0.9) 100%);
+  transform: translateY(-10px);
   border-color: rgba(255, 200, 87, 0.3);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.service-card:hover::before {
+  opacity: 1;
+}
+
+.service-icon {
+  width: 64px;
+  height: 64px;
+  background: rgba(255, 200, 87, 0.1);
+  color: var(--primary);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  margin-bottom: 25px;
+  border: 1px solid rgba(255, 200, 87, 0.2);
+}
+
+/* Feature Badges for Tech Stack */
+.tech-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 20px 0;
+}
+
+.tech-badge {
+  font-size: 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 4px 10px;
+  border-radius: 6px;
+  color: var(--text-muted);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Service Header */
@@ -1514,14 +1877,6 @@ html {
   font-weight: 700;
   margin-bottom: 15px;
   color: var(--text);
-}
-
-.header-underline {
-  width: 80px;
-  height: 4px;
-  background: var(--primary);
-  margin: 0 auto 20px;
-  border-radius: 2px;
 }
 
 .section-intro {
@@ -1982,17 +2337,8 @@ footer {
     margin-bottom: 40px;
   }
 
-  .hero-btns {
-    justify-content: center;
-  }
-
   .hero h1 {
     font-size: clamp(2.2rem, 5.5vw, 3rem);
-  }
-
-  .hero-image img {
-    width: 280px;
-    height: 280px;
   }
 
   #about .about-container {
@@ -2030,6 +2376,20 @@ footer {
     clip-path: polygon(0 0, 100% 0, 100% 30%, 0 50%);
     height: 300px;
   }
+#home .hero-image img {
+    width: 200px !important; 
+    height: 200px !important;
+    border-width: 4px !important;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  
+  /* Ensure the container doesn't force extra height */
+  #home .hero {
+    padding-top: 5px !important;
+    min-height: auto !important;
+  }
+  
 }
 
 @media screen and (max-width: 768px) {
@@ -2083,13 +2443,6 @@ footer {
 
   .hero p {
     font-size: 1rem;
-  }
-  
-  .hero-image img {
-    width: 220px;
-    height: 220px;
-    border-width: 4px;
-    box-shadow: 0 0 0 3px var(--primary-light), var(--shadow-md);
   }
 
   /* Mobile Grid Overrides */
@@ -2645,3 +2998,141 @@ body:not(.transitioning) {
 .reveal-delay-1 { transition-delay: 0.1s; }
 .reveal-delay-2 { transition-delay: 0.2s; }
 .reveal-delay-3 { transition-delay: 0.3s; }
+
+/* Centering Utilities */
+.text-center {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+/* Ensures the yellow underline also centers below the text */
+.header-underline.centered {
+  margin: 0 auto 20px; 
+}
+
+/* Adjusting the intro width for better readability when centered */
+.section-intro {
+  max-width: 750px;
+  margin-left: auto;
+  margin-right: auto;
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Premium Glow on Input Focus */
+.input-wrapper input:focus, 
+.input-wrapper textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 15px rgba(255, 200, 87, 0.4); /* Matches your section line glow */
+  background: rgba(255, 200, 87, 0.02);
+}
+
+/* Subtle Glow for the Submit Button */
+.submit-btn:hover {
+  box-shadow: 0 0 20px rgba(255, 200, 87, 0.4);
+  transform: translateY(-3px);
+}
+
+/* Specific Line for the Home/Hero Section */
+.hero-content .header-underline {
+  width: 70px;
+  height: 5px;
+  background: linear-gradient(90deg, var(--primary), var(--primary-light));
+  border-radius: 3px;
+  margin-bottom: 25px;
+  box-shadow: 0 0 15px rgba(255, 200, 87, 0.6);
+  /* Remove 'margin: 0 auto' if you have it, so it stays left-aligned with the text */
+}
+
+/* --- Optimized Hero System --- */
+/* --- Desktop Restored: Master Hero Layout --- */
+#home .hero {
+  min-height: 75vh;
+  display: flex;
+  align-items: center;    /* Center the group vertically */
+  justify-content: center; /* Center the group horizontally */
+  gap: 100px;              /* Executive spacing between text and image */
+  padding: 60px 20px;
+}
+
+#home .hero-content {
+  flex: 0 1 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* CRITICAL: Anchors everything to the left 'H' */
+  text-align: left;
+}
+
+/* 1. Tightened Typography for that "Compact" feel */
+.hero h1 {
+  font-size: clamp(2.8rem, 6vw, 4.2rem);
+  margin-bottom: 2px !important; /* Tight spacing between name and line */
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  overflow: visible;
+}
+
+/* 2. Anchored Underline specifically for Desktop */
+.home-underline {
+  width: 75px;
+  height: 6px;
+  background: linear-gradient(90deg, var(--primary), var(--primary-light));
+  border-radius: 3px;
+  margin: 0 0 20px 0 !important; /* Fixed gap before paragraph */
+  box-shadow: 0 0 15px rgba(255, 200, 87, 0.5);
+}
+
+.typewriter-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Keeps the line and text vertically stacked on the left */
+  margin-bottom: 10px;
+}
+
+/* 2. The Permanent Line: Locked under 'Hi' */
+.home-underline {
+  width: 70px;
+  height: 5px;
+  background: linear-gradient(90deg, var(--primary), var(--primary-light));
+  border-radius: 3px;
+  margin: 0 0 25px 0;    /* Fixed spacing before the paragraph */
+  box-shadow: 0 0 15px rgba(255, 200, 87, 0.6);
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* 3. The Typewriter: Restored smooth reveal */
+.typewriter {
+  display: inline-block !important;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid var(--primary);
+  width: fit-content;
+  animation-name: typing, blink-caret !important;
+  animation-duration: 3.5s, 0.75s !important;
+  animation-timing-function: steps(40, end), step-end !important;
+  animation-iteration-count: 1, infinite !important;
+  animation-fill-mode: forwards, none !important;
+}
+
+/* Removes the tilting 'weird' animation */
+#home h1:hover span {
+  transform: none !important;
+}
+
+@keyframes typing {
+  from { 
+    width: 0; 
+  }
+  to { 
+    width: 100%; /* Ensures the full text is revealed */
+  }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: var(--primary); } /* */
+}
