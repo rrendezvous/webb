@@ -4,33 +4,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rendezvous</title>
-  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="images/fa.ico" type="image/x-icon">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<!-- Mobile Navigation Sidebar -->
 <div id="overlay" class="overlay" onclick="closeSidebar()" title="Close menu" aria-hidden="true"></div>
 <aside id="sidebar" class="sidebar" role="navigation" aria-label="Mobile Navigation" aria-hidden="true"> 
   <button class="sidebar-close" onclick="closeSidebar()" aria-label="Close Menu" title="Close Menu">
     <i class="fa-solid fa-xmark"></i>
   </button>
   <div>
-    <!-- Profile section in sidebar -->
     <div class="profile">
-      <img src="images/ren.jpg" alt="Rendezvous">
+      <img src="images/rendi3.jpg" alt="Rendezvous">
       <h2>Rendezvous</h2>
       <p>Creative Web Designer</p>
     </div>
 
-    <!-- Mobile navigation links -->
     <nav class="mobile-nav">
       <a id="home-mobile" href="#home" onclick="showSection('home'); closeSidebar();"><i class="fa-solid fa-house-chimney"></i> Home</a>
       <a id="about-mobile" href="#about" onclick="showSection('about'); closeSidebar();"><i class="fa-solid fa-address-card"></i> About</a>
-      <a id="hobbies-mobile" href="#hobbies" onclick="showSection('hobbies'); closeSidebar();"><i class="fa-solid fa-gamepad"></i> Hobbies</a>
 
-      <!-- Dropdown for Projects & Services in mobile menu -->
       <button class="dropdown-btn" id="works-dropdown-mobile" aria-controls="works-container-mobile" aria-expanded="false">
         <i class="fa-solid fa-briefcase"></i> Projects & Services <span class="chevron" aria-hidden="true">▼</span>
       </button>
@@ -43,7 +38,6 @@
     </nav>
   </div>
 
-  <!-- Social media links at bottom of sidebar -->
   <div class="bottom-icons">
     <a href="https://www.facebook.com/joeremychristie.ong" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook"><i class="fab fa-facebook-f"></i></a>
     <a href="https://www.instagram.com/rrendzvou" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
@@ -52,17 +46,15 @@
   </div>
 </aside>
 
-<!-- Desktop Header Navigation -->
 <header class="desktop-header" id="header" role="banner">
   <a href="#home" class="logo-container" onclick="showSection('home'); return false;" title="Go to Home" tabindex="0">
-    <img src="images/ren.jpg" alt="Rendezvous">
+    <img src="images/rendi3.jpg" alt="Rendezvous">
     <h2>Rendezvous</h2>
   </a>
 
   <nav class="desktop-nav" role="navigation" aria-label="Main Navigation">
     <a id="home-link" href="#home" onclick="showSection('home'); return false;">Home</a>
     <a id="about-link" href="#about" onclick="showSection('about'); return false;">About</a>
-    <a id="hobbies-link" href="#hobbies" onclick="showSection('hobbies'); return false;">Hobbies</a>
   
     <div class="desktop-dropdown" id="projects-services-dropdown">
       <button class="dropdown-trigger" onclick="toggleDesktopDropdown('projects-services-dropdown')" aria-controls="projects-services-content" aria-expanded="false">
@@ -77,7 +69,6 @@
     <a id="contact-link" href="#contact" onclick="showSection('contact'); return false;">Contact</a>
   </nav>  
 
-  <!-- Social media icons in header -->
   <div class="social-icons">
     <a href="https://www.facebook.com/joeremychristie.ong" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook"><i class="fab fa-facebook-f"></i></a>
     <a href="https://www.instagram.com/rrendzvou" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
@@ -85,7 +76,6 @@
     <a href="https://ph.linkedin.com/in/joeremyong2003" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
   </div>
 
-  <!-- Mobile menu toggle button -->
   <button class="toggle-btn" onclick="openSidebar()" aria-label="Open Menu" title="Open Menu" aria-controls="sidebar" aria-expanded="false">
     <i class="fa-solid fa-bars"></i>
   </button>
@@ -93,7 +83,6 @@
 
 <main class="main" id="main-content" role="main">
 
-  <!-- HOME SECTION -->
   <section id="home" class="section active container" role="region" aria-labelledby="home-heading">
     <div class="hero">
       <div class="hero-content">
@@ -105,68 +94,60 @@
         </div>
       </div>
       <div class="hero-image">
-        <img src="images/ren.jpg" alt="Rendezvous stylized R logo">
+        <img src="images/rendi3.jpg" alt="Rendezvous stylized R logo">
       </div>
     </div>
   </section>
 
-  <!-- ABOUT SECTION -->
   <section id="about" class="section container" role="region" aria-labelledby="about-heading">
     <h1 id="about-heading">About Me</h1>
     <div class="about-container">
-      <div class="about-image">
-        <img src="images/ren-about.jpg" alt="Placeholder image representing Rendezvous working on a project" loading="lazy">
+      <div class="about-visual-grid">
+        <div class="about-image dominant">
+          <img src="images/ren-about.jpg" alt="Profile" loading="lazy">
+        </div>
+        <div class="about-image secondary-accent">
+          <img src="images/Reverse-Pitching-day1.jpg" alt="Professional workspace context" loading="lazy">
+        </div>
       </div>
+
       <div class="about-content">
-        <h3>Rendezvous | Joeremy Christie Ong</h3>
-        <p>Hello! I am Rendezvous, a creative technologist from Cagayan de Oro, Philippines.</p>
-        <p>I'm a passionate web designer, aspiring to be officially a UI/UX Designer. My journey began with a fascination for how websites looked and worked, which quickly evolved into a deeper passion for crafting elegant user interfaces.</p>
-        <p>I thrive on transforming complex ideas into intuitive, engaging, and visually appealing web solutions. I believe that the best digital products seamlessly integrate aesthetics and functionality to create memorable user experiences.</p>
-        <p>When I'm not immersed in code or design tools, you might find me relaxing in Valorant, exploring the latest tech trends, or learning about cybersecurity.</p>
-        <p>Let's collaborate and build something amazing together!</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- HOBBIES SECTION -->
-  <section id="hobbies" class="section container" role="region" aria-labelledby="hobbies-heading">
-    <h1 id="hobbies-heading">Beyond the Screen</h1>
-    <p>Work-life balance is key! Here's a glimpse into what fuels my creativity and keeps me energized outside of projects.</p>
-
-    <div class="hobbies-container">
-      <div class="hobby-card">
-        <div class="hobby-img">
-          <img src="images/val.png" alt="Placeholder image representing Valorant gameplay scene" loading="lazy">
+        <div class="narrative-text">
+          <h3>Rendezvous</h3>
+          <p>Hello! I am Rendezvous, a creative technologist from Cagayan de Oro, Philippines. I specialize in transforming complex ideas into intuitive, engaging, and visually appealing web solutions.</p>
+          <p>I'm a passionate web designer, aspiring to be officially a UI/UX Designer. My journey began with a deep fascination for digital aesthetics, which evolved into a career crafting elegant user interfaces.</p>
+          
+          <p>Beyond the primary milestones showcased here, my technical foundation is built upon a diverse history of academic and independent projects. This background allows me to approach UI/UX as a holistic problem-solver who understands both design and system logic.</p>
         </div>
-        <div class="hobby-content">
-          <h3><i class="fa-solid fa-headset"></i> Gaming with Friends</h3>
-          <p>I play Valorant with my friends as a way to relax and pass time during breaks. It's a fun way to unwind and catch up with friends while enjoying some friendly competition.</p>
-        </div>
-      </div>
-
-      <div class="hobby-card">
-        <div class="hobby-img">
-          <img src="images/uiux.png" alt="Placeholder image representing cybersecurity code or terminal" loading="lazy">
-        </div>
-        <div class="hobby-content">
-          <h3><i class="fa-solid fa-palette"></i> UI/UX Design Learning</h3>
-          <p>I'm constantly expanding my knowledge in UI/UX design, studying design principles, user psychology, and keeping up with the latest trends to improve my craft and create better user experiences.</p>
-        </div>
-      </div>
-
-      <div class="hobby-card">
-        <div class="hobby-img">
-          <img src="images/tryhackme.png" alt="Placeholder image representing cybersecurity projects" loading="lazy">
-        </div>
-        <div class="hobby-content">
-          <h3><i class="fa-solid fa-shield-halved"></i> Cybersecurity Studies</h3>
-          <p>I enjoy reading about cybersecurity topics and practicing on TryHackMe. It's fascinating to learn about security concepts, vulnerabilities, and defensive techniques in an interactive environment.</p>
+        
+        <div class="interests-container">
+            <h3 class="interests-title" style="margin-top: 40px; border-top: 1px solid var(--border-color); padding-top: 30px;">Beyond the Screen</h3>
+            <div class="interests-grid blended">
+                <div class="interest-item highlight-card">
+                    <div class="achieve-gallery-mini">
+                        <img src="images/peso.jpg" alt="U-IGNITE 1st Place Certificate" class="zoom-crop">
+                        <img src="images/group.jpg" alt="Winning Team Photo" class="zoom-crop">
+                    </div>
+                    <h4>Competitive Journey</h4>
+                    <p>Secured 1st place at the **U-IGNITE Summit 2025** as the **Main System Analyst & UI/UX Designer**.</p>
+                </div>
+                
+                <div class="interest-item">
+                    <i class="fas fa-gamepad"></i>
+                    <h4>Gaming</h4>
+                    <p>Playing Valorant with friends to relax and enjoy some friendly competition during downtime.</p>
+                </div>
+                <div class="interest-item">
+                    <i class="fas fa-shield-halved"></i>
+                    <h4>Cybersecurity</h4>
+                    <p>Active on TryHackMe, practicing defense techniques to build a more secure web.</p>
+                </div>
+            </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- WEB DESIGN PORTFOLIO SECTION -->
   <section id="webdesign" class="section container" role="region" aria-labelledby="webdesign-heading">
     <h1 id="webdesign-heading">Web Design Showcase</h1>
     <p>Crafting user-friendly and visually appealing digital experiences. Here are some examples:</p>
@@ -188,7 +169,7 @@
             <span class="project-tag">Bootstrap / AOS / jQuery</span>
           </div>
           <div class="project-links">
-            <a href="webdesign1.html"><i class="fas fa-external-link-alt"></i> View Details</a>
+            <a href="webdesign1.html" class="view-details"><i class="fas fa-external-link-alt"></i> View Details</a>
           </div>
         </div>
       </div>
@@ -208,7 +189,7 @@
             <span class="project-tag">Bootstrap / AOS / jQuery</span>
           </div>
           <div class="project-links">
-            <a href="webdesign2.html"><i class="fas fa-external-link-alt"></i> View Details</a>
+            <a href="webdesign2.html" class="view-details"><i class="fas fa-external-link-alt"></i> View Details</a>
           </div>
         </div>
       </div>
@@ -226,14 +207,13 @@
             <span class="project-tag">Prototype</span>
           </div>
           <div class="project-links">
-            <a href="webdesign3.html"><i class="fas fa-external-link-alt"></i> View Details</a>
+            <a href="webdesign3.html" class="view-details"><i class="fas fa-external-link-alt"></i> View Details</a>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SERVICES SECTION -->
   <section id="service" class="section container" role="region" aria-labelledby="service-heading">
     <h1 id="service-heading">UI/UX Design Services</h1>
     <p>Crafting exceptional digital experiences through thoughtful design and innovative solutions that connect brands with their audiences.</p>
@@ -319,7 +299,6 @@
     </div>
 </section>
 
-  <!-- CONTACT SECTION -->
   <section id="contact" class="section" role="region" aria-labelledby="contact-heading">
     <div class="container">
       <div class="section-header">
@@ -428,7 +407,6 @@
   </section>
 </main>
 
-<!-- Footer -->
 <footer>
   <div class="footer-content">
     <div class="copyright">
