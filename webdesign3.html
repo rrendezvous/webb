@@ -3,13 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Laundry Shop Management System | Rendezvous</title>
+  <title>Laundry Shop | Rendezvous</title>
   <link rel="icon" href="images/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="stylesdetails.css">
 </head>
 <body>
-  <!-- Header section with logo and back navigation -->
   <header class="header">
     <div class="container">
       <div class="header-content">
@@ -17,32 +16,26 @@
           <img src="images/ren.jpg" alt="Rendezvous">
           <h2>Rendezvous</h2>
         </a>
-        <a href="index.html#webdesign" class="back-btn">
+        <a href="index.html#webdesign" class="back-btn" title="Back to Portfolio">
           <i class="fas fa-arrow-left"></i>
-          Back to Portfolio
         </a>
       </div>
     </div>
   </header>
 
-  <!-- Hero section with project title and overview -->
   <section class="hero">
     <div class="container">
       <div class="hero-content">
         <h1>Laundry Shop Management System</h1>
-        <p>A streamlined system designed for laundry businesses, featuring order tracking, customer notifications, user accounts, and automated payment management. The prototype showcases intuitive interfaces for both staff and customers to manage and monitor laundry orders efficiently.</p>
+        <p>A high-fidelity mobile and web application design for a modern laundry service provider. This project focuses on simplifying the chore of laundry through a clean, user-centric interface that manages orders, tracking, and payments seamlessly.</p>
+        
         <div class="project-tags">
           <span class="project-tag">Figma</span>
           <span class="project-tag">UI/UX Design</span>
-          <span class="project-tag">Prototype</span>
+          <span class="project-tag">Prototyping</span>
+          <span class="project-tag">Mobile-First</span>
         </div>
 
-        <div class="project-links">
-          <a href="https://github.com/rrendezvous/HEHE-i-didnt-upload-stuff-sa-github-sir" class="btn" target="_blank">
-            <i class="fab fa-github"></i>
-            View Code
-          </a>
-        </div>
       </div>
     </div>
   </section>
@@ -50,129 +43,63 @@
   <main class="main-content">
     <div class="container">
       
-      <!-- Project gallery section -->
       <section class="section">
-        <h2>Project Gallery</h2>
-        <div class="project-gallery">
-          <div class="gallery-item">
-            <img src="images/fig.png" alt="Dashboard Homepage">
-            <div class="gallery-caption">Staff Dashboard Homepage</div>
-          </div>
-          <div class="gallery-item">
-            <img src="images/fig2.png" alt="Shopping Experience">
-            <div class="gallery-caption">Customer Dashboard Homepage</div>
-          </div>
-          <div class="gallery-item">
-            <img src="images/figmobile.png" alt="Mobile Experience">
-            <div class="gallery-caption">Mobile Responsive Design</div>
-          </div>
-        </div>
-      </section>
+        <h2>Project Highlights</h2>
+        <div class="project-gallery" style="display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px;">
+          
+          <div class="gallery-item" style="grid-column: span 8; position: relative; border-radius: 16px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1);">
+            <span style="position: absolute; top: 15px; left: 15px; z-index: 2; font-size: 0.75rem; color: var(--primary); background: rgba(15, 15, 15, 0.7); backdrop-filter: blur(10px); padding: 6px 14px; border-radius: 30px; border: 1px solid rgba(255, 200, 87, 0.4); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600;">01. Service Dashboard</span>
+            <div style="background: #f8f9fa; height: 400px; display: flex; align-items: center; justify-content: center;">
+                <img src="images/fig.png" alt="Laundry Shop - Dashboard" style="width: 100%; height: 100%; object-fit: contain;">
+            </div>
+          </div>          
 
-      <!-- Project features section -->
-      <section class="section">
-        <div class="features-hero">
-          <h2>Core Features</h2>
-          <p>This prototype focuses on usability and clarity, aiming to simplify the experience for both customers and laundry shop staff. It demonstrates thoughtful layout, accessibility, and effective visual hierarchy.</p>
-        </div>
-        
-        <div class="features-container">
-          <div class="feature-card">
-            <div class="feature-header">
-              <div class="feature-icon">
-                <i class="fas fa-bell"></i>
-              </div>
+          <div class="feature-card" style="grid-column: span 4; margin-bottom: 0; padding: 40px; display: flex; flex-direction: column; justify-content: center; background: var(--card-bg); border-radius: 16px;">
+            <div class="feature-header" style="margin-bottom: 25px;">
+              <div class="feature-icon" style="width: 60px; height: 60px; font-size: 1.8rem;"><i class="fas fa-clock"></i></div>
               <div class="feature-title">
-                <h3>Order Tracking & Notifications</h3>
-                <div class="feature-subtitle">Customer Experience</div>
+                <h3 style="font-size: 1.4rem;">Live Tracking</h3>
+                <div class="feature-subtitle" style="color: var(--primary);">Status Updates</div>
               </div>
             </div>
-            <p class="feature-description">
-              Users receive real-time updates about the status of their laundry orders through the intuitive dashboard, improving service transparency and satisfaction.
+            <p class="feature-description" style="font-size: 1rem; color: var(--text-muted); line-height: 1.8;">
+                Real-time visibility into the laundry process—from pickup and washing to folding and final delivery.
             </p>
           </div>
           
-          <div class="feature-card">
-            <div class="feature-header">
-              <div class="feature-icon">
-                <i class="fas fa-user-cog"></i>
-              </div>
+          <div class="feature-card" style="grid-column: span 4; margin-bottom: 0; padding: 40px; display: flex; flex-direction: column; justify-content: center; background: var(--card-bg); border-radius: 16px;">
+            <div class="feature-header" style="margin-bottom: 25px;">
+              <div class="feature-icon" style="width: 60px; height: 60px; font-size: 1.8rem;"><i class="fas fa-tshirt"></i></div>
               <div class="feature-title">
-                <h3>Staff Workflow Interface</h3>
-                <div class="feature-subtitle">Management Dashboard</div>
+                <h3>Custom Care</h3>
+                <div class="feature-subtitle" style="color: var(--primary);">Service Options</div>
               </div>
             </div>
-            <p class="feature-description">
-              The staff interface is optimized for quick updates, easy status management, and access to customer profiles—streamlining day-to-day operations.
+            <p class="feature-description" style="font-size: 1rem; color: var(--text-muted); line-height: 1.8;">
+                Allowing users to specify detergent types, water temperature, and folding preferences for a personalized touch.
             </p>
           </div>
-          
-        </div>
-      </section>
 
-      <!-- Project stats section -->
-      <section class="project-stats">
-        <div class="stats-grid">
-          <div class="stat-item">
-            <span class="stat-number">2</span>
-            <div class="stat-label">Weeks Design Time</div>
-          </div>
-          <div class="stat-item">
-            <span class="stat-number">100%</span>
-            <div class="stat-label">Mobile Responsive</div>
-          </div>
-          <div class="stat-item">
-            <span class="stat-number">3</span>
-            <div class="stat-label">Tools Used</div>
-          </div>
-          <div class="stat-item">
-            <span class="stat-number">2</span>
-            <div class="stat-label">Complete Prototypes</div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Project tech stack section -->
-      <section class="tech-showcase">
-        <h3>Technology Stack</h3>
-        <div class="tech-categories">
-          <div class="tech-category">
-            <h4>Design Tools</h4>
-            <div class="tech-tags">
-              <span class="tech-tag">Figma</span>
-              <span class="tech-tag">FigJam</span>
-              <span class="tech-tag">Google Fonts</span>
+          <div class="gallery-item" style="grid-column: span 5; position: relative; border-radius: 16px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1);">
+            <span style="position: absolute; top: 15px; left: 15px; z-index: 2; font-size: 0.75rem; color: var(--primary); background: rgba(15, 15, 15, 0.7); backdrop-filter: blur(10px); padding: 6px 14px; border-radius: 30px; border: 1px solid rgba(255, 200, 87, 0.4); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600;">02. Order Flow</span>
+            <div style="background: white; height: 320px; display: flex; align-items: center; justify-content: center; padding: 20px;">
+                <img src="images/fig3.png" alt="Laundry Order Flow" style="width: 100%; height: 100%; object-fit: contain; transform: scale(1.1);">
             </div>
           </div>
-          <div class="tech-category">
-            <h4>Process</h4>
-            <div class="tech-tags">
-              <span class="tech-tag">Wireframing</span>
-              <span class="tech-tag">User Flows</span>
-              <span class="tech-tag">Prototype Animation</span>
+
+          <div class="gallery-item" style="grid-column: span 3; position: relative; border-radius: 16px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1);">
+            <span style="position: absolute; top: 15px; left: 15px; z-index: 2; font-size: 0.7rem; color: var(--primary); background: rgba(15, 15, 15, 0.7); backdrop-filter: blur(10px); padding: 6px 14px; border-radius: 30px; border: 1px solid rgba(255, 200, 87, 0.4); text-transform: uppercase; letter-spacing: 1.2px; font-weight: 600;">03. Mobile App</span>
+            <div style="height: 320px; overflow: hidden; background: var(--card-bg);">
+                <img src="images/figmobile.png" alt="Laundry Mobile View" style="width: 100%; height: 100%; object-fit: cover; object-position: center;">
             </div>
           </div>
+
         </div>
       </section>
 
-      <!-- Project challenges and solutions section -->
-      <section class="section challenges-section">
-        <h2>Challenges & Solutions</h2>
-        <div class="challenge-solution">
-          <div class="challenge-card">
-            <h4><i class="fas fa-exclamation-triangle"></i> Challenge</h4>
-            <p>Designing a dual-interface experience that caters to both customers and staff, each with different goals and workflows, while maintaining visual consistency and usability.</p>
-          </div>
-          <div class="solution-card">
-            <h4><i class="fas fa-lightbulb"></i> Solution</h4>
-            <p>Created distinct user journeys for staff and customers in Figma, using shared design components to ensure consistency, and user-tested both flows to improve clarity and accessibility.</p>
-          </div>
-        </div>
-      </section>
     </div>
   </main>
 
-  <!-- Footer -->
   <footer class="footer">
     <div class="container">
       <p>&copy; 2025 Rendezvous. All Rights Reserved.</p>
