@@ -454,6 +454,7 @@ function setupLazyLoading() {
               }
               img.removeAttribute('loading');
               img.style.opacity = 1;
+              img.classList.add('loaded');
               img.classList.add('error');
               console.warn('Image failed to load:', img.dataset.src || img.src);
               resolve(false);
@@ -513,11 +514,9 @@ function setupLazyLoading() {
  * Setup animations using Intersection Observer
  */
 function setupScrollAnimations() {
-  const elementsToAnimate = document.querySelectorAll(
-    '.hobby-card, .project-card, .service-card, .about-image, .about-content h3, .about-content p, .contact-item, .contact-form'
-  );
+  const animTargets = document.querySelectorAll('.project-card, .service-card, .interest-item, .about-image');
   
-  if (!('IntersectionObserver' in window) || elementsToAnimate.length === 0) return;
+  if (!('IntersectionObserver' in window)) return;
   
   const scrollObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -526,13 +525,9 @@ function setupScrollAnimations() {
         scrollObserver.unobserve(entry.target);
       }
     });
-  }, {
-    threshold: 0.1
-  });
+  }, { threshold: 0.15 });
 
-  elementsToAnimate.forEach(el => {
-    if (el) scrollObserver.observe(el);
-  });
+  animTargets.forEach(el => scrollObserver.observe(el));
 }
 
 /**
@@ -702,31 +697,5 @@ document.addEventListener('DOMContentLoaded', runTypewriterAnimation);
 document.querySelectorAll('a[href="#home"]').forEach(link => {
   link.addEventListener('click', () => {
     setTimeout(runTypewriterAnimation, 10); // slight delay allows view to update
-  });
-});
-
-// Add scroll animation
-const observerOptions = {
-  threshold: 0.1,
-  rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-      if (entry.isIntersecting) {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
-      }
-  });
-}, observerOptions);
-
-// Initialize cards with animation
-document.addEventListener('DOMContentLoaded', () => {
-  const cards = document.querySelectorAll('.service-card');
-  cards.forEach((card, index) => {
-      card.style.opacity = '0';
-      card.style.transform = 'translateY(30px)';
-      card.style.transition = `opacity 0.6s ease ${index * 0.2}s, transform 0.6s ease ${index * 0.2}s`;
-      observer.observe(card);
   });
 });

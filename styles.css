@@ -864,133 +864,145 @@ textarea:focus-visible {
 }
 
 /* --- REFINED ABOUT SECTION (NO DOUBLE SCROLL) --- */
-/* --- REFINED ABOUT SECTION --- */
+/* --- SUBTLE PREMIUM ABOUT SECTION --- */
 #about .about-container {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
   gap: 50px;
-  align-items: flex-start;
+  align-items: start;
 }
 
 #about .about-visual-grid {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  max-width: 450px; /* Prevents images from getting "super big" on wide screens */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
 }
 
-#about .about-image {
-  width: 100%;
+.about-image {
   border-radius: 20px;
   overflow: hidden;
   border: 1px solid var(--border-color);
+  background: var(--card-bg);
   box-shadow: var(--shadow-sm);
+  transition: transform 0.4s ease;
 }
 
-#about .about-image img {
+.about-image.dominant {
+  grid-column: span 2;
+  height: 380px;
+}
+
+.about-image.accent-one, 
+.about-image.accent-two {
+  height: 160px;
+}
+
+.about-image img {
   width: 100%;
-  height: auto; /* Maintains natural proportions */
+  height: 100%;
+  object-fit: cover;
   display: block;
 }
 
-#about .about-content {
-  flex: 1.2;
-}
-
-/* Skills Arsenal */
+/* Subtle Skill Tags (Figma, Laravel, etc.) */
 .skills-showcase {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin: 25px 0;
+  gap: 8px;
+  margin: 15px 0;
 }
 
 .skill-tag {
-  background: var(--card-bg);
-  padding: 8px 16px;
-  border-radius: 10px;
-  font-size: 0.85rem;
+  background: rgba(255, 255, 255, 0.03); /* Very subtle transparent grey */
+  color: var(--text-muted); /* Lower contrast text */
+  padding: 4px 12px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 400;
   border: 1px solid var(--border-color);
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
+  transition: all 0.3s ease;
 }
 
-/* Bento Achievement Grid */
+.skill-tag i {
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+.skill-tag:hover {
+  background: rgba(255, 200, 87, 0.05);
+  color: var(--primary);
+  border-color: rgba(255, 200, 87, 0.2);
+}
+
+/* Bento Achievements */
 .interests-grid.bento-layout {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 15px;
-  margin-top: 25px;
+  margin-top: 30px;
 }
 
 .interest-item {
   background: var(--card-bg);
   padding: 20px;
-  border-radius: 18px;
+  border-radius: 20px;
   border: 1px solid var(--border-color);
 }
 
 .interest-item.highlight-card {
   grid-column: span 2;
-  border-left: 4px solid var(--primary);
+  border-left: 3px solid var(--primary);
 }
 
+/* --- MOBILE RESPONSIVE TIGHTENING --- */
+@media screen and (max-width: 992px) {
+  #about .about-container {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  #about .about-visual-grid {
+    order: -1; 
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .about-image.dominant { height: 260px; }
+  .about-image.accent-one, 
+  .about-image.accent-two { height: 110px; }
+}
+
+
+
+/* --- STRICT LIMIT ON BEYOND THE SCREEN IMAGES --- */
 .achieve-gallery-mini {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 15px;
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important; /* Forces 2 equal columns */
+  gap: 12px !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin-top: 15px !important;
 }
 
 .achieve-gallery-mini img {
-  width: 50%;
-  height: 120px;
-  object-fit: cover;
-  border-radius: 10px;
+  width: 100% !important;
+  height: 140px !important; /* Hard limit on height */
+  max-height: 140px !important;
+  object-fit: cover !important; /* Crops image to fit the box instead of stretching */
+  border-radius: 12px !important;
+  display: block !important;
 }
 
-/* --- RESPONSIVE OVERRIDES --- */
-
-/* Tablets & Small Laptops */
-@media screen and (max-width: 1024px) {
-  #about .about-container {
-    flex-direction: column; /* Stack vertically */
-    align-items: center;
-  }
-
-  #about .about-visual-grid {
-    max-width: 600px; /* Allows it to be wider on tablet but still contained */
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Side-by-side secondary images */
-  }
-
-  .about-image.dominant {
-    grid-column: span 2;
-  }
-}
-
-/* Mobile Phones */
+/* Mobile hierarchy adjustment */
 @media screen and (max-width: 768px) {
-  #about .about-visual-grid {
-    display: flex;
-    flex-direction: column;
-    max-width: 100%;
-  }
-
-  .interests-grid.bento-layout {
-    grid-template-columns: 1fr; /* Full stack for mobile */
-  }
-
-  .interest-item.highlight-card {
-    grid-column: span 1;
-  }
-
-  /* Reset order so the main profile image is always first */
-  .about-image.dominant {
-    order: -1;
+  .achieve-gallery-mini img {
+    height: 110px !important; /* Even smaller for mobile phones */
   }
 }
+
 
 /* --- GLOBAL UI CARD POLISH (Projects & Services) --- */
 .hobby-card,
