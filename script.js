@@ -525,14 +525,16 @@ function initPageFromHash() {
 /**
  * Set up all event listeners
  */
+/**
+ * Set up all event listeners
+ */
 function setupEventListeners() {
-  // Scroll event
+  // 1. Existing Scroll event
   window.addEventListener('scroll', handleScroll, { passive: true });
   
-  // History navigation
+  // 2. Existing History navigation
   window.addEventListener('popstate', (event) => {
     let targetSectionId = 'home';
-    
     if (event.state?.section) {
       targetSectionId = event.state.section;
     } else {
@@ -541,23 +543,27 @@ function setupEventListeners() {
         targetSectionId = hash;
       }
     }
-    
     showSection(targetSectionId, true);
   });
   
-  // Back to top button
+  // 3. Existing Back to top button
   addSafeEventListener(elements.backToTopButton, 'click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
   
-  // Contact form
-  const contactForm = getElement('contactForm');
-  addSafeEventListener(contactForm, 'submit', handleFormSubmit);
+  // --- THE FIX STARTS HERE ---
+  // 4. Contact form logic: Find the form by the ID 'contactForm' from your HTML
+  const contactForm = document.getElementById('contactForm');
   
-  // Form input validation
-  contactForm?.querySelectorAll('[required]').forEach(input => {
-    addSafeEventListener(input, 'input', handleFormInput);
-  });
+  if (contactForm) {
+    // Correctly attach the submit handler
+    contactForm.addEventListener('submit', handleFormSubmit);
+    
+    // Correctly attach validation to each required input
+    contactForm.querySelectorAll('[required]').forEach(input => {
+      input.addEventListener('input', handleFormInput);
+    });
+  }
 }
 
 /**
