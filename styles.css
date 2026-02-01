@@ -28,6 +28,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Prevent header from covering section titles */
   font-size: 16px;
 }
 
@@ -221,11 +222,6 @@ textarea:focus-visible {
   box-shadow: 0 0 8px var(--primary);
   display: block !important; 
   animation: underline-grow 0.3s ease forwards;
-}
-
-@keyframes underline-grow {
-  from { width: 0; opacity: 0; }
-  to { width: 25px; opacity: 1; }
 }
 
 #webdesign-link[aria-current="page"]::after,
@@ -640,12 +636,6 @@ textarea:focus-visible {
   transform: none !important;
 }
 
-/* Ensure smooth scrolling globally */
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 80px; /* Essential to prevent header from covering titles */
-}
-
 @keyframes fadeInSection {
   from { opacity: 0; transform: translateY(15px); }
   to { opacity: 1; transform: translateY(0); }
@@ -653,19 +643,6 @@ html {
 
 /* Section Headings */
 
-/* --- Unified Section Underlines with Subtle Glow --- */
-.section h1 {
-  position: relative;
-  display: block;
-  margin-bottom: 40px;
-  padding-bottom: 15px;
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--text);
-  text-align: inherit;
-}
-
-/* --- Unified Section Underlines --- */
 /* --- Unified Section Underlines with Subtle Glow --- */
 .section h1 {
   position: relative;
@@ -737,8 +714,8 @@ html {
   flex: 0 1 600px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Keeps the line locked to the left side of the text */
-  text-align: left;
+  align-items: center; /* Center heading + paragraph block */
+  text-align: center;
 }
 
 /* Stable container for Name + Underline */
@@ -750,69 +727,16 @@ html {
   width: 100%;
 }
 
-/* Compact Typography */
-/* --- Desktop & Mobile Combined Logic --- */
-.hero h1 {
-  /* This one line handles the scaling for both devices */
-  font-size: clamp(1.8rem, 7vw, 3.8rem) !important; 
-  
-  margin-bottom: 2px !important;
-  font-weight: 800;
-  line-height: 1.05; 
-  letter-spacing: -0.03em;
-  color: var(--text);
-}
-
-/* Anchored Chrome Shimmer */
-.hero h1 span {
-  color: var(--primary);
-  background: linear-gradient(120deg, var(--primary) 20%, #ffffff 50%, var(--primary) 80%);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  display: inline-block;
-  animation: smooth-shimmer 4s linear infinite;
-}
-
-/* Stabilized Underline */
-.home-underline {
-  width: 75px;
-  height: 6px;
-  background: linear-gradient(90deg, var(--primary), var(--primary-light));
-  border-radius: 3px;
-  margin: 0 0 20px 0 !important;
-  box-shadow: 0 0 15px rgba(255, 200, 87, 0.5);
-}
-
-/* The Typewriter (Bulletproof Syntax) */
-.typewriter {
-  display: inline-block !important;
-  white-space: nowrap !important;
-  overflow: hidden !important;
-  border-right: 3px solid var(--primary);
-  width: fit-content;
-  animation: typing 3.5s steps(40, end) forwards, 
-             blink-caret 0.75s step-end infinite;
-}
-
 /* --- High-Fidelity Compact Paragraph --- */
 .hero-content p {
   font-size: 1.05rem !important;     /* Slightly smaller for better contrast with the H1 */
   color: var(--text-muted);
   line-height: 1.5 !important;       /* Tightens the vertical space significantly */
   max-width: 460px !important;       /* Narrower width to group it with the 'Hi' spine */
-  margin-bottom: 30px !important;
+  margin: 0 auto 30px !important;
+  text-align: center !important;
   font-weight: 400;
   letter-spacing: 0.01em;            /* Subtle professional spacing */
-}
-
-.hero-content {
-  flex: 0 1 600px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start; /* Locks everything to the left side */
-  text-align: left;
 }
 
 /* Stable container to protect the typewriter from flexbox squishing */
@@ -822,66 +746,6 @@ html {
   margin-bottom: 10px;
   letter-spacing: .05em; /* Helps the steps() calculation stay smooth */
   will-change: width;    /* Tells the browser to optimize for this move */
-}
-
-/* 3. Anchoring the Underline closer to the Text */
-.home-underline {
-  width: 75px;
-  height: 6px;
-  background: linear-gradient(90deg, var(--primary), var(--primary-light));
-  border-radius: 3px;
-  margin: 0 0 20px 0 !important; /* Consistent spacing before paragraph */
-  box-shadow: 0 0 15px rgba(255, 200, 87, 0.5);
-}
-/* --- Restored & Stabilized Typewriter --- */
-.typewriter {
-  display: inline-block !important;
-  white-space: nowrap !important;
-  overflow: hidden !important;
-  border-right: 3px solid var(--primary);
-  width: fit-content; /* Your default state is visible */
-  
-  /* Separating these prevents the 'semicolon expected' editor error */
-  animation-name: typing, blink-caret !important;
-  animation-duration: 3.5s, 0.75s !important;
-  animation-timing-function: steps(40, end), step-end !important;
-  animation-iteration-count: 1, infinite !important;
-  animation-fill-mode: forwards, none !important; /* 'forwards' keeps the text visible */
-}
-
-/* Ensure the cursor stops blinking when typing finishes */
-.typewriter.typing-complete {
-  border-right-color: transparent !important;
-}
-
-/* --- Shimmer & Tilt Fix --- */
-.hero h1 span {
-  color: var(--primary);
-  background: linear-gradient(120deg, var(--primary) 20%, #ffffff 50%, var(--primary) 80%);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  display: inline-block;
-  animation: smooth-shimmer 4s linear infinite;
-}
-
-.hero h1:hover span {
-  transform: none !important; /* Kills the weird tilt/rotate */
-}
-
-@keyframes typing {
-  from { width: 0; }
-  to { width: 100%; }
-}
-
-.hero h1 {
-  font-size: clamp(2.8rem, 6vw, 4.2rem);
-  margin-bottom: 2px !important; /* Tightens the gap between name and line */
-  font-weight: 800;
-  line-height: 1.05;
-  letter-spacing: -0.03em;
-  color: var(--text);
 }
 
 /* 3. Ensure the Image Container is part of the center-logic */
@@ -904,7 +768,7 @@ html {
   }
 
   #home.section {
-    padding-top: 30px;
+    padding-top: 80px;
     padding-bottom: 30px;
   }
 
@@ -955,6 +819,35 @@ html {
     margin: 15px auto 25px !important;
     max-width: 90% !important;
   }
+
+  /* Mobile hero layout to match reference: image centered, text left-aligned */
+  #home .hero-image {
+    order: -1 !important;
+    width: 220px !important;
+    height: 220px !important;
+    margin: 0 auto 20px !important;
+  }
+
+  #home .hero-content {
+    align-items: center !important;
+    text-align: center !important;
+    width: 100% !important;
+    max-width: 320px !important;
+    margin: 0 auto !important;
+  }
+
+  .hero-content p {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    max-width: 320px !important;
+    text-align: center !important;
+  }
+
+  .hero-btns {
+    align-items: center !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
 }
 
   /* 2. Image: Force to Top and Scale */
@@ -995,19 +888,20 @@ html {
   }
 
   @media screen and (max-width: 992px) {
-  /* 1. Force the container to be the exact width of the text */
+  /* 1. Keep the typewriter aligned to the left */
   .typewriter-container {
-    display: inline-flex !important; /* Shrinks container to fit the text */
+    display: flex !important;
     flex-direction: column !important;
     align-items: flex-start !important; /* Aligns the line to the start of 'Hi' */
-    width: auto !important; 
-    margin: 0 auto 20px !important; /* Centers the whole 'text + line' group */
+    width: fit-content !important;
+    margin: 0 auto 20px !important;
+    text-align: center !important;
   }
 
   /* 2. Precision placement for the line */
   .home-underline {
     width: 45px !important; /* Shorter to fit strictly under 'Hi' */
-    margin: 4px 0 0 0 !important; /* Removes auto-centering to lock it left */
+    margin: clamp(-10px, -2vw, -4px) 0 18px 0 !important; /* Responsive lift under "Hi" */
     align-self: flex-start !important; 
     height: 4px !important;
   }
@@ -1019,32 +913,10 @@ html {
     margin: 0 auto 25px !important;  /* Horizontal centering */
   }
 }
-@keyframes slideInLeft {
-  from { opacity: 0; transform: translateX(-30px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-
 /* Typewriter Effect Styles */
 .typewriter-wrapper {
   width: 100%;
   display: block;
-}
-
-.typewriter {
-  display: inline-block; /* Critical for width-based typing */
-  white-space: nowrap;
-  overflow: hidden;
-  border-right: 3px solid var(--primary);
-  margin: 0; 
-  max-width: fit-content;
-  /* Sync this time with your script.js (3.5s) */
-  animation: 
-    typing 3.5s steps(40, end),
-    blink-caret 0.75s step-end infinite;
-}
-
-.typewriter.typing-complete {
-  border-right: none;
 }
 
 /* Hero Image Effects */
@@ -1081,33 +953,6 @@ html {
   text-align: left;
 }
 
-/* 3. Smooth Chrome Shimmer (Fixed jitter) */
-.hero h1 span {
-  color: var(--primary);
-  background: linear-gradient(
-    120deg, 
-    var(--primary) 20%, 
-    #ffffff 50%, 
-    var(--primary) 80%
-  );
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  display: inline-block;
-  animation: smooth-shimmer 4s linear infinite;
-}
-
-/* 4. Remove the 'weird' tilting hover effect */
-.hero h1:hover span {
-  transform: none !important; 
-}
-
-@keyframes smooth-shimmer {
-  0% { background-position: 200% center; } /* */
-  100% { background-position: -200% center; } /* */
-}
-
 @keyframes slideInLeft {
   from { 
     opacity: 0; 
@@ -1119,21 +964,10 @@ html {
   }
 }
 
-/* Typewriter stuff */
+/* Typewriter timing tweak for small screens */
 @media screen and (max-width: 768px) {
-  .typewriter {
-    animation: 
-      typing 3s steps(30, end),
-      blink-caret 0.75s step-end infinite;
-  }
-  
-  @keyframes typing {
-    from { 
-      width: 0;
-    }
-    to { 
-      width: 100%;
-    }
+  .typewriter .tw-text {
+    animation-duration: 3s, 0.75s;
   }
 }
 
@@ -2457,6 +2291,24 @@ footer {
     font-size: 1rem;
   }
 
+  /* Mobile: keep heading centered while underline stays under "Hi" */
+  #home .typewriter-container {
+    width: fit-content !important;
+    margin: 0 auto 10px !important;
+    align-items: center !important;
+    text-align: left !important;
+  }
+
+  #home .typewriter {
+    margin: 0 !important;
+  }
+
+  #home .home-underline {
+    margin: clamp(-10px, -2vw, -4px) auto 18px auto !important;
+    align-self: center !important;
+    transform: translateX(var(--hi-offset, 0px)); /* shift under "Hi" without moving text */
+  }
+
   /* Mobile Grid Overrides */
   #about .interests-grid.blended {
     grid-template-columns: 1fr; /* Stacked bento grid for mobile */
@@ -3087,21 +2939,17 @@ body:not(.transitioning) {
   overflow: visible;
 }
 
-/* 2. Anchored Underline specifically for Desktop */
-.home-underline {
-  width: 75px;
-  height: 6px;
-  background: linear-gradient(90deg, var(--primary), var(--primary-light));
-  border-radius: 3px;
-  margin: 0 0 20px 0 !important; /* Fixed gap before paragraph */
-  box-shadow: 0 0 15px rgba(255, 200, 87, 0.5);
-}
-
 .typewriter-container {
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Keeps the line and text vertically stacked on the left */
-  margin-bottom: 10px;
+  align-items: flex-start; /* Keep underline under "Hi" */
+  width: fit-content;
+  margin: 0 auto 10px;
+  text-align: left;
+}
+
+.typewriter-container .typewriter {
+  margin: 0;
 }
 
 /* 2. The Permanent Line: Locked under 'Hi' */
@@ -3110,7 +2958,9 @@ body:not(.transitioning) {
   height: 5px;
   background: linear-gradient(90deg, var(--primary), var(--primary-light));
   border-radius: 3px;
-  margin: 0 0 25px 0;    /* Fixed spacing before the paragraph */
+  margin: 0 0 25px 0;    /* Align under "Hi" */
+  align-self: flex-start; /* Lock underline to "Hi" inside centered container */
+  transform: translateX(clamp(-24px, var(--hi-offset, 0px), 0px)); /* Keep underline near "Hi" */
   box-shadow: 0 0 15px rgba(255, 200, 87, 0.6);
   opacity: 1 !important;
   visibility: visible !important;
@@ -3121,13 +2971,30 @@ body:not(.transitioning) {
   display: inline-block !important;
   white-space: nowrap;
   overflow: hidden;
+  color: var(--text) !important;
+  -webkit-text-fill-color: var(--text) !important;
+  width: var(--tw-width, 0px);
+  visibility: hidden; /* avoid initial layout jump before width is set */
+}
+
+.typewriter .tw-text {
+  display: inline-block;
+  overflow: hidden;
+  color: var(--text) !important;
+  -webkit-text-fill-color: var(--text) !important;
   border-right: 3px solid var(--primary);
-  width: fit-content;
-  animation-name: typing, blink-caret !important;
-  animation-duration: 3.5s, 0.75s !important;
-  animation-timing-function: steps(40, end), step-end !important;
-  animation-iteration-count: 1, infinite !important;
-  animation-fill-mode: forwards, none !important;
+  width: 0;
+  will-change: width;
+  animation: none;
+}
+
+.typewriter.ready {
+  visibility: visible;
+}
+
+.typewriter.is-typing .tw-text {
+  animation: typing var(--tw-duration, 3.5s) steps(var(--tw-steps, 40), end) forwards,
+             blink-caret 0.6s ease-in-out infinite;
 }
 
 /* Removes the tilting 'weird' animation */
@@ -3136,15 +3003,11 @@ body:not(.transitioning) {
 }
 
 @keyframes typing {
-  from { 
-    width: 0; 
-  }
-  to { 
-    width: 100%; /* Ensures the full text is revealed */
-  }
+  from { width: 0; }
+  to { width: var(--tw-width, 100%); }
 }
 
 @keyframes blink-caret {
-  from, to { border-color: transparent; }
-  50% { border-color: var(--primary); } /* */
+  0%, 100% { border-color: rgba(255, 200, 87, 0.05); }
+  50% { border-color: rgba(255, 200, 87, 0.9); }
 }

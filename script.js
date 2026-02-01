@@ -612,18 +612,56 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function runTypewriterAnimation() {
   const typewriter = document.querySelector('.typewriter');
+  const underline = document.querySelector('.home-underline');
   if (!typewriter) return;
 
+  // Wrap content once so we can reveal text without layout shifting
+  let textWrap = typewriter.querySelector('.tw-text');
+  if (!textWrap) {
+    textWrap = document.createElement('span');
+    textWrap.className = 'tw-text';
+    while (typewriter.firstChild) {
+      textWrap.appendChild(typewriter.firstChild);
+    }
+    typewriter.appendChild(textWrap);
+  }
+
   // 1. Clear previous state
-  typewriter.style.animation = 'none';
+  textWrap.style.animation = 'none';
+  typewriter.classList.remove('is-typing', 'ready');
   typewriter.offsetHeight; // Force reflow
+  // Set the final width for a true "typing" reveal
+  typewriter.style.setProperty('--tw-width', `${textWrap.scrollWidth}px`);
+  typewriter.style.setProperty('--tw-steps', '40');
+  // Keep original smooth timing
+  typewriter.style.setProperty('--tw-duration', '3.5s');
+  typewriter.style.width = `${textWrap.scrollWidth}px`;
+
+  // Compute offset so the underline sits under "Hi" while the line is centered
+  const computed = window.getComputedStyle(typewriter);
+  const measurer = document.createElement('span');
+  measurer.textContent = 'Hi';
+  measurer.style.position = 'absolute';
+  measurer.style.visibility = 'hidden';
+  measurer.style.whiteSpace = 'nowrap';
+  measurer.style.font = computed.font;
+  measurer.style.letterSpacing = computed.letterSpacing;
+  document.body.appendChild(measurer);
+  const hiWidth = measurer.getBoundingClientRect().width;
+  measurer.remove();
+  const fullWidth = textWrap.scrollWidth || 0;
+  const hiOffset = (hiWidth - fullWidth) / 2 - 14;
+  if (underline) {
+    underline.style.setProperty('--hi-offset', `${hiOffset}px`);
+  }
   
   // 2. Re-apply animation with the 'forwards' logic
-  typewriter.style.animation = 'typing 3.5s steps(40, end) forwards, blink-caret 0.75s step-end infinite';
+  typewriter.classList.add('ready', 'is-typing');
+  textWrap.style.animation = 'typing 3.5s steps(var(--tw-steps, 40), end) forwards, blink-caret 0.75s step-end infinite';
 
   // 3. Optional: Remove the cursor after it's done so it looks clean
   setTimeout(() => {
-    typewriter.style.borderRight = 'none';
+    textWrap.style.borderRight = 'none';
   }, 3500); 
 }
 
