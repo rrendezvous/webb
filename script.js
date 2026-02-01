@@ -628,6 +628,7 @@ function runTypewriterAnimation() {
 
   // 1. Clear previous state
   textWrap.style.animation = 'none';
+  textWrap.style.borderRight = '';
   typewriter.classList.remove('is-typing', 'ready');
   typewriter.offsetHeight; // Force reflow
   // Set the final width for a true "typing" reveal
