@@ -665,14 +665,30 @@ function runTypewriterAnimation() {
   }, 3500); 
 }
 
+function triggerTypewriterAnimation() {
+  const run = () => requestAnimationFrame(runTypewriterAnimation);
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(run);
+  } else {
+    run();
+  }
+}
+
 // Run on page load
-document.addEventListener('DOMContentLoaded', runTypewriterAnimation);
+document.addEventListener('DOMContentLoaded', triggerTypewriterAnimation);
 
 // Run again whenever "Home" is clicked
 document.querySelectorAll('a[href="#home"]').forEach(link => {
   link.addEventListener('click', () => {
-    setTimeout(runTypewriterAnimation, 10); // slight delay allows view to update
+    setTimeout(triggerTypewriterAnimation, 10); // slight delay allows view to update
   });
+});
+
+// Recalculate on resize to avoid width mismatches on desktop
+let typewriterResizeTimer;
+window.addEventListener('resize', () => {
+  clearTimeout(typewriterResizeTimer);
+  typewriterResizeTimer = setTimeout(triggerTypewriterAnimation, 150);
 });
 
 /**
