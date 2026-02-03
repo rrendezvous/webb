@@ -14,9 +14,11 @@
   --border-color: rgba(255, 255, 255, 0.1);
   --focus-ring: 0 0 0 3px rgba(255, 200, 87, 0.5);
   --shadow-sm: 0 4px 10px rgba(0, 0, 0, 0.2);
-  --shadow-md: 0 12px 30px rgba(0, 0, 0, 0.4); /* Refined SaaS-style depth */
+  --shadow-md: 0 12px 30px rgba(0, 0, 0, 0.4);
+  /* Refined SaaS-style depth */
   --shadow-lg: 0 20px 45px rgba(0, 0, 0, 0.5);
-  --glass-bg: rgba(24, 24, 32, 0.85); /* For elevated transparency effects */
+  --glass-bg: rgba(24, 24, 32, 0.85);
+  /* For elevated transparency effects */
 }
 
 /* --- Base --- */
@@ -28,7 +30,8 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 80px; /* Prevent header from covering section titles */
+  scroll-padding-top: 80px;
+  /* Prevent header from covering section titles */
   font-size: 16px;
 }
 
@@ -83,7 +86,7 @@ textarea:focus-visible {
   box-shadow: var(--focus-ring);
 }
 
-.btn:focus-visible, 
+.btn:focus-visible,
 .submit-btn:focus-visible {
   box-shadow: var(--focus-ring), 0 5px 15px rgba(255, 200, 87, 0.25);
 }
@@ -126,7 +129,8 @@ textarea:focus-visible {
 .desktop-header.scrolled {
   height: 60px;
   background-color: var(--glass-bg);
-  backdrop-filter: blur(12px); /* Glassmorphism effect */
+  backdrop-filter: blur(12px);
+  /* Glassmorphism effect */
   box-shadow: var(--shadow-md);
   border-bottom: 1px solid var(--border-color);
 }
@@ -177,7 +181,7 @@ textarea:focus-visible {
   gap: 5px;
 }
 
-.desktop-nav a, 
+.desktop-nav a,
 .dropdown-trigger {
   color: var(--text-muted);
   text-decoration: none;
@@ -194,7 +198,7 @@ textarea:focus-visible {
   text-align: left;
 }
 
-.desktop-nav a:hover, 
+.desktop-nav a:hover,
 .dropdown-trigger:hover {
   background-color: var(--hover);
   color: var(--text);
@@ -220,7 +224,7 @@ textarea:focus-visible {
   background-color: var(--primary);
   border-radius: 3px;
   box-shadow: 0 0 8px var(--primary);
-  display: block !important; 
+  display: block !important;
   animation: underline-grow 0.3s ease forwards;
 }
 
@@ -230,8 +234,13 @@ textarea:focus-visible {
 }
 
 @keyframes underline-grow {
-  from { width: 0; }
-  to { width: 25px; }
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 25px;
+  }
 }
 
 /* Desktop Dropdown */
@@ -252,7 +261,7 @@ textarea:focus-visible {
   font-size: 0.7em;
 }
 
-.desktop-dropdown.open > .dropdown-trigger .chevron {
+.desktop-dropdown.open>.dropdown-trigger .chevron {
   transform: rotate(180deg);
 }
 
@@ -264,7 +273,8 @@ textarea:focus-visible {
   background-color: var(--card-bg);
   min-width: 190px;
   box-shadow: var(--shadow-md);
-  border-radius: 12px; /* Standardized modern radius */
+  border-radius: 12px;
+  /* Standardized modern radius */
   z-index: 1001;
   padding: 8px 0;
   opacity: 0;
@@ -421,7 +431,7 @@ textarea:focus-visible {
   flex-grow: 1;
 }
 
-.mobile-nav a, 
+.mobile-nav a,
 .dropdown-btn {
   display: flex;
   align-items: center;
@@ -440,7 +450,7 @@ textarea:focus-visible {
   border-left: 4px solid transparent;
 }
 
-.mobile-nav a i, 
+.mobile-nav a i,
 .dropdown-btn i {
   width: 20px;
   text-align: center;
@@ -449,19 +459,19 @@ textarea:focus-visible {
   transition: color 0.2s ease;
 }
 
-.mobile-nav a:hover, 
+.mobile-nav a:hover,
 .dropdown-btn:hover {
   background-color: var(--hover);
   color: var(--text);
 }
 
-.mobile-nav a:hover i, 
+.mobile-nav a:hover i,
 .dropdown-btn:hover i {
   color: var(--primary);
 }
 
 /* Active state for mobile nav */
-.mobile-nav a[aria-current="page"], 
+.mobile-nav a[aria-current="page"],
 .dropdown-btn.active {
   background-color: var(--hover);
   color: var(--text);
@@ -469,7 +479,7 @@ textarea:focus-visible {
   font-weight: 600;
 }
 
-.mobile-nav a[aria-current="page"] i, 
+.mobile-nav a[aria-current="page"] i,
 .dropdown-btn.active i {
   color: var(--primary);
 }
@@ -590,7 +600,7 @@ textarea:focus-visible {
 }
 
 .toggle-btn:hover {
-  background-color: rgba(255,255,255,0.1);
+  background-color: rgba(255, 255, 255, 0.1);
   color: var(--primary);
 }
 
@@ -602,7 +612,7 @@ textarea:focus-visible {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.6);
+  background-color: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(5px);
   z-index: 1050;
   opacity: 0;
@@ -629,16 +639,27 @@ textarea:focus-visible {
 } } */
 /* --- Optimized Section Visibility for Scrolling --- */
 .section {
-  display: block !important; /* Forces all sections to be visible at once */
-  opacity: 1 !important;     /* Ensures no sections stay faded out */
-  min-height: auto;          /* Allows content to dictate section height */
-  padding: 80px 0;           /* Creates space for your fixed header */
+  display: block !important;
+  /* Forces all sections to be visible at once */
+  opacity: 1 !important;
+  /* Ensures no sections stay faded out */
+  min-height: auto;
+  /* Allows content to dictate section height */
+  padding: 80px 0;
+  /* Creates space for your fixed header */
   transform: none !important;
 }
 
 @keyframes fadeInSection {
-  from { opacity: 0; transform: translateY(15px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Section Headings */
@@ -660,12 +681,13 @@ textarea:focus-visible {
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 0; /* Starts at 0 for the animation */
+  width: 0;
+  /* Starts at 0 for the animation */
   height: 5px;
   background: linear-gradient(90deg, var(--primary), var(--primary-light));
   border-radius: 3px;
   transition: width 0.8s ease 0.4s, box-shadow 1s ease 1s;
-  box-shadow: 0 0 0 rgba(255, 200, 87, 0); 
+  box-shadow: 0 0 0 rgba(255, 200, 87, 0);
 }
 
 /* Centers the underline automatically for Strategic Services */
@@ -676,18 +698,23 @@ textarea:focus-visible {
 
 /* THE TRIGGER: Forces the line to appear and glow when revealed */
 .reveal.in-view h1::after {
-  width: 70px !important; 
-  box-shadow: 0 0 15px rgba(255, 200, 87, 0.6); 
+  width: 70px !important;
+  box-shadow: 0 0 15px rgba(255, 200, 87, 0.6);
 }
 
 @keyframes slideInUnderline {
-  from { width: 0; }
-  to { width: 70px; }
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 70px;
+  }
 }
 
 /* --- Hero Section --- */
-#home { 
-  margin-bottom: 30px; 
+#home {
+  margin-bottom: 30px;
 }
 
 /* Reduce excess space below the hero while keeping scroll offset */
@@ -703,7 +730,8 @@ textarea:focus-visible {
 #home .hero {
   min-height: min(75vh, 720px);
   display: flex;
-  flex-direction: row-reverse; /* SWAPS THE POSITION */
+  flex-direction: row-reverse;
+  /* SWAPS THE POSITION */
   align-items: center;
   justify-content: center;
   gap: 100px;
@@ -714,7 +742,8 @@ textarea:focus-visible {
   flex: 0 1 600px;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center heading + paragraph block */
+  align-items: center;
+  /* Center heading + paragraph block */
   text-align: center;
 }
 
@@ -722,21 +751,26 @@ textarea:focus-visible {
 .typewriter-container {
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Keeps the line locked to the left side */
+  align-items: flex-start;
+  /* Keeps the line locked to the left side */
   margin-bottom: 10px;
   width: 100%;
 }
 
 /* --- High-Fidelity Compact Paragraph --- */
 .hero-content p {
-  font-size: 1.05rem !important;     /* Slightly smaller for better contrast with the H1 */
+  font-size: 1.05rem !important;
+  /* Slightly smaller for better contrast with the H1 */
   color: var(--text-muted);
-  line-height: 1.5 !important;       /* Tightens the vertical space significantly */
-  max-width: 460px !important;       /* Narrower width to group it with the 'Hi' spine */
+  line-height: 1.5 !important;
+  /* Tightens the vertical space significantly */
+  max-width: 460px !important;
+  /* Narrower width to group it with the 'Hi' spine */
   margin: 0 auto 30px !important;
   text-align: center !important;
   font-weight: 400;
-  letter-spacing: 0.01em;            /* Subtle professional spacing */
+  letter-spacing: 0.01em;
+  /* Subtle professional spacing */
 }
 
 /* Stable container to protect the typewriter from flexbox squishing */
@@ -744,8 +778,10 @@ textarea:focus-visible {
   width: 100%;
   display: block;
   margin-bottom: 10px;
-  letter-spacing: .05em; /* Helps the steps() calculation stay smooth */
-  will-change: width;    /* Tells the browser to optimize for this move */
+  letter-spacing: .05em;
+  /* Helps the steps() calculation stay smooth */
+  will-change: width;
+  /* Tells the browser to optimize for this move */
 }
 
 /* 3. Ensure the Image Container is part of the center-logic */
@@ -757,6 +793,7 @@ textarea:focus-visible {
 }
 
 @media screen and (max-width: 992px) {
+
   /* 1. Reset Hero Layout */
   #home .hero {
     flex-direction: column !important;
@@ -774,7 +811,7 @@ textarea:focus-visible {
 
   /* 2. Scaled Profile Image */
   #home .hero-image img {
-    width: 200px !important; 
+    width: 200px !important;
     height: 200px !important;
     margin-bottom: 5px !important;
     border-width: 4px !important;
@@ -782,7 +819,8 @@ textarea:focus-visible {
 
   /* 3. Fluid Typography */
   .hero h1 {
-    font-size: 2.2rem !important; /* Slightly smaller for mobile comfort */
+    font-size: 2.2rem !important;
+    /* Slightly smaller for mobile comfort */
     line-height: 1.2 !important;
     margin-bottom: 0 !important;
   }
@@ -790,26 +828,32 @@ textarea:focus-visible {
   /* 4. Optimized Buttons for Mobile */
   .hero-btns {
     display: flex !important;
-    flex-direction: column !important; 
+    flex-direction: column !important;
     gap: 12px !important;
     width: 100% !important;
-    max-width: 280px !important; /* Prevents buttons from being too wide */
-    margin: 0 auto !important; /* Centers the whole button group */
+    max-width: 280px !important;
+    /* Prevents buttons from being too wide */
+    margin: 0 auto !important;
+    /* Centers the whole button group */
   }
 
   /* 2. Optimized Mobile Button Ergonomics */
   .btn {
-    width: 100% !important; /* Full width inside the 280px container */
+    width: 100% !important;
+    /* Full width inside the 280px container */
     justify-content: center !important;
-    padding: 10px !important; /* Taller target is easier to tap */
-    border-radius: 12px !important; /* Modern 'Soft' corners */
+    padding: 10px !important;
+    /* Taller target is easier to tap */
+    border-radius: 12px !important;
+    /* Modern 'Soft' corners */
     font-size: 1rem !important;
     gap: 4px !important;
   }
 
   /* 3. Maintains the Chrome Shimmer for Mobile Taps */
   .btn:first-child::after {
-    display: none; /* We disable the hover shimmer on mobile to save performance */
+    display: none;
+    /* We disable the hover shimmer on mobile to save performance */
   }
 
   /* 5. Refined Mobile Paragraph */
@@ -850,49 +894,54 @@ textarea:focus-visible {
   }
 }
 
-  /* 2. Image: Force to Top and Scale */
-  #home .hero-image {
-    order: -1 !important;
-    justify-content: center !important;
-    width: 220px !important; /* Use this strictly for mobile only */
-    height: 220px !important;
-    border-width: 4px !important;
-    margin-bottom: 20px;
-  }
+/* 2. Image: Force to Top and Scale */
+#home .hero-image {
+  order: -1 !important;
+  justify-content: center !important;
+  width: 220px !important;
+  /* Use this strictly for mobile only */
+  height: 220px !important;
+  border-width: 4px !important;
+  margin-bottom: 20px;
+}
 
-  /* --- Stable Desktop Profile --- */
+/* --- Stable Desktop Profile --- */
 /* --- Executive Tier Desktop Profile --- */
 .hero-image img {
   /* Reduced from 420px to 360px for a high-fidelity 'Compact' look */
-  width: clamp(280px, 25vw, 360px) !important; 
+  width: clamp(280px, 25vw, 360px) !important;
   height: clamp(280px, 25vw, 360px) !important;
-  
+
   object-fit: cover;
   border-radius: 50%;
-  border: 5px solid var(--card-bg); /* Thinner border for the smaller diameter */
+  border: 5px solid var(--card-bg);
+  /* Thinner border for the smaller diameter */
   box-shadow: 0 0 0 4px var(--primary-light), var(--shadow-md);
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .hero-image img:hover {
-  transform: scale(1.05) rotate(3deg); /* Slightly more playful hover for smaller images */
+  transform: scale(1.05) rotate(3deg);
+  /* Slightly more playful hover for smaller images */
   box-shadow: 0 0 0 6px var(--primary), var(--shadow-lg);
 }
 
-  /* 3. Text Content: Perfect Vertical Alignment */
-  #home .hero-content {
-    align-items: center !important;
-    text-align: center !important;
-    width: 100% !important;
-    max-width: 100% !important;
-  }
+/* 3. Text Content: Perfect Vertical Alignment */
+#home .hero-content {
+  align-items: center !important;
+  text-align: center !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
 
-  @media screen and (max-width: 992px) {
+@media screen and (max-width: 992px) {
+
   /* 1. Keep the typewriter aligned to the left */
   .typewriter-container {
     display: flex !important;
     flex-direction: column !important;
-    align-items: flex-start !important; /* Aligns the line to the start of 'Hi' */
+    align-items: flex-start !important;
+    /* Aligns the line to the start of 'Hi' */
     width: fit-content !important;
     margin: 0 auto 20px !important;
     text-align: center !important;
@@ -900,19 +949,27 @@ textarea:focus-visible {
 
   /* 2. Precision placement for the line */
   .home-underline {
-    width: 45px !important; /* Shorter to fit strictly under 'Hi' */
-    margin: clamp(-10px, -2vw, -4px) 0 18px 0 !important; /* Responsive lift under "Hi" */
-    align-self: flex-start !important; 
+    width: 45px !important;
+    /* Shorter to fit strictly under 'Hi' */
+    margin: clamp(-10px, -2vw, -4px) 0 18px 0 !important;
+    /* Responsive lift under "Hi" */
+    align-self: flex-start !important;
     height: 4px !important;
   }
+
   .hero-content p {
-    font-size: 0.95rem !important;   /* Scaled down for mobile comfort */
+    font-size: 0.95rem !important;
+    /* Scaled down for mobile comfort */
     line-height: 1.5 !important;
-    text-align: center !important;   /* Ensures it stays centered under the line */
-    max-width: 100% !important;      /* Lets it use the full phone width */
-    margin: 0 auto 25px !important;  /* Horizontal centering */
+    text-align: center !important;
+    /* Ensures it stays centered under the line */
+    max-width: 100% !important;
+    /* Lets it use the full phone width */
+    margin: 0 auto 25px !important;
+    /* Horizontal centering */
   }
 }
+
 /* Typewriter Effect Styles */
 .typewriter-wrapper {
   width: 100%;
@@ -929,18 +986,20 @@ textarea:focus-visible {
 }
 
 @keyframes fadeInScaleUp {
-  from { 
-    opacity: 0; 
+  from {
+    opacity: 0;
     transform: scale(0.8);
   }
-  to { 
-    opacity: 1; 
+
+  to {
+    opacity: 1;
     transform: scale(1);
   }
 }
 
 .hero-image img:hover {
-  transform: scale(1.02); /* Subtle hover interaction */
+  transform: scale(1.02);
+  /* Subtle hover interaction */
 }
 
 /* 1. Stabilize the hero content group */
@@ -949,17 +1008,19 @@ textarea:focus-visible {
   max-width: 600px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Keeps the line locked under the 'H' */
+  align-items: flex-start;
+  /* Keeps the line locked under the 'H' */
   text-align: left;
 }
 
 @keyframes slideInLeft {
-  from { 
-    opacity: 0; 
+  from {
+    opacity: 0;
     transform: translateX(-50px);
   }
-  to { 
-    opacity: 1; 
+
+  to {
+    opacity: 1;
     transform: translateX(0);
   }
 }
@@ -982,12 +1043,10 @@ textarea:focus-visible {
 .hero h1 span {
   color: var(--primary);
   /* Use a 3-stop gradient for a cleaner "metal" look */
-  background: linear-gradient(
-    120deg, 
-    var(--primary) 20%, 
-    #ffffff 50%, 
-    var(--primary) 80%
-  );
+  background: linear-gradient(120deg,
+      var(--primary) 20%,
+      #ffffff 50%,
+      var(--primary) 80%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
@@ -997,8 +1056,13 @@ textarea:focus-visible {
 }
 
 @keyframes smooth-shimmer {
-  0% { background-position: 200% center; }
-  100% { background-position: -200% center; }
+  0% {
+    background-position: 200% center;
+  }
+
+  100% {
+    background-position: -200% center;
+  }
 }
 
 .hero h1:hover span {
@@ -1011,11 +1075,13 @@ textarea:focus-visible {
   max-width: 600px;
   color: var(--text-muted);
 }
+
 /* --- High-Fidelity Button System --- */
 /* --- High-Fidelity Desktop Button System --- */
 .hero-btns {
   display: flex !important;
-  flex-direction: row !important; /* Forces side-by-side on desktop */
+  flex-direction: row !important;
+  /* Forces side-by-side on desktop */
   gap: 20px !important;
   margin-top: 30px !important;
   justify-content: flex-start !important;
@@ -1023,7 +1089,8 @@ textarea:focus-visible {
 
 .btn {
   padding: 14px 32px;
-  border-radius: 15px !important; /* Premium 'Soft-UI' radius */
+  border-radius: 15px !important;
+  /* Premium 'Soft-UI' radius */
   font-weight: 600;
   font-size: 0.95rem;
   text-decoration: none;
@@ -1032,7 +1099,8 @@ textarea:focus-visible {
   gap: 10px;
   transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
   position: relative;
-  overflow: hidden; /* Critical for the shimmer effect */
+  overflow: hidden;
+  /* Critical for the shimmer effect */
   border: 1px solid transparent;
 }
 
@@ -1062,7 +1130,8 @@ textarea:focus-visible {
 }
 
 .btn:first-child:hover::after {
-  left: 120%; /* Light beam slides across button */
+  left: 120%;
+  /* Light beam slides across button */
 }
 
 /* 2. Get In Touch: The Secondary Action (Glassmorphism) */
@@ -1086,8 +1155,9 @@ textarea:focus-visible {
 /* 1. The Container: Shift balance to the left (1.6fr) to widen the image area */
 #about .about-container {
   display: grid;
-  grid-template-columns: 1.6fr 1fr; /* */
-  gap: 40px; 
+  grid-template-columns: 1.6fr 1fr;
+  /* */
+  gap: 40px;
   align-items: start;
 }
 
@@ -1098,11 +1168,13 @@ textarea:focus-visible {
   padding: 12px;
   background: transparent;
   border-radius: 40px;
-  
+
   width: 100%;
-  max-width: 720px; /* Expands horizontally */
-  height: 450px;    /* Lower height creates the 'Wide' effect */
-  
+  max-width: 720px;
+  /* Expands horizontally */
+  height: 450px;
+  /* Lower height creates the 'Wide' effect */
+
   margin: 0;
   transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
@@ -1112,14 +1184,15 @@ textarea:focus-visible {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 30%; /* */
+  object-position: center 30%;
+  /* */
   border-radius: 35px;
   display: block;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
 }
 
 /* 4. Cleanup: Remove these entirely as you only have one big image now */
-.about-image.accent-one, 
+.about-image.accent-one,
 .about-image.accent-two {
   display: none;
 }
@@ -1133,8 +1206,10 @@ textarea:focus-visible {
 }
 
 .skill-tag {
-  background: rgba(255, 255, 255, 0.03); /* Very subtle transparent grey */
-  color: var(--text-muted); /* Lower contrast text */
+  background: rgba(255, 255, 255, 0.03);
+  /* Very subtle transparent grey */
+  color: var(--text-muted);
+  /* Lower contrast text */
   padding: 4px 12px;
   border-radius: 8px;
   font-size: 0.8rem;
@@ -1185,20 +1260,26 @@ textarea:focus-visible {
   }
 
   #about .about-visual-grid {
-    order: -1; 
+    order: -1;
     max-width: 500px;
     margin: 0 auto;
   }
 
-  .about-image.dominant { height: 260px; }
-  .about-image.accent-one, 
-  .about-image.accent-two { height: 110px; }
+  .about-image.dominant {
+    height: 260px;
+  }
+
+  .about-image.accent-one,
+  .about-image.accent-two {
+    height: 110px;
+  }
 }
 
 /* --- STRICT LIMIT ON BEYOND THE SCREEN IMAGES --- */
 .achieve-gallery-mini {
   display: grid !important;
-  grid-template-columns: 1fr 1fr !important; /* Forces 2 equal columns */
+  grid-template-columns: 1fr 1fr !important;
+  /* Forces 2 equal columns */
   gap: 12px !important;
   width: 100% !important;
   max-width: 100% !important;
@@ -1207,9 +1288,11 @@ textarea:focus-visible {
 
 .achieve-gallery-mini img {
   width: 100% !important;
-  height: 140px !important; /* Hard limit on height */
+  height: 140px !important;
+  /* Hard limit on height */
   max-height: 140px !important;
-  object-fit: cover !important; /* Crops image to fit the box instead of stretching */
+  object-fit: cover !important;
+  /* Crops image to fit the box instead of stretching */
   border-radius: 12px !important;
   display: block !important;
 }
@@ -1217,7 +1300,8 @@ textarea:focus-visible {
 /* Mobile hierarchy adjustment */
 @media screen and (max-width: 768px) {
   .achieve-gallery-mini img {
-    height: 110px !important; /* Even smaller for mobile phones */
+    height: 110px !important;
+    /* Even smaller for mobile phones */
   }
 }
 
@@ -1225,10 +1309,11 @@ textarea:focus-visible {
 /* About Page Redesign */
 .about-top-wrapper {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Equal split for narrative */
+  grid-template-columns: 1fr 1fr;
+  /* Equal split for narrative */
   gap: 40px;
   margin-bottom: 50px;
-  align-items: center;
+  align-items: start;
 }
 
 .interests-section {
@@ -1237,13 +1322,14 @@ textarea:focus-visible {
 
 .interests-bento-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Creates a balanced bottom row */
+  grid-template-columns: repeat(2, 1fr);
+  /* Creates a balanced bottom row */
   gap: 20px;
 }
 
 /* Make the big achievement span both columns */
 .achievement-wide {
-  grid-column: span 2; 
+  grid-column: span 2;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -1273,12 +1359,13 @@ textarea:focus-visible {
 
 /* Mobile Responsiveness */
 @media screen and (max-width: 768px) {
-  .about-top-wrapper, 
+
+  .about-top-wrapper,
   .interests-bento-grid,
   .achievement-content {
     grid-template-columns: 1fr;
   }
-  
+
   .achievement-wide {
     grid-column: span 1;
   }
@@ -1286,10 +1373,11 @@ textarea:focus-visible {
 
 /* --- GLOBAL UI CARD POLISH (Projects & Services) --- */
 .hobby-card,
-.project-card, 
+.project-card,
 .service-card {
   background-color: var(--card-bg);
-  border-radius: 20px !important; /* Unified visual language */
+  border-radius: 20px !important;
+  /* Unified visual language */
   border: 1px solid var(--border-color);
   overflow: hidden;
   display: flex;
@@ -1300,7 +1388,7 @@ textarea:focus-visible {
 }
 
 /* Maintain scroll animation logic */
-.hobby-card.in-view, 
+.hobby-card.in-view,
 .project-card.in-view,
 .service-card.in-view {
   opacity: 1;
@@ -1308,7 +1396,7 @@ textarea:focus-visible {
 }
 
 .hobby-card:hover,
-.project-card:hover, 
+.project-card:hover,
 .service-card:hover {
   transform: translateY(-10px) !important;
   box-shadow: var(--shadow-lg) !important;
@@ -1317,14 +1405,14 @@ textarea:focus-visible {
 }
 
 /* Card Image Styling */
-.hobby-img, 
+.hobby-img,
 .project-img {
   height: 200px;
   overflow: hidden;
   position: relative;
 }
 
-.hobby-img img, 
+.hobby-img img,
 .project-img img {
   width: 100%;
   height: 100%;
@@ -1339,7 +1427,7 @@ textarea:focus-visible {
 }
 
 /* Card Content Styling */
-.hobby-content, 
+.hobby-content,
 .project-content {
   padding: 25px;
   flex-grow: 1;
@@ -1362,7 +1450,7 @@ textarea:focus-visible {
 }
 
 /* --- Projects Section --- */
-#webdesign > .container > p {
+#webdesign>.container>p {
   margin-bottom: 30px;
   color: var(--text-muted);
   font-size: 1.1rem;
@@ -1433,7 +1521,7 @@ textarea:focus-visible {
 }
 
 /* --- Services Section --- */
-#service > .container > p {
+#service>.container>p {
   margin-bottom: 40px;
   color: var(--text-muted);
   font-size: 1.1rem;
@@ -1962,10 +2050,10 @@ textarea:focus-visible {
   border-color: rgba(255, 200, 87, 0.3);
 }
 
-.input-wrapper input:focus + .input-icon,
-.input-wrapper textarea:focus + .input-icon,
-.input-wrapper input:not(:placeholder-shown) + .input-icon,
-.input-wrapper textarea:not(:placeholder-shown) + .input-icon {
+.input-wrapper input:focus+.input-icon,
+.input-wrapper textarea:focus+.input-icon,
+.input-wrapper input:not(:placeholder-shown)+.input-icon,
+.input-wrapper textarea:not(:placeholder-shown)+.input-icon {
   color: var(--primary);
 }
 
@@ -2061,14 +2149,14 @@ textarea:focus-visible {
     align-items: stretch;
     gap: 12px;
   }
-  
+
   .submit-btn {
     width: 100%;
     justify-content: center;
     padding: 16px 30px;
     font-size: 1.1rem;
   }
-  
+
   #form-status {
     text-align: center;
     min-width: unset;
@@ -2076,14 +2164,14 @@ textarea:focus-visible {
     padding: 8px 0;
     line-height: 1.4;
   }
-  
+
   #form-status.success {
     background: rgba(74, 222, 128, 0.1);
     border-radius: 8px;
     padding: 12px;
     border: 1px solid rgba(74, 222, 128, 0.2);
   }
-  
+
   #form-status.error {
     background: rgba(248, 113, 113, 0.1);
     border-radius: 8px;
@@ -2097,7 +2185,7 @@ textarea:focus-visible {
     padding: 18px 30px;
     font-size: 1rem;
   }
-  
+
   #form-status {
     font-size: 0.85rem;
   }
@@ -2164,7 +2252,7 @@ footer {
     padding-left: 15px;
     padding-right: 15px;
   }
-  
+
   .hero {
     flex-direction: column-reverse;
     text-align: center;
@@ -2177,7 +2265,7 @@ footer {
     padding-right: 0;
     animation: none;
   }
-  
+
   .hero-image {
     animation: none;
     margin-bottom: 40px;
@@ -2191,7 +2279,7 @@ footer {
     grid-template-columns: 1fr;
     gap: 40px;
   }
-  
+
   #about .about-image.dominant {
     height: 380px;
   }
@@ -2200,7 +2288,7 @@ footer {
     flex-direction: column;
     gap: 50px;
   }
-  
+
   .contact-form {
     padding: 30px;
   }
@@ -2211,7 +2299,7 @@ footer {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 25px;
   }
-  
+
   .input-row {
     flex-direction: column;
     gap: 0;
@@ -2222,24 +2310,25 @@ footer {
     clip-path: polygon(0 0, 100% 0, 100% 30%, 0 50%);
     height: 300px;
   }
-#home .hero-image img {
-    width: 200px !important; 
+
+  #home .hero-image img {
+    width: 200px !important;
     height: 200px !important;
     border-width: 4px !important;
     margin-top: 10px;
     margin-bottom: 20px;
   }
-  
+
   /* Ensure the container doesn't force extra height */
   #home .hero {
     padding-top: 5px !important;
     min-height: auto !important;
   }
-  
+
 }
 
 @media screen and (max-width: 768px) {
-  html { 
+  html {
     font-size: 15px;
   }
 
@@ -2247,12 +2336,13 @@ footer {
     height: 60px;
     padding: 0 15px;
   }
-  
-  .desktop-header.scrolled { 
+
+  .desktop-header.scrolled {
     height: 55px;
   }
 
-  .desktop-nav, .social-icons {
+  .desktop-nav,
+  .social-icons {
     display: none;
   }
 
@@ -2282,7 +2372,7 @@ footer {
   .hero {
     padding-top: 40px;
   }
-  
+
   .hero h1 {
     font-size: clamp(2rem, 5vw, 2.5rem);
   }
@@ -2306,12 +2396,14 @@ footer {
   #home .home-underline {
     margin: clamp(-10px, -2vw, -4px) auto 18px auto !important;
     align-self: center !important;
-    transform: translateX(var(--hi-offset, 0px)); /* shift under "Hi" without moving text */
+    transform: translateX(var(--hi-offset, 0px));
+    /* shift under "Hi" without moving text */
   }
 
   /* Mobile Grid Overrides */
   #about .interests-grid.blended {
-    grid-template-columns: 1fr; /* Stacked bento grid for mobile */
+    grid-template-columns: 1fr;
+    /* Stacked bento grid for mobile */
   }
 
   .projects-grid,
@@ -2359,12 +2451,12 @@ footer {
     gap: 10px 20px;
     margin: 30px 0;
   }
-  
+
   .footer-social {
     gap: 15px;
     margin-bottom: 30px;
   }
-  
+
   #back-to-top {
     bottom: 20px;
     right: 20px;
@@ -2372,12 +2464,13 @@ footer {
     height: 40px;
     font-size: 1rem;
   }
-  
+
   #contact {
     padding: 70px 0;
   }
 
-  .form-container, .info-card {
+  .form-container,
+  .info-card {
     padding: 30px;
   }
 
@@ -2466,8 +2559,8 @@ body:not(.transitioning) {
   background: rgba(255, 200, 87, 0.03);
   border-color: rgba(255, 200, 87, 0.2);
   transform: translateY(-5px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), 
-              inset 0 0 15px rgba(255, 200, 87, 0.05);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3),
+    inset 0 0 15px rgba(255, 200, 87, 0.05);
 }
 
 .achievement-highlight {
@@ -2487,7 +2580,8 @@ body:not(.transitioning) {
   border-radius: 12px;
   overflow: hidden;
   border: 1px solid var(--border-color);
-  filter: grayscale(40%); /* Subtle, non-arrogant */
+  filter: grayscale(40%);
+  /* Subtle, non-arrogant */
   transition: all 0.4s ease;
 }
 
@@ -2515,9 +2609,11 @@ body:not(.transitioning) {
   .about-top-wrapper {
     grid-template-columns: 1fr;
   }
+
   .subtle-bento-grid {
     grid-template-columns: 1fr;
   }
+
   .achievement-highlight {
     grid-column: span 1;
   }
@@ -2537,7 +2633,8 @@ body:not(.transitioning) {
 }
 
 .bento-card {
-  opacity: 1 !important; /* Forces visibility if scroll animation fails */
+  opacity: 1 !important;
+  /* Forces visibility if scroll animation fails */
   transform: none !important;
   display: block !important;
 }
@@ -2551,6 +2648,7 @@ body:not(.transitioning) {
   .subtle-bento-grid {
     grid-template-columns: 1fr !important;
   }
+
   .achievement-highlight {
     grid-column: span 1 !important;
   }
@@ -2559,12 +2657,14 @@ body:not(.transitioning) {
 /* Styling for bolded keywords with a subtle glow on hover */
 .glow-text {
   font-weight: 700;
-  color: #fff; /* Bright white for better contrast */
+  color: #fff;
+  /* Bright white for better contrast */
   transition: all 0.3s ease;
 }
 
 .bento-card:hover .glow-text {
-  color: var(--primary); /* Turns to your primary yellow when card is hovered */
+  color: var(--primary);
+  /* Turns to your primary yellow when card is hovered */
   text-shadow: 0 0 8px rgba(255, 200, 87, 0.4);
 }
 
@@ -2573,26 +2673,32 @@ body:not(.transitioning) {
 /* 1. Breathing Glow for the Profile Image */
 .about-image.dominant {
   position: relative;
-  border-color: rgba(255, 200, 87, 0.3); /* Matches your primary color */
+  border-color: rgba(255, 200, 87, 0.3);
+  /* Matches your primary color */
   box-shadow: 0 0 15px rgba(255, 200, 87, 0.1);
   animation: profile-glow 4s ease-in-out infinite;
 }
 
 @keyframes profile-glow {
-  0%, 100% { box-shadow: 0 0 15px rgba(255, 200, 87, 0.1); }
-  50% { box-shadow: 0 0 30px rgba(255, 200, 87, 0.3); }
+
+  0%,
+  100% {
+    box-shadow: 0 0 15px rgba(255, 200, 87, 0.1);
+  }
+
+  50% {
+    box-shadow: 0 0 30px rgba(255, 200, 87, 0.3);
+  }
 }
 
 /* 2. Shimmer Animation for the Name "Rendezvous" */
 .narrative-text h3 {
   position: relative;
   display: inline-block;
-  background: linear-gradient(
-    90deg, 
-    #eee 0%, 
-    var(--primary) 50%, 
-    #eee 100%
-  );
+  background: linear-gradient(90deg,
+      #eee 0%,
+      var(--primary) 50%,
+      #eee 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
@@ -2601,14 +2707,16 @@ body:not(.transitioning) {
 }
 
 @keyframes shimmer {
-  to { background-position: 200% center; }
+  to {
+    background-position: 200% center;
+  }
 }
 
 /* 1. Expand the Left Column to accommodate the wider frame */
 .about-top-wrapper {
   display: grid;
   /* Shifted more weight to the left to let the wider image breathe */
-  grid-template-columns: 1.5fr 1fr; 
+  grid-template-columns: 1.5fr 1fr;
   gap: 60px;
   margin-bottom: 60px;
   align-items: center;
@@ -2618,16 +2726,18 @@ body:not(.transitioning) {
 .about-image.dominant {
   position: relative;
   z-index: 1;
-  padding: 12px; 
+  padding: 12px;
   background: transparent;
   border: none;
   border-radius: 40px;
-  
+
   /* Widen the Frame: Changing Aspect Ratio from Portrait to Wide */
   width: 100%;
-  max-width: 650px; /* Significantly widened to break the 'phone' look */
-  height: 480px;    /* Slightly lower height for a wider, cinematic ratio */
-  
+  max-width: 650px;
+  /* Significantly widened to break the 'phone' look */
+  height: 480px;
+  /* Slightly lower height for a wider, cinematic ratio */
+
   margin: 0;
   transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
@@ -2636,11 +2746,13 @@ body:not(.transitioning) {
 .about-image.dominant img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* This will crop the top/bottom slightly to fill the width */
-  object-position: center 20%; /* Adjusts the crop so your face stays centered */
+  object-fit: cover;
+  /* This will crop the top/bottom slightly to fill the width */
+  object-position: center 20%;
+  /* Adjusts the crop so your face stays centered */
   border-radius: 35px;
   display: block;
-  box-shadow: 
+  box-shadow:
     0 20px 50px rgba(0, 0, 0, 0.7),
     0 0 20px rgba(255, 200, 87, 0.1);
 }
@@ -2651,21 +2763,19 @@ body:not(.transitioning) {
   position: absolute;
   inset: 0;
   border-radius: 40px;
-  padding: 3px; 
-  background: conic-gradient(
-    from var(--angle),
-    transparent 70%,
-    var(--primary) 85%,
-    var(--primary-light) 95%,
-    var(--primary) 100%
-  );
-  
+  padding: 3px;
+  background: conic-gradient(from var(--angle),
+      transparent 70%,
+      var(--primary) 85%,
+      var(--primary-light) 95%,
+      var(--primary) 100%);
+
   /* Standard Masking */
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask-composite: exclude;
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
-  
+
   animation: beam-spin 4s linear infinite;
 }
 
@@ -2674,10 +2784,11 @@ body:not(.transitioning) {
   .about-top-wrapper {
     grid-template-columns: 1fr;
   }
-  
+
   .about-image.dominant {
     max-width: 100%;
-    height: 350px; /* More natural width-to-height for mobile */
+    height: 350px;
+    /* More natural width-to-height for mobile */
   }
 }
 
@@ -2689,13 +2800,27 @@ body:not(.transitioning) {
 }
 
 @keyframes beam-spin {
-  from { --angle: 0deg; }
-  to { --angle: 360deg; }
+  from {
+    --angle: 0deg;
+  }
+
+  to {
+    --angle: 360deg;
+  }
 }
 
 @keyframes atmospheric-pulse {
-  0%, 100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
-  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
 }
 
 /* Hover State: Physical Reaction */
@@ -2704,25 +2829,26 @@ body:not(.transitioning) {
 }
 
 .about-image.dominant:hover::before {
-  background: radial-gradient(
-    circle, 
-    rgba(255, 200, 87, 0.4) 0%, 
-    transparent 70%
-  );
+  background: radial-gradient(circle,
+      rgba(255, 200, 87, 0.4) 0%,
+      transparent 70%);
 }
 
 /* Color Consistency: Highlight Yellow */
-.highlight-yellow, 
+.highlight-yellow,
 .interests-title {
-  color: var(--primary) !important; /* Unified #ffc857 */
+  color: var(--primary) !important;
+  /* Unified #ffc857 */
   transition: all 0.3s ease;
-  text-shadow: 0 0 10px rgba(255, 200, 87, 0.15); /* Subtle ambient glow */
+  text-shadow: 0 0 10px rgba(255, 200, 87, 0.15);
+  /* Subtle ambient glow */
 }
 
 /* Hover effect for the "Beyond the Screen" text */
 .interests-title:hover {
   text-shadow: 0 0 15px rgba(255, 200, 87, 0.4);
-  letter-spacing: 0.5px; /* Subtle expansion for "premium" feel */
+  letter-spacing: 0.5px;
+  /* Subtle expansion for "premium" feel */
 }
 
 /* Enhancing the Glow Divider next to Beyond the Screen */
@@ -2730,13 +2856,15 @@ body:not(.transitioning) {
   height: 1px;
   flex-grow: 1;
   background: linear-gradient(90deg, var(--primary) 0%, transparent 80%);
-  opacity: 0.4; /* Slightly brighter for better quality visibility */
+  opacity: 0.4;
+  /* Slightly brighter for better quality visibility */
 }
 
 /* Ensure the achievement card header reacts to the card hover */
 .achievement-highlight:hover .highlight-yellow {
   text-shadow: 0 0 20px rgba(255, 200, 87, 0.5);
-  transform: translateX(3px); /* Micro-movement interaction */
+  transform: translateX(3px);
+  /* Micro-movement interaction */
 }
 
 /* This forces the side-by-side 50/50 split */
@@ -2773,14 +2901,12 @@ body:not(.transitioning) {
   font-weight: 800;
   letter-spacing: -0.02em;
   /* Premium 5-stop gradient for chrome reflection */
-  background: linear-gradient(
-    -45deg, 
-    #ffffff 25%, 
-    var(--primary) 45%, 
-    #ffffff 50%, 
-    var(--primary) 55%, 
-    #ffffff 75%
-  );
+  background: linear-gradient(-45deg,
+      #ffffff 25%,
+      var(--primary) 45%,
+      #ffffff 50%,
+      var(--primary) 55%,
+      #ffffff 75%);
   background-size: 400% 400%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -2797,24 +2923,35 @@ body:not(.transitioning) {
 }
 
 @keyframes chrome-flow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 /* Container for all tags */
 /* Optimized Compact Skills Layout */
 .skills-showcase {
   display: flex;
-  flex-wrap: wrap; /* Allows tags to sit side-by-side */
+  flex-wrap: wrap;
+  /* Allows tags to sit side-by-side */
   gap: 10px;
   margin-top: 25px;
-  max-width: 550px; /* Limits the spread to stay aligned with your text */
+  max-width: 550px;
+  /* Limits the spread to stay aligned with your text */
 }
 
 /* Optional: Subtle grouping for Desktop */
 .skill-group {
-  display: contents; /* Keeps them wrapping naturally while staying ordered */
+  display: contents;
+  /* Keeps them wrapping naturally while staying ordered */
 }
 
 .skill-tag {
@@ -2823,12 +2960,14 @@ body:not(.transitioning) {
   gap: 8px;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 6px 14px; /* Tighter padding for the 'compact' look */
+  padding: 6px 14px;
+  /* Tighter padding for the 'compact' look */
   border-radius: 10px;
   font-size: 0.85rem;
   color: var(--text-muted);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  white-space: nowrap; /* Prevents text from breaking inside a tag */
+  white-space: nowrap;
+  /* Prevents text from breaking inside a tag */
 }
 
 /* Premium Hover Logic */
@@ -2859,9 +2998,17 @@ body:not(.transitioning) {
 }
 
 /* Staggered delay for groups (like your Skill Tags or Bento Cards) */
-.reveal-delay-1 { transition-delay: 0.1s; }
-.reveal-delay-2 { transition-delay: 0.2s; }
-.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-1 {
+  transition-delay: 0.1s;
+}
+
+.reveal-delay-2 {
+  transition-delay: 0.2s;
+}
+
+.reveal-delay-3 {
+  transition-delay: 0.3s;
+}
 
 /* Centering Utilities */
 .text-center {
@@ -2871,7 +3018,7 @@ body:not(.transitioning) {
 
 /* Ensures the yellow underline also centers below the text */
 .header-underline.centered {
-  margin: 0 auto 20px; 
+  margin: 0 auto 20px;
 }
 
 /* Adjusting the intro width for better readability when centered */
@@ -2885,10 +3032,11 @@ body:not(.transitioning) {
 }
 
 /* Premium Glow on Input Focus */
-.input-wrapper input:focus, 
+.input-wrapper input:focus,
 .input-wrapper textarea:focus {
   border-color: var(--primary);
-  box-shadow: 0 0 15px rgba(255, 200, 87, 0.4); /* Matches your section line glow */
+  box-shadow: 0 0 15px rgba(255, 200, 87, 0.4);
+  /* Matches your section line glow */
   background: rgba(255, 200, 87, 0.02);
 }
 
@@ -2914,9 +3062,12 @@ body:not(.transitioning) {
 #home .hero {
   min-height: min(75vh, 720px);
   display: flex;
-  align-items: center;    /* Center the group vertically */
-  justify-content: center; /* Center the group horizontally */
-  gap: 100px;              /* Executive spacing between text and image */
+  align-items: center;
+  /* Center the group vertically */
+  justify-content: center;
+  /* Center the group horizontally */
+  gap: 100px;
+  /* Executive spacing between text and image */
   padding: 60px 20px;
 }
 
@@ -2924,14 +3075,16 @@ body:not(.transitioning) {
   flex: 0 1 600px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* CRITICAL: Anchors everything to the left 'H' */
+  align-items: flex-start;
+  /* CRITICAL: Anchors everything to the left 'H' */
   text-align: left;
 }
 
 /* 1. Tightened Typography for that "Compact" feel */
 .hero h1 {
   font-size: clamp(2.8rem, 6vw, 4.2rem);
-  margin-bottom: 2px !important; /* Tight spacing between name and line */
+  margin-bottom: 2px !important;
+  /* Tight spacing between name and line */
   font-weight: 800;
   line-height: 1.05;
   letter-spacing: -0.03em;
@@ -2942,7 +3095,8 @@ body:not(.transitioning) {
 .typewriter-container {
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Keep underline under "Hi" */
+  align-items: flex-start;
+  /* Keep underline under "Hi" */
   width: fit-content;
   margin: 0 auto 10px;
   text-align: left;
@@ -2958,9 +3112,12 @@ body:not(.transitioning) {
   height: 5px;
   background: linear-gradient(90deg, var(--primary), var(--primary-light));
   border-radius: 3px;
-  margin: 0 0 25px 0;    /* Align under "Hi" */
-  align-self: flex-start; /* Lock underline to "Hi" inside centered container */
-  transform: translateX(clamp(-24px, var(--hi-offset, 0px), 0px)); /* Keep underline near "Hi" */
+  margin: 0 0 25px 0;
+  /* Align under "Hi" */
+  align-self: flex-start;
+  /* Lock underline to "Hi" inside centered container */
+  transform: translateX(clamp(-24px, var(--hi-offset, 0px), 0px));
+  /* Keep underline near "Hi" */
   box-shadow: 0 0 15px rgba(255, 200, 87, 0.6);
   opacity: 1 !important;
   visibility: visible !important;
@@ -2974,7 +3131,8 @@ body:not(.transitioning) {
   color: var(--text) !important;
   -webkit-text-fill-color: var(--text) !important;
   width: var(--tw-width, 0px);
-  visibility: hidden; /* avoid initial layout jump before width is set */
+  visibility: hidden;
+  /* avoid initial layout jump before width is set */
 }
 
 .typewriter .tw-text {
@@ -2994,7 +3152,7 @@ body:not(.transitioning) {
 
 .typewriter.is-typing .tw-text {
   animation: typing var(--tw-duration, 3.5s) steps(var(--tw-steps, 40), end) forwards,
-             blink-caret 0.6s ease-in-out infinite;
+    blink-caret 0.6s ease-in-out infinite;
 }
 
 /* Removes the tilting 'weird' animation */
@@ -3003,11 +3161,28 @@ body:not(.transitioning) {
 }
 
 @keyframes typing {
-  from { width: 0; }
-  to { width: var(--tw-width, 100%); }
+  from {
+    width: 0;
+  }
+
+  to {
+    width: var(--tw-width, 100%);
+  }
 }
 
 @keyframes blink-caret {
-  0%, 100% { border-color: rgba(255, 200, 87, 0.05); }
-  50% { border-color: rgba(255, 200, 87, 0.9); }
+
+  0%,
+  100% {
+    border-color: rgba(255, 200, 87, 0.05);
+  }
+
+  50% {
+    border-color: rgba(255, 200, 87, 0.9);
+  }
+}
+
+/* Spacing for split paragraphs in About section */
+.narrative-text p {
+  margin-bottom: 1rem;
 }
