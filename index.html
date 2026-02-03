@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,412 +9,453 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
-<div id="overlay" class="overlay" onclick="closeSidebar()" title="Close menu" aria-hidden="true"></div>
-<aside id="sidebar" class="sidebar" role="navigation" aria-label="Mobile Navigation" aria-hidden="true"> 
-  <button class="sidebar-close" onclick="closeSidebar()" aria-label="Close Menu" title="Close Menu">
-    <i class="fa-solid fa-xmark"></i>
-  </button>
-  <div>
-    <div class="profile">
+  <div id="overlay" class="overlay" onclick="closeSidebar()" title="Close menu" aria-hidden="true"></div>
+  <aside id="sidebar" class="sidebar" role="navigation" aria-label="Mobile Navigation" aria-hidden="true">
+    <button class="sidebar-close" onclick="closeSidebar()" aria-label="Close Menu" title="Close Menu">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    <div>
+      <div class="profile">
+        <img src="images/rendi3.jpg" alt="Rendezvous">
+        <h2>Rendezvous</h2>
+        <p>Creative Web Designer</p>
+      </div>
+
+      <nav class="mobile-nav">
+        <a id="home-mobile" href="#home" onclick="showSection('home');"><i class="fa-solid fa-house-chimney"></i>
+          Home</a>
+        <a id="about-mobile" href="#about" onclick="showSection('about');"><i class="fa-solid fa-address-card"></i>
+          About</a>
+        <a id="webdesign-mobile" href="#webdesign" onclick="showSection('webdesign');"><i
+            class="fa-solid fa-briefcase"></i> Projects</a>
+        <a id="service-mobile" href="#service" onclick="showSection('service');"><i class="fa-solid fa-gears"></i>
+          Services</a>
+        <a id="contact-mobile" href="#contact" onclick="showSection('contact');"><i class="fa-solid fa-envelope"></i>
+          Contact</a>
+      </nav>
+    </div>
+
+    <div class="bottom-icons">
+      <a href="https://www.facebook.com/joeremychristie.ong" target="_blank" rel="noopener noreferrer"
+        aria-label="Facebook" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://www.instagram.com/rrendzvou" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
+        title="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://tryhackme.com/p/seisshun" target="_blank" rel="noopener noreferrer" aria-label="TryHackMe"
+        title="TryHackMe"><i class="fas fa-user-secret"></i></a>
+      <a href="https://ph.linkedin.com/in/joeremyong2003" target="_blank" rel="noopener noreferrer"
+        aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+  </aside>
+
+  <header class="desktop-header" id="header" role="banner">
+    <a href="#home" class="logo-container" onclick="showSection('home'); return false;" title="Go to Home" tabindex="0">
       <img src="images/rendi3.jpg" alt="Rendezvous">
       <h2>Rendezvous</h2>
-      <p>Creative Web Designer</p>
+    </a>
+
+    <nav class="desktop-nav" role="navigation" aria-label="Main Navigation">
+      <a id="home-link" href="#home" onclick="showSection('home'); return false;">Home</a>
+      <a id="about-link" href="#about" onclick="showSection('about'); return false;">About</a>
+      <a id="webdesign-link" href="#webdesign" onclick="showSection('webdesign'); return false;">Projects</a>
+      <a id="service-link" href="#service" onclick="showSection('service'); return false;">Services</a>
+      <a id="contact-link" href="#contact" onclick="showSection('contact'); return false;">Contact</a>
+    </nav>
+
+    <div class="social-icons">
+      <a href="https://www.facebook.com/joeremychristie.ong" target="_blank" rel="noopener noreferrer"
+        aria-label="Facebook" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://www.instagram.com/rrendzvou" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
+        title="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://tryhackme.com/p/seisshun" target="_blank" rel="noopener noreferrer" aria-label="TryHackMe"
+        title="TryHackMe"><i class="fas fa-user-secret"></i></a>
+      <a href="https://ph.linkedin.com/in/joeremyong2003" target="_blank" rel="noopener noreferrer"
+        aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
     </div>
 
-    <nav class="mobile-nav">
-  <a id="home-mobile" href="#home" onclick="showSection('home');"><i class="fa-solid fa-house-chimney"></i> Home</a>
-  <a id="about-mobile" href="#about" onclick="showSection('about');"><i class="fa-solid fa-address-card"></i> About</a>
-  <a id="webdesign-mobile" href="#webdesign" onclick="showSection('webdesign');"><i class="fa-solid fa-briefcase"></i> Projects</a>
-  <a id="service-mobile" href="#service" onclick="showSection('service');"><i class="fa-solid fa-gears"></i> Services</a>
-  <a id="contact-mobile" href="#contact" onclick="showSection('contact');"><i class="fa-solid fa-envelope"></i> Contact</a>
-</nav>
-  </div>
+    <button class="toggle-btn" onclick="openSidebar()" aria-label="Open Menu" title="Open Menu" aria-controls="sidebar"
+      aria-expanded="false">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </header>
 
-  <div class="bottom-icons">
-    <a href="https://www.facebook.com/joeremychristie.ong" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-    <a href="https://www.instagram.com/rrendzvou" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
-    <a href="https://tryhackme.com/p/seisshun" target="_blank" rel="noopener noreferrer" aria-label="TryHackMe" title="TryHackMe"><i class="fas fa-user-secret"></i></a>
-    <a href="https://ph.linkedin.com/in/joeremyong2003" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-  </div>
-</aside>
+  <main class="main" id="main-content" role="main">
 
-<header class="desktop-header" id="header" role="banner">
-  <a href="#home" class="logo-container" onclick="showSection('home'); return false;" title="Go to Home" tabindex="0">
-    <img src="images/rendi3.jpg" alt="Rendezvous">
-    <h2>Rendezvous</h2>
-  </a>
-
-  <nav class="desktop-nav" role="navigation" aria-label="Main Navigation">
-  <a id="home-link" href="#home" onclick="showSection('home'); return false;">Home</a>
-  <a id="about-link" href="#about" onclick="showSection('about'); return false;">About</a>
-  <a id="webdesign-link" href="#webdesign" onclick="showSection('webdesign'); return false;">Projects</a>
-  <a id="service-link" href="#service" onclick="showSection('service'); return false;">Services</a>
-  <a id="contact-link" href="#contact" onclick="showSection('contact'); return false;">Contact</a>
-</nav>
-
-  <div class="social-icons">
-    <a href="https://www.facebook.com/joeremychristie.ong" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-    <a href="https://www.instagram.com/rrendzvou" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
-    <a href="https://tryhackme.com/p/seisshun" target="_blank" rel="noopener noreferrer" aria-label="TryHackMe" title="TryHackMe"><i class="fas fa-user-secret"></i></a>
-    <a href="https://ph.linkedin.com/in/joeremyong2003" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-  </div>
-
-  <button class="toggle-btn" onclick="openSidebar()" aria-label="Open Menu" title="Open Menu" aria-controls="sidebar" aria-expanded="false">
-    <i class="fa-solid fa-bars"></i>
-  </button>
-</header>
-
-<main class="main" id="main-content" role="main">
-
-  <section id="home" class="section container" role="region" aria-labelledby="home-heading">
-  <div class="hero">
-    <div class="hero-content">
-  <div class="typewriter-container">
-    <h1 id="home-heading" class="typewriter">Hi, I'm <span>Rendezvous</span></h1>
-    <div class="home-underline"></div>
-  </div>
-  <p>A passionate web designer based in Cagayan de Oro, dedicated to creating beautiful and user-centric digital experiences.</p>
-  <div class="hero-btns">
-    <a href="#webdesign" onclick="showSection('webdesign'); return false;" class="btn"><i class="fa-solid fa-palette"></i> View Works</a>
-    <a href="#contact" onclick="showSection('contact'); return false;" class="btn btn-outline"><i class="fa-solid fa-paper-plane"></i> Contact Me</a>
-  </div>
-</div>
-    
-    <div class="hero-image">
-      <img src="images/rendi3.jpg" alt="Rendezvous Profile">
-    </div>
-  </div>
-</section>
-
- <section id="about" class="section container" role="region" aria-labelledby="about-heading">
-  <div class="reveal"><h1 id="about-heading">About Me</h1>
-  </div>
-  
-  <div class="about-container reveal">
-    <div class="about-top-wrapper">
-      <div class="about-visual-grid reveal">
-        <div class="about-image dominant reveal">
-          <img src="images/ren-about.jpg" alt="Rendezvous Profile" loading="lazy">
-        </div>
-      </div>
-      <div class="about-content reveal reveal-delay-1">
-        <div class="narrative-text">
-          <h3>Rendezvous</h3>
-          <p>I am a creative technologist based in Cagayan de Oro, Philippines, specializing in the intersection of digital aesthetics and system logic. My approach to UI/UX is rooted in transforming complex requirements into intuitive, high-fidelity web solutions.</p>
-          <div class="skills-showcase reveal reveal-delay-2">
-  <div class="skill-group reveal">
-    <span class="skill-tag"><i class="fab fa-figma"></i> UI/UX Design</span>
-    <span class="skill-tag"><i class="fas fa-cubes"></i> Design Systems</span>
-    <span class="skill-tag"><i class="fas fa-microscope"></i> User Research</span>
-  </div>
-
-  <div class="skill-group">
-    <span class="skill-tag"><i class="fab fa-react"></i> React & React Native</span>
-    <span class="skill-tag"><i class="fas fa-mobile-alt"></i> Flutter Dev</span>
-    <span class="skill-tag"><i class="fas fa-code"></i> HTML/CSS/JS</span>
-  </div>
-
-  <div class="skill-group">
-    <span class="skill-tag"><i class="fab fa-laravel"></i> Laravel & PHP</span>
-    <span class="skill-tag"><i class="fas fa-server"></i> MySQL & MongoDB</span>
-    <span class="skill-tag"><i class="fas fa-project-diagram"></i> Info Architecture</span>
-  </div>
-</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="interests-section">
-  <div class="beyond-header">
-    <h3 class="interests-title highlight-yellow">Beyond the Screen</h3>
-    <div class="glow-divider"></div>
-  </div>
-
-  <div class="subtle-bento-grid">
-    <div class="bento-card achievement-highlight">
-      <div class="card-inner">
-        <h4 class="highlight-yellow"><i class="fas fa-award"></i> Competitive Journey</h4>
-        <p>Notably secured Champion at the <strong class="glow-text">U-IGNITE Summit 2025</strong> as the <strong class="glow-text">System Analyst & UI/UX Designer</strong>.</p>
-        <div class="mini-gallery">
-          <div class="gallery-frame"><img src="images/peso.jpg" alt="Award Verification"></div>
-          <div class="gallery-frame"><img src="images/group.jpg" alt="Team Photo"></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="hobby-row">
-      <div class="bento-card hobby-card">
-        <div class="card-inner">
-          <div class="hobby-header">
-            <i class="fas fa-gamepad"></i>
-            <h5 class="highlight-yellow">Gaming</h5>
+    <section id="home" class="section container" role="region" aria-labelledby="home-heading">
+      <div class="hero">
+        <div class="hero-content">
+          <div class="typewriter-container">
+            <h1 id="home-heading" class="typewriter">Hi, I'm <span>Rendezvous</span></h1>
+            <div class="home-underline"></div>
           </div>
-          <p>Honing strategic thinking through competitive play in Valorant.</p>
+          <p>A passionate web designer based in Cagayan de Oro, dedicated to creating beautiful and user-centric digital
+            experiences.</p>
+          <div class="hero-btns">
+            <a href="#webdesign" onclick="showSection('webdesign'); return false;" class="btn"><i
+                class="fa-solid fa-palette"></i> View Works</a>
+            <a href="#contact" onclick="showSection('contact'); return false;" class="btn btn-outline"><i
+                class="fa-solid fa-paper-plane"></i> Contact Me</a>
+          </div>
         </div>
+
+        <div class="hero-image">
+          <img src="images/rendi3.jpg" alt="Rendezvous Profile">
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section container" role="region" aria-labelledby="about-heading">
+      <div class="reveal">
+        <h1 id="about-heading">About Me</h1>
       </div>
 
-      <div class="bento-card hobby-card">
-        <div class="card-inner">
-          <div class="hobby-header">
-            <i class="fas fa-shield-halved"></i>
-            <h5 class="highlight-yellow">Cybersecurity</h5>
+      <div class="about-container reveal">
+        <div class="about-top-wrapper">
+          <div class="about-visual-grid reveal">
+            <div class="about-image dominant reveal">
+              <img src="images/ren-about.jpg" alt="Rendezvous Profile" loading="lazy">
+            </div>
           </div>
-          <p>Practicing defense techniques on TryHackMe to build secure environments.</p>
-        </div>
-      </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-  
-  <section id="webdesign" class="section container" role="region" aria-labelledby="webdesign-heading">
-    <div class="reveal">
-    <h1 id="webdesign-heading">Web Design Showcase</h1>
-    <p>Crafting user-friendly and visually appealing digital experiences. Here are some examples:</p>
-  </div>
-    <div class="projects-grid reveal">
-      <div class="project-card">
-        <div class="project-img">
-          <img src="images/arctic.png" alt="Screenshot of Arctic Shakes" loading="lazy">
-        </div>
-        <div class="project-content reveal reveal-delay-1">
-          <h3>Arctic Shakes</h3>
-          <p>A promotional e-commerce website for a cold beverages brand focused on refreshing milkshakes. It combines vibrant visual content, product descriptions, and contact features to create an engaging user experience.</p>
-          <div class="project-tags">
-            <span class="project-tag">HTML</span>
-            <span class="project-tag">PHP</span>
-            <span class="project-tag">CSS</span>
-            <span class="project-tag">JavaScript</span>
-            <span class="project-tag">MySQL</span>
-            <span class="project-tag">Bootstrap / AOS / jQuery</span>
+          <div class="about-content reveal reveal-delay-1">
+            <div class="narrative-text">
+              <h3>Rendezvous</h3>
+              <p>I am a creative technologist based in Cagayan de Oro, Philippines, specializing in the intersection of
+                digital aesthetics and system logic. My approach to UI/UX is rooted in transforming complex requirements
+                into intuitive, high-fidelity web solutions.</p>
+              <div class="skills-showcase reveal reveal-delay-2">
+                <div class="skill-group reveal">
+                  <span class="skill-tag"><i class="fab fa-figma"></i> UI/UX Design</span>
+                  <span class="skill-tag"><i class="fas fa-cubes"></i> Design Systems</span>
+                  <span class="skill-tag"><i class="fas fa-microscope"></i> User Research</span>
+                </div>
+
+                <div class="skill-group">
+                  <span class="skill-tag"><i class="fab fa-react"></i> React & React Native</span>
+                  <span class="skill-tag"><i class="fas fa-mobile-alt"></i> Flutter Dev</span>
+                  <span class="skill-tag"><i class="fas fa-code"></i> HTML/CSS/JS</span>
+                </div>
+
+                <div class="skill-group">
+                  <span class="skill-tag"><i class="fab fa-laravel"></i> Laravel & PHP</span>
+                  <span class="skill-tag"><i class="fas fa-server"></i> MySQL & MongoDB</span>
+                  <span class="skill-tag"><i class="fas fa-project-diagram"></i> Info Architecture</span>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="project-links">
-            <a href="webdesign1.html" class="view-details"><i class="fas fa-external-link-alt"></i> View Details</a>
+        </div>
+
+        <div class="interests-section">
+          <div class="beyond-header">
+            <h3 class="interests-title highlight-yellow">Beyond the Screen</h3>
+            <div class="glow-divider"></div>
+          </div>
+
+          <div class="subtle-bento-grid">
+            <div class="bento-card achievement-highlight">
+              <div class="card-inner">
+                <h4 class="highlight-yellow"><i class="fas fa-award"></i> Competitive Journey</h4>
+                <p>Notably secured Champion at the <strong class="glow-text">USTP Future Summit: U-IGNITE 2025</strong>
+                  as the
+                  <strong class="glow-text">System Analyst & UI/UX Designer</strong>.
+                </p>
+                <div class="mini-gallery">
+                  <div class="gallery-frame"><img src="images/peso.jpg" alt="Award Verification"></div>
+                  <div class="gallery-frame"><img src="images/group.jpg" alt="Team Photo"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="hobby-row">
+              <div class="bento-card hobby-card">
+                <div class="card-inner">
+                  <div class="hobby-header">
+                    <i class="fas fa-gamepad"></i>
+                    <h5 class="highlight-yellow">Gaming</h5>
+                  </div>
+                  <p>Honing strategic thinking through competitive play in Valorant.</p>
+                </div>
+              </div>
+
+              <div class="bento-card hobby-card">
+                <div class="card-inner">
+                  <div class="hobby-header">
+                    <i class="fas fa-shield-halved"></i>
+                    <h5 class="highlight-yellow">Cybersecurity</h5>
+                  </div>
+                  <p>Practicing defense techniques on TryHackMe to build secure environments.</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+    </section>
 
-      <div class="project-card">
-        <div class="project-img">
-          <img src="images/wiz.png" alt="Screenshot of Wizards" loading="lazy">
-        </div>
-        <div class="project-content reveal reveal-delay-2">
-          <h3>Wizards</h3>
-          <p>A dedicated website for the senior high school students of Capitol University, providing a platform where students can access important information related to academics, extracurricular activities, and campus events.</p>
-          <div class="project-tags">
-            <span class="project-tag">HTML</span>
-            <span class="project-tag">PHP</span>
-            <span class="project-tag">CSS</span>
-            <span class="project-tag">JavaScript</span>
-            <span class="project-tag">Bootstrap / AOS / jQuery</span>
+    <section id="webdesign" class="section container" role="region" aria-labelledby="webdesign-heading">
+      <div class="reveal">
+        <h1 id="webdesign-heading">Web Design Showcase</h1>
+        <p>Crafting user-friendly and visually appealing digital experiences. Here are some examples:</p>
+      </div>
+      <div class="projects-grid reveal">
+        <div class="project-card">
+          <div class="project-img">
+            <img src="images/arctic.png" alt="Screenshot of Arctic Shakes" loading="lazy">
           </div>
-          <div class="project-links">
-            <a href="webdesign2.html" class="view-details"><i class="fas fa-external-link-alt"></i> View Details</a>
+          <div class="project-content reveal reveal-delay-1">
+            <h3>Arctic Shakes</h3>
+            <p>A promotional e-commerce website for a cold beverages brand focused on refreshing milkshakes. It combines
+              vibrant visual content, product descriptions, and contact features to create an engaging user experience.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">HTML</span>
+              <span class="project-tag">PHP</span>
+              <span class="project-tag">CSS</span>
+              <span class="project-tag">JavaScript</span>
+              <span class="project-tag">MySQL</span>
+              <span class="project-tag">Bootstrap / AOS / jQuery</span>
+            </div>
+            <div class="project-links">
+              <a href="webdesign1.html" class="view-details"><i class="fas fa-external-link-alt"></i> View Details</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-img">
+            <img src="images/wiz.png" alt="Screenshot of Wizards" loading="lazy">
+          </div>
+          <div class="project-content reveal reveal-delay-2">
+            <h3>Wizards</h3>
+            <p>A dedicated website for the senior high school students of Capitol University, providing a platform where
+              students can access important information related to academics, extracurricular activities, and campus
+              events.</p>
+            <div class="project-tags">
+              <span class="project-tag">HTML</span>
+              <span class="project-tag">PHP</span>
+              <span class="project-tag">CSS</span>
+              <span class="project-tag">JavaScript</span>
+              <span class="project-tag">Bootstrap / AOS / jQuery</span>
+            </div>
+            <div class="project-links">
+              <a href="webdesign2.html" class="view-details"><i class="fas fa-external-link-alt"></i> View Details</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-img">
+            <img src="images/figma.png" alt="Screenshot of Laundry Management System" loading="lazy">
+          </div>
+          <div class="project-content reveal reveal-delay-3">
+            <h3>Laundry Shop Management System</h3>
+            <p>A streamlined system designed for laundry businesses, featuring order tracking, customer notifications,
+              user accounts, and automated payment management. The prototype showcases intuitive interfaces for both
+              staff and customers to manage and monitor laundry orders efficiently.</p>
+            <div class="project-tags">
+              <span class="project-tag">Figma</span>
+              <span class="project-tag">UI/UX Design</span>
+              <span class="project-tag">Prototype</span>
+            </div>
+            <div class="project-links">
+              <a href="webdesign3.html" class="view-details"><i class="fas fa-external-link-alt"></i> View Details</a>
+            </div>
           </div>
         </div>
       </div>
+    </section>
 
-      <div class="project-card">
-        <div class="project-img">
-          <img src="images/figma.png" alt="Screenshot of Laundry Management System" loading="lazy">
-        </div>
-        <div class="project-content reveal reveal-delay-3">
-          <h3>Laundry Shop Management System</h3>
-          <p>A streamlined system designed for laundry businesses, featuring order tracking, customer notifications, user accounts, and automated payment management. The prototype showcases intuitive interfaces for both staff and customers to manage and monitor laundry orders efficiently.</p>
-          <div class="project-tags">
-            <span class="project-tag">Figma</span>
-            <span class="project-tag">UI/UX Design</span>
-            <span class="project-tag">Prototype</span>
-          </div>
-          <div class="project-links">
-            <a href="webdesign3.html" class="view-details"><i class="fas fa-external-link-alt"></i> View Details</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="service" class="section container" role="region" aria-labelledby="service-heading">
-    <div class="reveal text-center">
+    <section id="service" class="section container" role="region" aria-labelledby="service-heading">
+      <div class="reveal text-center">
         <h1 id="service-heading">Strategic Services</h1>
-        <p class="section-intro">Bridging the gap between complex system logic and high-fidelity interfaces to engineer scalable digital solutions.</p>
-    </div>
+        <p class="section-intro">Bridging the gap between complex system logic and high-fidelity interfaces to engineer
+          scalable digital solutions.</p>
+      </div>
 
-    <div class="services-container reveal reveal-delay-1">
+      <div class="services-container reveal reveal-delay-1">
         <div class="service-card reveal">
-            <div class="service-icon"><i class="fas fa-compass"></i></div>
-            <h3>Product Design Strategy</h3>
-            <p class="service-description">Beyond just "looking good." I build <strong>Design Systems</strong> and optimize <strong>User Flows</strong> based on research and technical feasibility.</p>
-            
-            <div class="tech-badges">
-                <span class="tech-badge">Figma</span>
-                <span class="tech-badge">User Research</span>
-                <span class="tech-badge">Design Systems</span>
-            </div>
+          <div class="service-icon"><i class="fas fa-compass"></i></div>
+          <h3>Product Design Strategy</h3>
+          <p class="service-description">Beyond just "looking good." I build <strong>Design Systems</strong> and
+            optimize <strong>User Flows</strong> based on research and technical feasibility.</p>
 
-            <ul class="features-list">
-                <li>End-to-end UX Audit & Strategy</li>
-                <li>Interactive High-Fidelity Prototypes</li>
-                <li>Information Architecture Mapping</li>
-            </ul>
+          <div class="tech-badges">
+            <span class="tech-badge">Figma</span>
+            <span class="tech-badge">User Research</span>
+            <span class="tech-badge">Design Systems</span>
+          </div>
 
-            <div class="service-pricing">
-                <div class="price-label">Starting Investment</div>
-                <div class="price-value">Project Based</div>
-            </div>
-            <a href="#contact" onclick="showSection('contact'); return false;" class="btn">Inquire for Strategy</a>
+          <ul class="features-list">
+            <li>End-to-end UX Audit & Strategy</li>
+            <li>Interactive High-Fidelity Prototypes</li>
+            <li>Information Architecture Mapping</li>
+          </ul>
+
+          <div class="service-pricing">
+            <div class="price-label">Starting Investment</div>
+            <div class="price-value">Project Based</div>
+          </div>
+          <a href="#contact" onclick="showSection('contact'); return false;" class="btn">Inquire for Strategy</a>
         </div>
 
         <div class="service-card reveal reveal-delay-1">
-            <div class="service-icon"><i class="fas fa-code-branch"></i></div>
-            <h3>Full-Stack Interface Dev</h3>
-            <p class="service-description">Production-ready code that bridges the gap between design and logic. Specializing in high-performance web and mobile apps.</p>
-            
-            <div class="tech-badges">
-                <span class="tech-badge">Laravel</span>
-                <span class="tech-badge">React Native</span>
-                <span class="tech-badge">MySQL</span>
-                <span class="tech-badge">PHP</span>
-            </div>
+          <div class="service-icon"><i class="fas fa-code-branch"></i></div>
+          <h3>Full-Stack Interface Dev</h3>
+          <p class="service-description">Production-ready code that bridges the gap between design and logic.
+            Specializing in high-performance web and mobile apps.</p>
 
-            <ul class="features-list">
-                <li>Laravel Backend Integration</li>
-                <li>React Native Mobile Development</li>
-                <li>API & Database Architecture</li>
-            </ul>
-
-            <div class="service-pricing">
-                <div class="price-label">Starting Investment</div>
-                <div class="price-value">Project Based</div>
-            </div>
-            <a href="#contact" onclick="showSection('contact'); return false;" class="btn">Inquire for Tech</a>
-        </div>
-    </div>
-</section>
-
-  <section id="contact" class="section" role="region" aria-labelledby="contact-heading">
-    <div class="container reveal">
-      <div class="section-header reveal reveal-delay-1">
-        <h2 id="contact-heading">Let's Connect</h2>
-        <div class="header-underline"></div>
-        <p class="section-intro">Curious about design, tech, or building better digital experiences? <br> Let’s connect and create something people love to use.</p>
-      </div>
-  
-      <div class="contact-container reveal reveal-delay-2">
-        <div class="contact-info">
-          <div class="info-card">
-            <p class="info-intro reveal">I'm currently available for freelance projects and always open to discussing new ideas. Reach out using the form or contact me directly through these channels:</p>
-  
-            <div class="contact-item">
-              <div class="contact-icon">
-                <i class="fas fa-envelope"></i>
-              </div>
-              <div class="contact-text">
-                <h4>Email</h4>
-                <p><a href="mailto:joeremychrst@gmail.com" title="Send an email">joeremychrst@gmail.com</a></p>
-              </div>
-            </div>
-  
-            <div class="contact-item">
-              <div class="contact-icon">
-                <i class="fas fa-phone-alt"></i>
-              </div>
-              <div class="contact-text">
-                <h4>Phone</h4>
-                <p><a href="tel:+639177704782" title="Call me">+63 917 770 4782</a></p>
-              </div>
-            </div>
-  
-            <div class="contact-item">
-              <div class="contact-icon">
-                <i class="fas fa-map-marker-alt"></i>
-              </div>
-              <div class="contact-text">
-                <h4>Location</h4>
-                <p>Cagayan de Oro, Philippines</p>
-              </div>
-            </div>
-            
-            <div class="social-links">
-              <a href="https://github.com/rrendezvous" class="social-icon" aria-label="GitHub" title="GitHub" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
-              <a href="https://dribbble.com/shiroirokuro" class="social-icon" aria-label="Dribbble" title="Dribbble" target="_blank" rel="noopener noreferrer"><i class="fab fa-dribbble"></i></a>
-              <a href="https://www.behance.net/zerothezero" class="social-icon" aria-label="Behance" title="Behance" target="_blank" rel="noopener noreferrer"><i class="fab fa-behance"></i></a>
-              <a href="https://x.com/ymereoj" class="social-icon" aria-label="Twitter" title="Twitter" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
-            </div>            
+          <div class="tech-badges">
+            <span class="tech-badge">Laravel</span>
+            <span class="tech-badge">React Native</span>
+            <span class="tech-badge">MySQL</span>
+            <span class="tech-badge">PHP</span>
           </div>
-        </div>
-  
-        <div class="contact-form reveal reveal-delay-2">
-          <div class="form-container">
-            <h3 class="form-title">Send me a message</h3>
-            
-            <form action="https://formspree.io/f/xeekwplz" method="POST" id="contactForm">
-              <div class="input-row">
-                <div class="input-group">
-                  <label for="name">Your Name</label>
-                  <div class="input-wrapper">
-                    <i class="fas fa-user input-icon"></i>
-                    <input type="text" id="name" name="name" placeholder="Juan Dela Cruz" required minlength="2">
-                  </div>
-                </div>
-  
-                <div class="input-group">
-                  <label for="email">Your Email</label>
-                  <div class="input-wrapper">
-                    <i class="fas fa-at input-icon"></i>
-                    <input type="email" id="email" name="email" placeholder="juan.d.cruz@email.com" required>
-                  </div>
-                </div>
-              </div>
-  
-              <div class="input-group">
-                <label for="subject">Subject</label>
-                <div class="input-wrapper">
-                  <i class="fas fa-heading input-icon"></i>
-                  <input type="text" id="subject" name="subject" placeholder="Project Inquiry" required>
-                </div>
-              </div>
-  
-              <div class="input-group">
-                <label for="message">Your Message</label>
-                <div class="input-wrapper">
-                  <i class="fas fa-comment-alt input-icon textarea-icon"></i>
-                  <textarea id="message" name="message" placeholder="Tell me about your project or question..." required minlength="10" rows="5"></textarea>
-                </div>
-              </div>
-  
-              <div class="form-footer">
-                <div class="form-submit-container">
-                  <button type="submit" class="submit-btn">
-                    <span>Send Message</span>
-                    <i class="fas fa-paper-plane"></i>
-                  </button>
-                  <div id="form-status" aria-live="polite"></div>
-                </div>
-              </div>
-            </form>
+
+          <ul class="features-list">
+            <li>Laravel Backend Integration</li>
+            <li>React Native Mobile Development</li>
+            <li>API & Database Architecture</li>
+          </ul>
+
+          <div class="service-pricing">
+            <div class="price-label">Starting Investment</div>
+            <div class="price-value">Project Based</div>
           </div>
+          <a href="#contact" onclick="showSection('contact'); return false;" class="btn">Inquire for Tech</a>
         </div>
       </div>
+    </section>
+
+    <section id="contact" class="section" role="region" aria-labelledby="contact-heading">
+      <div class="container reveal">
+        <div class="section-header reveal reveal-delay-1">
+          <h2 id="contact-heading">Let's Connect</h2>
+          <div class="header-underline"></div>
+          <p class="section-intro">Curious about design, tech, or building better digital experiences? <br> Let’s
+            connect and create something people love to use.</p>
+        </div>
+
+        <div class="contact-container reveal reveal-delay-2">
+          <div class="contact-info">
+            <div class="info-card">
+              <p class="info-intro reveal">I'm currently available for freelance projects and always open to discussing
+                new ideas. Reach out using the form or contact me directly through these channels:</p>
+
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <i class="fas fa-envelope"></i>
+                </div>
+                <div class="contact-text">
+                  <h4>Email</h4>
+                  <p><a href="mailto:joeremychrst@gmail.com" title="Send an email">joeremychrst@gmail.com</a></p>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <i class="fas fa-phone-alt"></i>
+                </div>
+                <div class="contact-text">
+                  <h4>Phone</h4>
+                  <p><a href="tel:+639177704782" title="Call me">+63 917 770 4782</a></p>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div class="contact-text">
+                  <h4>Location</h4>
+                  <p>Cagayan de Oro, Philippines</p>
+                </div>
+              </div>
+
+              <div class="social-links">
+                <a href="https://github.com/rrendezvous" class="social-icon" aria-label="GitHub" title="GitHub"
+                  target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                <a href="https://dribbble.com/shiroirokuro" class="social-icon" aria-label="Dribbble" title="Dribbble"
+                  target="_blank" rel="noopener noreferrer"><i class="fab fa-dribbble"></i></a>
+                <a href="https://www.behance.net/zerothezero" class="social-icon" aria-label="Behance" title="Behance"
+                  target="_blank" rel="noopener noreferrer"><i class="fab fa-behance"></i></a>
+                <a href="https://x.com/ymereoj" class="social-icon" aria-label="Twitter" title="Twitter" target="_blank"
+                  rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-form reveal reveal-delay-2">
+            <div class="form-container">
+              <h3 class="form-title">Send me a message</h3>
+
+              <form action="https://formspree.io/f/xeekwplz" method="POST" id="contactForm">
+                <div class="input-row">
+                  <div class="input-group">
+                    <label for="name">Your Name</label>
+                    <div class="input-wrapper">
+                      <i class="fas fa-user input-icon"></i>
+                      <input type="text" id="name" name="name" placeholder="Juan Dela Cruz" required minlength="2">
+                    </div>
+                  </div>
+
+                  <div class="input-group">
+                    <label for="email">Your Email</label>
+                    <div class="input-wrapper">
+                      <i class="fas fa-at input-icon"></i>
+                      <input type="email" id="email" name="email" placeholder="juan.d.cruz@email.com" required>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="input-group">
+                  <label for="subject">Subject</label>
+                  <div class="input-wrapper">
+                    <i class="fas fa-heading input-icon"></i>
+                    <input type="text" id="subject" name="subject" placeholder="Project Inquiry" required>
+                  </div>
+                </div>
+
+                <div class="input-group">
+                  <label for="message">Your Message</label>
+                  <div class="input-wrapper">
+                    <i class="fas fa-comment-alt input-icon textarea-icon"></i>
+                    <textarea id="message" name="message" placeholder="Tell me about your project or question..."
+                      required minlength="10" rows="5"></textarea>
+                  </div>
+                </div>
+
+                <div class="form-footer">
+                  <div class="form-submit-container">
+                    <button type="submit" class="submit-btn">
+                      <span>Send Message</span>
+                      <i class="fas fa-paper-plane"></i>
+                    </button>
+                    <div id="form-status" aria-live="polite"></div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="copyright">
+        &copy; <span id="current-year">2025</span> Rendezvous. All Rights Reserved.
+      </div>
     </div>
-  </section>
-</main>
+  </footer>
 
-<footer>
-  <div class="footer-content">
-    <div class="copyright">
-      &copy; <span id="current-year">2025</span> Rendezvous. All Rights Reserved.
-    </div>
-  </div>
-</footer>
+  <button id="back-to-top" title="Back to Top" aria-label="Scroll back to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
 
-<button id="back-to-top" title="Back to Top" aria-label="Scroll back to top">
-  <i class="fa-solid fa-arrow-up"></i>
-</button>
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
+
 </html>

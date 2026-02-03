@@ -610,10 +610,18 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
+let typewriterCompletionTimeout;
+
 function runTypewriterAnimation() {
   const typewriter = document.querySelector('.typewriter');
   const underline = document.querySelector('.home-underline');
   if (!typewriter) return;
+
+  // Clear any pending completion timeout from previous runs
+  if (typewriterCompletionTimeout) {
+    clearTimeout(typewriterCompletionTimeout);
+    typewriterCompletionTimeout = null;
+  }
 
   // Wrap content once so we can reveal text without layout shifting
   let textWrap = typewriter.querySelector('.tw-text');
@@ -661,7 +669,7 @@ function runTypewriterAnimation() {
   textWrap.style.animation = 'typing 3.5s steps(var(--tw-steps, 40), end) forwards, blink-caret 0.75s step-end infinite';
 
   // 3. Optional: Remove the cursor after it's done so it looks clean
-  setTimeout(() => {
+  typewriterCompletionTimeout = setTimeout(() => {
     textWrap.style.borderRight = 'none';
   }, 3500); 
 }
@@ -685,9 +693,14 @@ document.querySelectorAll('a[href="#home"]').forEach(link => {
   });
 });
 
-// Recalculate on resize to avoid width mismatches on desktop
+// Recalculate on width resize only (prevents mobile scroll glitch)
 let typewriterResizeTimer;
+let lastWindowWidth = window.innerWidth;
+
 window.addEventListener('resize', () => {
+  if (window.innerWidth === lastWindowWidth) return;
+  lastWindowWidth = window.innerWidth;
+  
   clearTimeout(typewriterResizeTimer);
   typewriterResizeTimer = setTimeout(triggerTypewriterAnimation, 150);
 });
