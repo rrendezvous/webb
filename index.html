@@ -84,8 +84,25 @@
   <main class="main" id="main-content" role="main">
 
     <section id="home" class="section container" role="region" aria-labelledby="home-heading">
+
+      <!-- Canvas Background Layer -->
+      <div class="hero-canvas-bg" aria-hidden="true">
+        <div class="canvas-dot-grid"></div>
+        <div class="canvas-vignette"></div>
+        <!-- Soft glow behind image side -->
+        <div class="canvas-glow"></div>
+        <!-- Thin accent lines -->
+        <div class="canvas-line canvas-line--h"></div>
+      </div>
+
       <div class="hero">
+
         <div class="hero-content">
+          <!-- Role badge -->
+          <div class="hero-badge">
+            <span class="badge-dot"></span>
+            <span>UI/UX Designer &amp; Developer</span>
+          </div>
           <div class="typewriter-container">
             <h1 id="home-heading" class="typewriter">Hi, I'm <span>Rendezvous</span></h1>
             <div class="home-underline"></div>
@@ -100,11 +117,40 @@
           </div>
         </div>
 
-        <div class="hero-image">
-          <img src="images/rendi3.jpg" alt="Rendezvous Profile">
+        <!-- Image column -->
+        <div class="hero-photo-col">
+          <!-- Floating achievement chips -->
+          <div class="hero-chip hero-chip--award">
+            <i class="fas fa-award"></i>
+            <div class="chip-text">
+              <span class="chip-title">Champion</span>
+              <span class="chip-sub">U-IGNITE 2025</span>
+            </div>
+          </div>
+          <div class="hero-chip hero-chip--stack">
+            <i class="fab fa-figma"></i>
+            <div class="chip-text">
+              <span class="chip-title">Figma &amp; React</span>
+              <span class="chip-sub">Design + Code</span>
+            </div>
+          </div>
+
+          <!-- Profile image -->
+          <div class="hero-photo-frame">
+            <img src="images/rendi3.jpg" alt="Rendezvous Profile">
+            <!-- Decorative corner brackets -->
+            <span class="frame-corner frame-corner--tl" aria-hidden="true"></span>
+            <span class="frame-corner frame-corner--tr" aria-hidden="true"></span>
+            <span class="frame-corner frame-corner--bl" aria-hidden="true"></span>
+            <span class="frame-corner frame-corner--br" aria-hidden="true"></span>
+          </div>
         </div>
+
       </div>
+
     </section>
+
+
 
     <section id="about" class="section container" role="region" aria-labelledby="about-heading">
       <div class="reveal">

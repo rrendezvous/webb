@@ -3,21 +3,21 @@
 
 /* --- CSS Variables --- */
 :root {
-  --primary: #ffc857;
-  --primary-light: #ffd479;
-  --dark: #0f0f0f;
-  --card-bg: #181820;
-  --card-bg-hover: #1f1f29;
-  --hover: #2c2c3b;
-  --text: #eee;
-  --text-muted: #aaa;
-  --border-color: rgba(255, 255, 255, 0.1);
-  --focus-ring: 0 0 0 3px rgba(255, 200, 87, 0.5);
-  --shadow-sm: 0 4px 10px rgba(0, 0, 0, 0.2);
-  --shadow-md: 0 12px 30px rgba(0, 0, 0, 0.4);
+  --primary: #3b82f6;
+  --primary-light: #60a5fa;
+  --dark: #0c0c1d;
+  --card-bg: #141428;
+  --card-bg-hover: #1c1c38;
+  --hover: #252545;
+  --text: #f0f0f5;
+  --text-muted: #9a9ab5;
+  --border-color: rgba(100, 160, 255, 0.12);
+  --focus-ring: 0 0 0 3px rgba(59, 130, 246, 0.5);
+  --shadow-sm: 0 4px 10px rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 12px 30px rgba(0, 0, 0, 0.45);
   /* Refined SaaS-style depth */
-  --shadow-lg: 0 20px 45px rgba(0, 0, 0, 0.5);
-  --glass-bg: rgba(24, 24, 32, 0.85);
+  --shadow-lg: 0 20px 45px rgba(0, 0, 0, 0.55);
+  --glass-bg: rgba(20, 20, 40, 0.85);
   /* For elevated transparency effects */
 }
 
@@ -88,11 +88,11 @@ textarea:focus-visible {
 
 .btn:focus-visible,
 .submit-btn:focus-visible {
-  box-shadow: var(--focus-ring), 0 5px 15px rgba(255, 200, 87, 0.25);
+  box-shadow: var(--focus-ring), 0 5px 15px rgba(59, 130, 246, 0.25);
 }
 
 .logo-container:focus-visible h2 {
-  text-shadow: 0 0 8px rgba(255, 200, 87, 0.6);
+  text-shadow: 0 0 8px rgba(59, 130, 246, 0.6);
 }
 
 .logo-container:focus-visible {
@@ -171,7 +171,7 @@ textarea:focus-visible {
 }
 
 .logo-container:hover h2 {
-  text-shadow: 0 0 8px rgba(255, 200, 87, 0.4);
+  text-shadow: 0 0 8px rgba(59, 130, 246, 0.4);
   transform: scale(1.03);
 }
 
@@ -209,7 +209,7 @@ textarea:focus-visible {
 .mobile-nav a[aria-current="page"] {
   color: var(--primary) !important;
   font-weight: 600;
-  text-shadow: 0 0 10px rgba(255, 200, 87, 0.3);
+  text-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
 }
 
 /* Ensure the underline appears when ScrollSpy triggers */
@@ -312,7 +312,7 @@ textarea:focus-visible {
   color: var(--primary);
   font-weight: 600;
   border-left-color: var(--primary);
-  background-color: rgba(255, 200, 87, 0.05);
+  background-color: rgba(59, 130, 246, 0.05);
 }
 
 /* Header Social Icons */
@@ -340,7 +340,7 @@ textarea:focus-visible {
   background-color: var(--hover);
   transform: translateY(-3px) scale(1.05);
   border-color: var(--primary);
-  box-shadow: 0 4px 8px rgba(255, 200, 87, 0.15);
+  box-shadow: 0 4px 8px rgba(59, 130, 246, 0.15);
 }
 
 /* --- Mobile Sidebar --- */
@@ -574,7 +574,7 @@ textarea:focus-visible {
   background-color: var(--hover);
   transform: translateY(-3px) scale(1.05);
   border-color: var(--primary);
-  box-shadow: 0 4px 8px rgba(255, 200, 87, 0.15);
+  box-shadow: 0 4px 8px rgba(59, 130, 246, 0.15);
 }
 
 /* --- Main Content Area --- */
@@ -687,7 +687,7 @@ textarea:focus-visible {
   background: linear-gradient(90deg, var(--primary), var(--primary-light));
   border-radius: 3px;
   transition: width 0.8s ease 0.4s, box-shadow 1s ease 1s;
-  box-shadow: 0 0 0 rgba(255, 200, 87, 0);
+  box-shadow: 0 0 0 rgba(59, 130, 246, 0);
 }
 
 /* Centers the underline automatically for Strategic Services */
@@ -699,7 +699,7 @@ textarea:focus-visible {
 /* THE TRIGGER: Forces the line to appear and glow when revealed */
 .reveal.in-view h1::after {
   width: 70px !important;
-  box-shadow: 0 0 15px rgba(255, 200, 87, 0.6);
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.6);
 }
 
 @keyframes slideInUnderline {
@@ -721,7 +721,370 @@ textarea:focus-visible {
 #home.section {
   padding-top: 40px;
   padding-bottom: 40px;
+  position: relative;
+  overflow: hidden;
 }
+
+/* ============================================================
+   CANVAS BACKGROUND LAYER — Figma-canvas-inspired dot grid
+   ============================================================ */
+.hero-canvas-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+/* The signature Figma/Notion dot grid — on-brand for a designer */
+.canvas-dot-grid {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(59, 130, 246, 0.22) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: radial-gradient(ellipse 90% 90% at 50% 50%, black 30%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 90% 90% at 50% 50%, black 30%, transparent 100%);
+}
+
+/* Soft blue glow sitting behind the image column */
+.canvas-glow {
+  position: absolute;
+  right: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.10) 0%, rgba(59, 130, 246, 0.04) 50%, transparent 75%);
+  border-radius: 50%;
+  filter: blur(40px);
+}
+
+/* Vignette — keeps content readable */
+.canvas-vignette {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to right, var(--dark) 0%, transparent 14%, transparent 86%, var(--dark) 100%),
+    linear-gradient(to bottom, var(--dark) 0%, transparent 10%, transparent 90%, var(--dark) 100%);
+}
+
+/* Pair of thin decorative accent lines in the corner of the canvas */
+.canvas-line {
+  position: absolute;
+  background: linear-gradient(to right, transparent, rgba(59, 130, 246, 0.2), transparent);
+}
+
+.canvas-line--h {
+  top: 38%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  opacity: 0.4;
+}
+
+.canvas-line--v {
+  left: 62%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, rgba(59, 130, 246, 0.15), transparent);
+  opacity: 0.4;
+}
+
+/* ============================================================
+   HERO LAYOUT — z-index above canvas
+   ============================================================ */
+#home .hero {
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================================
+   ROLE BADGE — Clean "available to work" pill
+   ============================================================ */
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(59, 130, 246, 0.08);
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  border-radius: 100px;
+  padding: 6px 14px 6px 10px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  color: var(--primary-light);
+  margin-bottom: 18px;
+  animation: badge-in 0.7s ease both;
+  backdrop-filter: blur(6px);
+}
+
+.badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #4ade80;
+  /* green = online/available */
+  box-shadow: 0 0 0 2px rgba(74, 222, 128, 0.25);
+  animation: badge-pulse 2.4s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes badge-pulse {
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 2px rgba(74, 222, 128, 0.25);
+  }
+
+  50% {
+    box-shadow: 0 0 0 5px rgba(74, 222, 128, 0.06);
+  }
+}
+
+@keyframes badge-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================================
+   HERO IMAGE COLUMN
+   ============================================================ */
+.hero-photo-col {
+  flex: 0 0 auto;
+  position: relative;
+  width: clamp(280px, 26vw, 360px);
+  height: clamp(280px, 26vw, 360px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeInScaleUp 1s ease 0.3s both;
+}
+
+/* Clean square frame with a soft offset shadow — designer's comp style */
+.hero-photo-frame {
+  width: 84%;
+  height: 84%;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  box-shadow:
+    0 0 0 1px rgba(59, 130, 246, 0.18),
+    8px 8px 0px rgba(59, 130, 246, 0.12),
+    0 24px 60px rgba(0, 0, 0, 0.7);
+  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.5s ease;
+}
+
+.hero-photo-frame:hover {
+  transform: translateY(-5px) translateX(-3px);
+  box-shadow:
+    0 0 0 1px rgba(59, 130, 246, 0.3),
+    12px 12px 0px rgba(59, 130, 246, 0.18),
+    0 32px 70px rgba(0, 0, 0, 0.75);
+}
+
+.hero-photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), filter 0.5s ease;
+  filter: saturate(0.9) contrast(1.05);
+}
+
+.hero-photo-frame:hover img {
+  transform: scale(1.04);
+  filter: saturate(1.08) contrast(1.0);
+}
+
+/* Corner bracket decorators — UI design system / Figma annotation style */
+.frame-corner {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-color: var(--primary);
+  border-style: solid;
+  border-width: 0;
+  opacity: 0.7;
+  transition: opacity 0.3s ease, width 0.3s ease, height 0.3s ease;
+}
+
+.hero-photo-frame:hover .frame-corner {
+  opacity: 1;
+  width: 22px;
+  height: 22px;
+}
+
+.frame-corner--tl {
+  top: 8px;
+  left: 8px;
+  border-top-width: 2px;
+  border-left-width: 2px;
+}
+
+.frame-corner--tr {
+  top: 8px;
+  right: 8px;
+  border-top-width: 2px;
+  border-right-width: 2px;
+}
+
+.frame-corner--bl {
+  bottom: 8px;
+  left: 8px;
+  border-bottom-width: 2px;
+  border-left-width: 2px;
+}
+
+.frame-corner--br {
+  bottom: 8px;
+  right: 8px;
+  border-bottom-width: 2px;
+  border-right-width: 2px;
+}
+
+/* ============================================================
+   FLOATING ACHIEVEMENT CHIPS — glassmorphic info cards
+   ============================================================ */
+.hero-chip {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(20, 20, 40, 0.75);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: 14px;
+  padding: 10px 14px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  z-index: 3;
+  min-width: 155px;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.hero-chip:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
+}
+
+.hero-chip i {
+  font-size: 1.1rem;
+  color: var(--primary-light);
+  flex-shrink: 0;
+}
+
+.chip-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.chip-title {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1;
+}
+
+.chip-sub {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  line-height: 1;
+}
+
+/* Position: top-left chip floats outside/above-left the frame */
+.hero-chip--award {
+  top: 2%;
+  left: -8%;
+  animation: chip-float-a 5s ease-in-out infinite, fade-in-up 1s ease 0.8s both;
+}
+
+/* Position: bottom-right chip floats below-right the frame */
+.hero-chip--stack {
+  bottom: 6%;
+  right: -8%;
+  animation: chip-float-b 5.5s ease-in-out infinite, fade-in-up 1s ease 1s both;
+}
+
+@keyframes chip-float-a {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+@keyframes chip-float-b {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(7px);
+  }
+}
+
+/* ============================================================
+   SHARED ANIMATION
+   ============================================================ */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media screen and (max-width: 992px) {
+  .hero-photo-col {
+    width: 240px !important;
+    height: 240px !important;
+    margin: 0 auto 20px !important;
+    order: -1;
+  }
+
+  .hero-chip {
+    display: none;
+    /* hide chips on small screens to avoid clutter */
+  }
+
+  .canvas-line--v {
+    display: none;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* --- DESKTOP HERO CONTENT --- */
 
@@ -1107,8 +1470,8 @@ textarea:focus-visible {
 /* 1. View Works: The Primary Action (Chrome Shimmer) */
 .btn:first-child {
   background: linear-gradient(135deg, var(--primary), var(--primary-light));
-  color: var(--dark);
-  box-shadow: 0 4px 15px rgba(255, 200, 87, 0.3);
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
 }
 
 /* THE SHIMMER LOGIC */
@@ -1126,7 +1489,7 @@ textarea:focus-visible {
 
 .btn:first-child:hover {
   transform: translateY(-4px) scale(1.02);
-  box-shadow: 0 12px 25px rgba(255, 200, 87, 0.5);
+  box-shadow: 0 12px 25px rgba(59, 130, 246, 0.5);
 }
 
 .btn:first-child:hover::after {
@@ -1226,9 +1589,9 @@ textarea:focus-visible {
 }
 
 .skill-tag:hover {
-  background: rgba(255, 200, 87, 0.05);
+  background: rgba(59, 130, 246, 0.05);
   color: var(--primary);
-  border-color: rgba(255, 200, 87, 0.2);
+  border-color: rgba(59, 130, 246, 0.2);
 }
 
 /* Bento Achievements */
@@ -1399,7 +1762,7 @@ textarea:focus-visible {
 .service-card:hover {
   transform: translateY(-10px) !important;
   box-shadow: var(--shadow-lg) !important;
-  border-color: rgba(255, 200, 87, 0.3) !important;
+  border-color: rgba(59, 130, 246, 0.3) !important;
   background-color: var(--card-bg-hover);
 }
 
@@ -1486,13 +1849,13 @@ textarea:focus-visible {
 }
 
 .project-tag {
-  background-color: rgba(255, 200, 87, 0.1);
+  background-color: rgba(59, 130, 246, 0.1);
   color: var(--primary);
   padding: 5px 12px;
   border-radius: 15px;
   font-size: 0.8rem;
   font-weight: 500;
-  border: 1px solid rgba(255, 200, 87, 0.3);
+  border: 1px solid rgba(59, 130, 246, 0.3);
 }
 
 .project-links {
@@ -1563,14 +1926,14 @@ textarea:focus-visible {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(255, 200, 87, 0.05) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.05) 0%, transparent 70%);
   opacity: 0;
   transition: opacity 0.5s ease;
 }
 
 .service-card:hover {
   transform: translateY(-10px);
-  border-color: rgba(255, 200, 87, 0.3);
+  border-color: rgba(59, 130, 246, 0.3);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
@@ -1581,7 +1944,7 @@ textarea:focus-visible {
 .service-icon {
   width: 64px;
   height: 64px;
-  background: rgba(255, 200, 87, 0.1);
+  background: rgba(59, 130, 246, 0.1);
   color: var(--primary);
   border-radius: 16px;
   display: flex;
@@ -1589,7 +1952,7 @@ textarea:focus-visible {
   justify-content: center;
   font-size: 1.8rem;
   margin-bottom: 25px;
-  border: 1px solid rgba(255, 200, 87, 0.2);
+  border: 1px solid rgba(59, 130, 246, 0.2);
 }
 
 /* Feature Badges for Tech Stack */
@@ -1620,24 +1983,24 @@ textarea:focus-visible {
 .service-icon {
   width: 70px;
   height: 70px;
-  background: linear-gradient(135deg, rgba(255, 200, 87, 0.1), rgba(255, 200, 87, 0.05));
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(59, 130, 246, 0.05));
   border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 2rem;
   color: var(--primary);
-  border: 2px solid rgba(255, 200, 87, 0.2);
+  border: 2px solid rgba(59, 130, 246, 0.2);
   transition: all 0.4s ease;
   flex-shrink: 0;
 }
 
 .service-card:hover .service-icon {
   background: var(--primary);
-  color: var(--dark);
+  color: #fff;
   transform: rotate(-8deg) scale(1.1);
   border-color: var(--primary);
-  box-shadow: 0 8px 20px rgba(255, 200, 87, 0.3);
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
 }
 
 .service-title h3 {
@@ -1733,7 +2096,7 @@ textarea:focus-visible {
 
 .price-badge {
   background: linear-gradient(135deg, var(--primary), var(--primary-light));
-  color: var(--dark);
+  color: #fff;
   padding: 8px 16px;
   border-radius: 20px;
   font-size: 0.8rem;
@@ -1749,7 +2112,7 @@ textarea:focus-visible {
   justify-content: center;
   gap: 10px;
   background: linear-gradient(135deg, var(--primary), var(--primary-light));
-  color: var(--dark);
+  color: #fff;
   padding: 14px 28px;
   border-radius: 30px;
   text-decoration: none;
@@ -1780,7 +2143,7 @@ textarea:focus-visible {
 
 .service-card .btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(255, 200, 87, 0.4);
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
   background: linear-gradient(135deg, var(--primary-light), var(--primary));
 }
 
@@ -1884,7 +2247,7 @@ textarea:focus-visible {
   width: 48px;
   height: 48px;
   flex-shrink: 0;
-  background: rgba(255, 200, 87, 0.15);
+  background: rgba(59, 130, 246, 0.15);
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -1896,9 +2259,9 @@ textarea:focus-visible {
 
 .contact-item:hover .contact-icon {
   background: var(--primary);
-  color: var(--dark);
+  color: #fff;
   transform: rotate(10deg);
-  box-shadow: 0 8px 20px rgba(255, 200, 87, 0.25);
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.25);
 }
 
 .contact-text h4 {
@@ -1946,7 +2309,7 @@ textarea:focus-visible {
 
 .social-icon:hover {
   background: var(--primary);
-  color: var(--dark);
+  color: #fff;
   transform: translateY(-5px);
 }
 
@@ -2041,12 +2404,12 @@ textarea:focus-visible {
   outline: none;
   border-color: var(--primary);
   background: rgba(255, 255, 255, 0.03);
-  box-shadow: 0 0 15px rgba(255, 200, 87, 0.1);
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.1);
 }
 
 .input-wrapper input:hover,
 .input-wrapper textarea:hover {
-  border-color: rgba(255, 200, 87, 0.3);
+  border-color: rgba(59, 130, 246, 0.3);
 }
 
 .input-wrapper input:focus+.input-icon,
@@ -2069,7 +2432,7 @@ textarea:focus-visible {
 
 .submit-btn {
   background: var(--primary);
-  color: var(--dark);
+  color: #fff;
   border: none;
   padding: 14px 30px;
   border-radius: 30px;
@@ -2099,7 +2462,7 @@ textarea:focus-visible {
 
 .submit-btn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(255, 200, 87, 0.25);
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.25);
 }
 
 .submit-btn:hover::before {
@@ -2218,7 +2581,7 @@ footer {
   width: 45px;
   height: 45px;
   background-color: var(--primary);
-  color: var(--dark);
+  color: #fff;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -2555,11 +2918,11 @@ body:not(.transitioning) {
 
 /* Subtle Brightening Effect */
 .bento-card:hover {
-  background: rgba(255, 200, 87, 0.03);
-  border-color: rgba(255, 200, 87, 0.2);
+  background: rgba(59, 130, 246, 0.03);
+  border-color: rgba(59, 130, 246, 0.2);
   transform: translateY(-5px);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3),
-    inset 0 0 15px rgba(255, 200, 87, 0.05);
+    inset 0 0 15px rgba(59, 130, 246, 0.05);
 }
 
 
@@ -2661,8 +3024,8 @@ body:not(.transitioning) {
 
 .bento-card:hover .glow-text {
   color: var(--primary);
-  /* Turns to your primary yellow when card is hovered */
-  text-shadow: 0 0 8px rgba(255, 200, 87, 0.4);
+  /* Turns to your primary violet when card is hovered */
+  text-shadow: 0 0 8px rgba(59, 130, 246, 0.4);
 }
 
 /* --- Left Side Glow & Animation --- */
@@ -2670,9 +3033,9 @@ body:not(.transitioning) {
 /* 1. Breathing Glow for the Profile Image */
 .about-image.dominant {
   position: relative;
-  border-color: rgba(255, 200, 87, 0.3);
-  /* Matches your primary color */
-  box-shadow: 0 0 15px rgba(255, 200, 87, 0.1);
+  border-color: rgba(59, 130, 246, 0.3);
+  /* Matches your primary violet */
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.1);
   animation: profile-glow 4s ease-in-out infinite;
 }
 
@@ -2680,11 +3043,11 @@ body:not(.transitioning) {
 
   0%,
   100% {
-    box-shadow: 0 0 15px rgba(255, 200, 87, 0.1);
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.1);
   }
 
   50% {
-    box-shadow: 0 0 30px rgba(255, 200, 87, 0.3);
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.3);
   }
 }
 
@@ -2751,7 +3114,7 @@ body:not(.transitioning) {
   display: block;
   box-shadow:
     0 20px 50px rgba(0, 0, 0, 0.7),
-    0 0 20px rgba(255, 200, 87, 0.1);
+    0 0 20px rgba(59, 130, 246, 0.1);
 }
 
 /* 4. Update the Laser Beam for the Wide Radius */
@@ -2864,23 +3227,23 @@ body:not(.transitioning) {
 
 .about-image.dominant:hover::before {
   background: radial-gradient(circle,
-      rgba(255, 200, 87, 0.4) 0%,
+      rgba(59, 130, 246, 0.4) 0%,
       transparent 70%);
 }
 
-/* Color Consistency: Highlight Yellow */
+/* Color Consistency: Highlight Accent */
 .highlight-yellow,
 .interests-title {
   color: var(--primary) !important;
-  /* Unified #ffc857 */
+  /* Unified #3b82f6 */
   transition: all 0.3s ease;
-  text-shadow: 0 0 10px rgba(255, 200, 87, 0.15);
+  text-shadow: 0 0 10px rgba(59, 130, 246, 0.15);
   /* Subtle ambient glow */
 }
 
 /* Hover effect for the "Beyond the Screen" text */
 .interests-title:hover {
-  text-shadow: 0 0 15px rgba(255, 200, 87, 0.4);
+  text-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
   letter-spacing: 0.5px;
   /* Subtle expansion for "premium" feel */
 }
@@ -2896,7 +3259,7 @@ body:not(.transitioning) {
 
 /* Ensure the achievement card header reacts to the card hover */
 .achievement-highlight:hover .highlight-yellow {
-  text-shadow: 0 0 20px rgba(255, 200, 87, 0.5);
+  text-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
   transform: translateX(3px);
   /* Micro-movement interaction */
 }
@@ -2915,14 +3278,14 @@ body:not(.transitioning) {
 /* Make the icons glow when the card is hovered */
 .hobby-card:hover .hobby-header i {
   color: var(--primary);
-  text-shadow: 0 0 15px rgba(255, 200, 87, 0.8);
+  text-shadow: 0 0 15px rgba(59, 130, 246, 0.8);
   transform: scale(1.2) rotate(-5deg);
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 /* Subtle glow for the hobby titles too */
 .hobby-card:hover .highlight-yellow {
-  text-shadow: 0 0 10px rgba(255, 200, 87, 0.3);
+  text-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
 }
 
 /* Executive Tier Name Glow */
@@ -2943,13 +3306,13 @@ body:not(.transitioning) {
   -webkit-text-fill-color: transparent;
   animation: chrome-flow 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   /* Atmospheric ambient glow */
-  filter: drop-shadow(0 0 12px rgba(255, 200, 87, 0.3));
+  filter: drop-shadow(0 0 12px rgba(59, 130, 246, 0.3));
   transition: filter 0.3s ease;
 }
 
 /* Enhanced glow on hover */
 .narrative-text h3:hover {
-  filter: drop-shadow(0 0 20px rgba(255, 200, 87, 0.6));
+  filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.6));
 }
 
 @keyframes chrome-flow {
@@ -3002,11 +3365,11 @@ body:not(.transitioning) {
 
 /* Premium Hover Logic */
 .skill-tag:hover {
-  background: rgba(255, 200, 87, 0.15);
+  background: rgba(59, 130, 246, 0.15);
   border-color: var(--primary);
   color: #fff;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(255, 200, 87, 0.2);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
 }
 
 .skill-tag i {
@@ -3065,14 +3428,14 @@ body:not(.transitioning) {
 .input-wrapper input:focus,
 .input-wrapper textarea:focus {
   border-color: var(--primary);
-  box-shadow: 0 0 15px rgba(255, 200, 87, 0.4);
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
   /* Matches your section line glow */
-  background: rgba(255, 200, 87, 0.02);
+  background: rgba(59, 130, 246, 0.02);
 }
 
 /* Subtle Glow for the Submit Button */
 .submit-btn:hover {
-  box-shadow: 0 0 20px rgba(255, 200, 87, 0.4);
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
   transform: translateY(-3px);
 }
 
@@ -3083,7 +3446,7 @@ body:not(.transitioning) {
   background: linear-gradient(90deg, var(--primary), var(--primary-light));
   border-radius: 3px;
   margin-bottom: 25px;
-  box-shadow: 0 0 15px rgba(255, 200, 87, 0.6);
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.6);
   /* Remove 'margin: 0 auto' if you have it, so it stays left-aligned with the text */
 }
 
@@ -3148,7 +3511,7 @@ body:not(.transitioning) {
   /* Lock underline to "Hi" inside centered container */
   transform: translateX(clamp(-24px, var(--hi-offset, 0px), 0px));
   /* Keep underline near "Hi" */
-  box-shadow: 0 0 15px rgba(255, 200, 87, 0.6);
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.6);
   opacity: 1 !important;
   visibility: visible !important;
 }
@@ -3204,11 +3567,11 @@ body:not(.transitioning) {
 
   0%,
   100% {
-    border-color: rgba(255, 200, 87, 0.05);
+    border-color: rgba(59, 130, 246, 0.05);
   }
 
   50% {
-    border-color: rgba(255, 200, 87, 0.9);
+    border-color: rgba(59, 130, 246, 0.9);
   }
 }
 
